@@ -75,6 +75,7 @@
 
     The pods will be visible in "service graph", for example in `default` namespace. This may take 1-2 mins to update in Service Graph:
     <image>
+    Note that pod/resource limits on your nodes may prevent pods from deploying. Ensure the nodes in the cluster are scaled appropriately
 
 5. Deploy compliance reports.
 
