@@ -19,7 +19,7 @@
     - Count of triggered alerts
     - Packets by Policy histogram that shows allowed and denied traffic as it is being evaluated by network policies
 
-    ![dashboard view](../img/dashboard-view.png)
+    ![dashboard overall view](../img/dashboard-overall-view.png)
 
 2. Policies Board
 
