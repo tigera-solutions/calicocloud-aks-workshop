@@ -62,9 +62,11 @@
     # deploy DNS policy using the network set
     kubectl apply -f demo/20-egress-access-controls/dns-policy.netset.yaml
     ```
-    >The update version of `allow-twilio-access` policy is using [destination: type == "external-apis"] instead of [source: app == 'centos'], which will simplify your DNS egress management.
-    >As a bonus example, you can modify the `external-apis` network set in calico cloud management UI to include `*.azure.com` domain name or `*.microsoft.com`which would allow access to azure/microsoft subdomains. 
 
-    <image>
+    >the update version of `allow-twilio-access` policy is using [destination: type == "external-apis"] instead of [source: app == 'centos'], which will simplify your DNS egress management.
+
+    c. As a bonus example, you can modify the `external-apis` network set in calico cloud management UI to include `*.azure.com` domain name or `*.microsoft.com`which would allow access to azure/microsoft subdomains. 
+
+    ![add-DNS-in-networkset](../img/add-DNS-in-networkset.png)
 
 [Next -> Module 5](../modules/using-observability-tools.md)
