@@ -111,7 +111,8 @@
 
     Calico offers `GlobalThreatfeed` resource to prevent known bad actors from accessing Kubernetes pods.
     You should be able to view the `threatfeed.feodo-tracker` details in `Network Sets` view and the `block-feodo`policy in `Policies Board` view in your calicocloud manager UI.
-    <image>
+
+   ![network-set-grid](../img/network-set-grid.png)
 
     ```bash
     # deploy feodo tracker threatfeed
