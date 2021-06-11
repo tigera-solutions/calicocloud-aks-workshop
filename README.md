@@ -1,6 +1,6 @@
 # Calico cloud workshop on AKS
 
-<img src="img/calico-on-aks.png" alt="Calico on AKS" width="30%"/>
+<img src="img/calico-on-aks.png" alt="Calicocloud on AKS" width="30%"/>
 
 ## AKS Calico Cloud Workshop
 
@@ -41,7 +41,7 @@ In this workshop we are going to focus on these main use cases:
 
 ## Modules
 
-- [Module 1: Joining AKS cluster to Calico Cloud](modules/joining-eks-to-calico-cloud.md)
+- [Module 1: Joining AKS cluster to Calico Cloud](modules/joining-aks-to-calico-cloud.md)
 - [Module 2: Configuring demo applications](modules/configuring-demo-apps.md)
 - [Module 3: Using security controls](modules/using-security-controls.md)
 - [Module 4: Using egress access controls](modules/using-egress-access-controls.md)

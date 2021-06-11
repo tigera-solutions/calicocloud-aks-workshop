@@ -1,4 +1,4 @@
-# Module 3: Joining AKS cluster to Calico Cloud
+# Module 1: Joining AKS cluster to Calico Cloud
 
 **Goal:** Join AKS cluster to Calico Cloud management plane.
 
@@ -8,22 +8,17 @@
 
 1. Join AKS cluster to Calico Cloud management plane.
     
-
     Use your Calico Cloud account to login Calico Cloud management UI. Click the "Managed Cluster" in your left side of browser.
 
-    <managed-cluster.png>
+    <img src="img/managed-cluster.png" alt="Calicocloud on AKS" width="100%"/>
     
     Click on "connect cluster"
-    <connect-cluster.png>
+    <img src="img/connect-cluster.png" alt="Calicocloud on AKS" width="100%"/>
 
     choose AKS and click next
-    <choose-aks.png>
+    <img src="img/choose-aks.png" alt="Calicocloud on AKS" width="100%"/>
 
-    make sure your aks is compatibale (with azure network plug in ) before click "next", you can check your network plug in under:
-
-    <image>
-
-    run installation script. 
+    run installation script in your aks cluster. 
     ```bash
     # script should look similar to this
     curl https://installer.calicocloud.io/xxxxxx_yyyyyyy-saay-management_install.sh | bash
@@ -38,10 +33,7 @@
     Your Connected Cluster Name is arwb4wbh-management-managed-aksjesie2-aks-rg-jesie208-03cfb8-9713ae4f-hcp-eastus-azmk8s-io  
     ```
     
-    In calico cloud management UI, you can see your own aks cluster added in "managed cluster"
-    <image>
-
-    You can also confirm by
+    In calico cloud management UI, you can see your own aks cluster added in "managed cluster", you can also confirm by
     ```bash
     kubectl get tigerastatus
     ```
@@ -73,4 +65,4 @@
     ```
 
 
-[Next -> Module 4](../modules/configuring-demo-apps.md)
+[Next -> Module 2](../modules/configuring-demo-apps.md)
