@@ -1,4 +1,4 @@
-# Module 4: Configuring demo applications
+# Module 2: Configuring demo applications
 
 **Goal:** Deploy and configure demo applications.
 
