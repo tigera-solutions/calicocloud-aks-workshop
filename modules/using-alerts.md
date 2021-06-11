@@ -1,4 +1,4 @@
-# Module 9: Using alerts
+# Module 7: Using alerts
 
 **Goal:** Use global alerts to notify security and operations teams about unsanctioned or suspicious activity.
 
@@ -26,5 +26,5 @@
 
     You can also review the alerts configuration and templates by navigating to alerts configuration in the top right corner.
 
-[Next -> Module 10](../modules/securing-heps.md)
+[Next -> Module 8](../modules/securing-heps.md)
 

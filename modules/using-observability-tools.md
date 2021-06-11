@@ -1,4 +1,4 @@
-# Module 7: Using observability tools
+# Module 5: Using observability tools
 
 **Goal:** Explore Calico observability tools.
 
@@ -67,4 +67,4 @@
 
     Some of the default dashboards you get access to are DNS Logs, Flow Logs, Audit Logs, Kuernetes API calls, L7 HTTP metrics, and others.
 
-[Next -> Module 8](../modules/using-compliance-reports.md)
+[Next -> Module 6](../modules/using-compliance-reports.md)

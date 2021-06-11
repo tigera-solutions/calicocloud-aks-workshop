@@ -1,4 +1,4 @@
-# Module 8: Using compliance reports
+# Module 6: Using compliance reports
 
 **Goal:** Use global reports to satisfy compliance requirementes.
 
@@ -69,4 +69,4 @@
 
     
     ```
-[Next -> Module 9](../modules/using-alerts.md)
+[Next -> Module 7](../modules/using-alerts.md)

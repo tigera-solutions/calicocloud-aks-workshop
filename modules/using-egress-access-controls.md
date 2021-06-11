@@ -1,4 +1,4 @@
-# Module 6: Using egress access controls
+# Module 4: Using egress access controls
 
 **Goal:** Configure egress access for specific workloads.
 
@@ -67,4 +67,4 @@
 
     <image>
 
-[Next -> Module 7](../modules/using-observability-tools.md)
+[Next -> Module 5](../modules/using-observability-tools.md)
