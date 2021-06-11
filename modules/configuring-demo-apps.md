@@ -24,7 +24,6 @@
     ```
 
     This will add tiers `security` and `platform` to the aks cluster. 
-    <image>
 
 
 
@@ -37,7 +36,7 @@
     ```
 
     This will add `allow-kube-dns` policy to your `platform` tier.
-    <image>
+    
 
 4. Deploy demo applications.
 
@@ -74,7 +73,8 @@
     ```
 
     The pods will be visible in "service graph", for example in `default` namespace. This may take 1-2 mins to update in Service Graph:
-    <image>
+      ![service-graph-default](../img/service-graph-default.png)
+
     Note that pod/resource limits on your nodes may prevent pods from deploying. Ensure the nodes in the cluster are scaled appropriately
 
 5. Deploy compliance reports.
