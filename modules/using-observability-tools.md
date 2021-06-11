@@ -53,7 +53,7 @@
     - When you select any edge, you will get details about the flows representing that edge.
     - If you expand a namespace by double-clicking on it, you will get the view of all components of the namespace.
 
-[For HTTP flow logs, we will cover it in Module 8](../modules/enable-l7-visibility.md)
+
 
 
 6. Flow Visualizations
