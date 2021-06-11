@@ -73,7 +73,7 @@
     dev-nginx-754f647b8b-h65kk   1/1     Running   0          6m
     ```
 
-    The pods will be visible in "service graph", for example in `default` namespace:
+    The pods will be visible in "service graph", for example in `default` namespace. This may take 1-2 mins to update in Service Graph:
     <image>
 
 5. Deploy compliance reports.
