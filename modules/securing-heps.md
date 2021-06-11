@@ -1,6 +1,6 @@
-# Module 7: Securing EKS hosts
+# Module 8: Securing AKS hosts
 
-**Goal:** Secure EKS hosts ports with network policies.
+**Goal:** Secure AKS hosts ports with network policies.
 
 Calico network policies not only can secure pod to pod communications but also can be applied to EKS hosts to protect host based services and ports. For more details refer to [Protect Kubernetes nodes](https://docs.tigera.io/security/kubernetes-nodes) documentaiton.
 
