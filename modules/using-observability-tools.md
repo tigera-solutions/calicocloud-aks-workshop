@@ -52,7 +52,9 @@
     - When you select any node representing a namespace, you will get additional details about the namespace, such as incoming and outgoing traffic, policies evaluating each flow, and DNS metrics.
     - When you select any edge, you will get details about the flows representing that edge.
     - If you expand a namespace by double-clicking on it, you will get the view of all components of the namespace.
-    - For HTTP flow logs, we will cover it in [Module 9](../modules/eanble L7 visibility.md)
+
+[For HTTP flow logs, we will cover it in Module 9](../modules/enable-l7-visibility.md)
+
 
 6. Flow Visualizations
 
@@ -62,7 +64,9 @@
 
 7. Kibana dashboards
 
-    The `Kibana` components comes with Calico commercial offerings and provides you access to raw flow, audit, and dns logs, as well as ability to visualize the collected data in various dashboards.
+    The `Kibana` components comes with Calico cloud offerings and provides you access to raw flow, audit, and dns logs, as well as ability to visualize the collected data in various dashboards.
+
+    When you login Kibana, you can choose a predefined dashboard or create your own, below is "Tigera Flow Logs" dashboard.
 
     ![kibana flows](../img/kibana-flow-logs.png)
 
