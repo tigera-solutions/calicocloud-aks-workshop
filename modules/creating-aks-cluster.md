@@ -1,12 +1,12 @@
-# Module 2: Creating AKS cluster
+# Module 1: Creating AKS cluster
 
 **Goal:** Create AKS cluster.
 
 >This workshop uses AKS cluster with Linux containers. To create a Windows Server container on an AKS cluster, consider exploring [AKS documents](https://docs.microsoft.com/en-us/azure/aks/windows-container-cli).
 
-[If you already have AKS cluster, make sure the network plugin is "azure", then you can skip this module and go to module 3](../modules/joining-aks-to-calico-cloud.md)
+[If you already have AKS cluster, make sure the network plugin is "azure", then you can skip this module and go to module 2](../modules/joining-aks-to-calico-cloud.md)
 
-<network-plugin-azure.png>
+<img src="img/network-plugin-azure.png" alt="network plugin" width="100%"/>
 
 ## Steps
 
@@ -107,7 +107,7 @@
     You should now have a Kubernetes cluster running with 3 nodes. You do not see the master servers for the cluster because these are managed by Microsoft. The Control Plane services which manage the Kubernetes cluster such as scheduling, API access, configuration data store and object controllers are all provided as services to the nodes.
 
 
-[Next -> Module 3](../modules/joining-aks-to-calico-cloud.md)
+[Next -> Module 2](../modules/joining-aks-to-calico-cloud.md)
 
 
 
