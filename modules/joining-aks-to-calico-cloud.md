@@ -10,10 +10,9 @@
     
     Use your Calico Cloud account to login Calico Cloud management UI. Click the "Managed Cluster" in your left side of browser.
     ![managed-cluster](../img/managed-cluster.png)
-   # <img src="img/managed-cluster.png" alt="Calicocloud on AKS" width="100%"/>
     
     Click on "connect cluster"
-    <img src="img/connect-cluster.png" alt="Calicocloud on AKS" width="100%"/>
+     ![connect-cluster](../img/connect-cluster.png)
 
     choose AKS and click next
     <img src="img/choose-aks.png" alt="Calicocloud on AKS" width="100%"/>
