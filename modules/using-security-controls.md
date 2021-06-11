@@ -49,7 +49,7 @@
     ```
 
     You should be able to view the potential affect of the staged `default-deny` policy if you navigate to the `Dashboard` view in your calicocloud manager UI and look at the `Packets by Policy` histogram.
-    <image>
+      ![staged-default-deny](../img/staged-default-deny.png)
 
     ```bash
     # make a request across namespaces and view Packets by Policy histogram
