@@ -15,7 +15,8 @@
      ![connect-cluster](../img/connect-cluster.png)
 
     choose AKS and click next
-    <img src="img/choose-aks.png" alt="Calicocloud on AKS" width="100%"/>
+      ![choose-aks](../img/choose-aks.png)
+
 
     run installation script in your aks cluster. 
     ```bash
