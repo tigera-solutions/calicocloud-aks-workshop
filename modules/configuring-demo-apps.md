@@ -7,11 +7,11 @@
 1. Download this repo into your environment:
 
     ```bash
-    git clone https://github.com/tigera-solutions/tigera-aks-workshop  
+    git clone https://github.com/tigera-solutions/calicocloud-aks-workshop.git 
     ```
     
     ```bash
-    cd tigera-aks-workshop
+    cd calicocloud-aks-workshop
     ```
 
 
