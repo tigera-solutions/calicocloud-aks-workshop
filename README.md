@@ -48,7 +48,7 @@ In this workshop we are going to focus on these main use cases:
 - [Module 5: Using observability tools](modules/using-observability-tools.md)
 - [Module 6: Using compliance reports](modules/using-compliance-reports.md)
 - [Module 7: Using alerts](modules/using-alerts.md)
-- [Module 8: Securing Azure windows host end point](modules/securing-heps.md)
+
 
 ## Cleanup
 

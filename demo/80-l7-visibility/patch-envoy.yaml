@@ -1,0 +1,64 @@
+spec:
+  template:
+    spec:
+      containers:
+      - name: envoy-proxy
+        image: quay.io/tigera/envoy:v3.7.0
+        imagePullPolicy: IfNotPresent
+        securityContext:
+          runAsUser: 1729
+          runAsGroup: 1729
+          runAsNonRoot: true
+        env:
+        - name: ENVOY_UID
+          value: '1729'
+        - name: ENVOY_GID
+          value: '1729'
+        volumeMounts:
+        - name: envoy-config
+          mountPath: /etc/envoy
+        - name: envoy-logs
+          mountPath: /tmp/
+      - name: l7-collector
+        image: quay.io/tigera/l7-collector:v3.7.0
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: LOG_LEVEL
+          value: "Panic"
+        - name: FELIX_DIAL_TARGET
+          value: "/var/run/felix/nodeagent/socket"
+        volumeMounts:
+        - name: envoy-logs
+          mountPath: /tmp/
+        - name: felix-sync
+          mountPath: /var/run/felix
+      imagePullSecrets:
+      - name: tigera-pull-secret
+      volumes:
+      - name: envoy-logs
+        emptyDir: {}
+      - name: felix-sync
+        flexVolume:
+          driver: nodeagent/uds
+      - name: envoy-config
+        configMap:
+          name: envoy-config
+      initContainers:
+      - name: envoy-init
+        image: quay.io/tigera/envoy-init:v3.7.0
+        imagePullPolicy: IfNotPresent
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            add:
+            - NET_ADMIN
+            - NET_RAW
+            - SETGID
+            - SETUID
+            drop:
+            - ALL
+          privileged: false
+          readOnlyRootFilesystem: false
+          runAsGroup: 0
+          runAsNonRoot: false
+          runAsUser: 0
