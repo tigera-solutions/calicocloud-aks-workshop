@@ -26,5 +26,5 @@
 
     You can also review the alerts configuration and templates by navigating to alerts configuration in the top right corner.
 
-[Next -> Module 8](../modules/enable-l7-visibility.md)
+
 
