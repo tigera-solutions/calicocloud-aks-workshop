@@ -1,5 +1,7 @@
 # Calico cloud workshop on AKS
 
+<img src="img/calico-on-aks.png" alt="Calico on EKS" width="30%"/>
+
 ## Workshop objectives
 
 The intent of this workshop is to educate any person working with AKS cluster in one way or another about Calico cloud features and how to use them. While there are many capabilities that Calico provides, this workshop focuses on a subset of those that are used most often by different types of technical users.
