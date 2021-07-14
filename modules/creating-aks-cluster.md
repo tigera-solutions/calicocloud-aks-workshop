@@ -188,4 +188,4 @@ You should now have a Kubernetes cluster running with 3 nodes. You do not see th
 <br>    
 
     
-[Next -> Module 2](../modules/joining-aks-to-calico-cloud.md)
+[Next -> Module 1](../modules/joining-aks-to-calico-cloud.md)
