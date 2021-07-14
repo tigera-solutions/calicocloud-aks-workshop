@@ -4,18 +4,18 @@
 
 ## AKS Calico Cloud Workshop
 
-The intent of this workshop is to introduce Calico Cloud(https://www.calicocloud.io/home/) to manage AKS clusters and leverage Calico features to implement the various use cases. While there are many capabilities that the Calico product provides, this workshop focuses on a subset of those that are used most often by enterprises to derive value from the Calico Product.
+The intent of this workshop is to introduce Calico Cloud(https://www.calicocloud.io/home/) to manage AKS clusters and leverage Calico features to implement the various use cases. While there are many capabilities that the Calico product provides, this workshop focuses on a subset of those that are used most often by enterprises to derive value from the Calico Product. 
 
 
 ## Learning Objectives
 
-In this workshop we are going to focus on these main use cases:
+In this workshop we are going to focus on these main use cases (with links to Calico docs for further info). Note that features for policy and visibility as outlined in this workshop are identical between Calico Cloud and Calico Enterprise. Consult the [Calico Enterprise docs](https://docs.tigera.io/) for further reading:
 
-- **Integration** Integrating Calico Cloud into the AKS clusters.
-- **East-West security**, leveraging zero-trust security approach.
-- **Egress access controls**, using DNS policy to access external resources by their fully qualified domain names (FQDN).
-- **Observability**, exploring various logs and application level metrics collected by Calico.
-- **Compliance**, providing proof of security compliance.
+- **Integration:** [Integrating Calico Cloud into the AKS clusters.](https://docs.calicocloud.io/install/system-requirements)
+- **East-West security:** [leveraging zero-trust security approach.](https://docs.tigera.io/security/adopt-zero-trust)
+- **Egress access controls:** [using DNS policy to access external resources by their fully qualified domain names (FQDN).](https://docs.calicocloud.io/use-cases/security-controls/global-egress)
+- **Observability:** [exploring various logs and application level metrics collected by Calico.](https://docs.calicocloud.io/use-cases/troubleshoot-apps)
+- **Compliance:** [providing proof of security compliance.](https://docs.tigera.io/compliance/)
 
 ## Join the Slack Channel
 
