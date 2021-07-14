@@ -35,7 +35,7 @@
 
     The `Timeline` view shows audit trail of created, deleted, or modified resources.
 
-    ![timeline view](../img/timeline-view.png)
+    <img src="../img/timeline-view.png" alt="timeline view" width="50%"/>
 
 4. Endpoints
 
