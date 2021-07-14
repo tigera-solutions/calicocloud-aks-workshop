@@ -30,7 +30,7 @@ In this workshop we are going to focus on these main use cases:
 
 ## Workshop prerequisites
 
->It is recommended to complete previous labs in hackfest, and use the same Azure resource group to create a new AKS cluster for this networking lab. If you are using a corporate Azure account for the workshop, make sure to check with account administrator to provide you with sufficient permissions to create and manage AkS clusters and Load Balancer resources.
+>It is recommended to follow the AKS creation step outlined in [Module 0](modules/creating-aks-cluster.md) and to keep the resources isolated from any existing deployments. If you are using a corporate Azure account for the workshop, make sure to check with account administrator to provide you with sufficient permissions to create and manage AkS clusters and Load Balancer resources.
 
 - [Azure Kubernetes Service](https://github.com/Azure/kubernetes-hackfest/blob/master/labs/networking/network-policy/)
 - [Calico Cloud trial account](https://www.calicocloud.io/home)
@@ -41,6 +41,7 @@ In this workshop we are going to focus on these main use cases:
 
 ## Modules
 
+- [Module 0: Creating an AKS compatible cluster for Calico Cloud](modules/creating-aks-cluster.md)
 - [Module 1: Joining AKS cluster to Calico Cloud](modules/joining-aks-to-calico-cloud.md)
 - [Module 2: Configuring demo applications](modules/configuring-demo-apps.md)
 - [Module 3: Using security controls](modules/using-security-controls.md)
@@ -62,15 +63,13 @@ In this workshop we are going to focus on these main use cases:
 2. Delete AKS cluster.
 
     ```bash
-    export MyClusterName='<set_cluster_name>'
-    az aks delete --name $MyClusterName
+    az aks delete --name $CLUSTERNAME
     ```
 
 3. Delete the azure resource group. 
 
     ```bash
-    export MyResourceGroup='<set_resourcegroup_name>'
-    az group delete --resource-group $MyResourceGroup
+    az group delete --resource-group $RGNAME
     ```
 
 
