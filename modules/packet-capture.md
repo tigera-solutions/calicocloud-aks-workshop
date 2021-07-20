@@ -6,7 +6,7 @@
 
 1. Configure packet capture.
 
-    Navigate to `demo/80-packet-capture` and review YAML manifests that represent packet capture definition. Each packet capture is configured by deploing a `PacketCapture` resource that targets endpoints using `selector` and `labels`.
+    Navigate to `demo/80-packet-capture` and review YAML manifests that represent packet capture definition. Each packet capture is configured by deploying a `PacketCapture` resource that targets endpoints using `selector` and `labels`.
 
     Deploy packet capture definition to capture packets for `default/frontend` pods.
 
