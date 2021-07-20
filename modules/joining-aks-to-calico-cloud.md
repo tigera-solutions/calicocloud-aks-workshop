@@ -64,5 +64,10 @@
 
     ```
 
+4. Configure Felix to collect TCP stats - this uses eBPF TC program and requires miniumum Kernel version of v5.3.0. Further [documentation](https://docs.tigera.io/visibility/elastic/flow/tcpstats)
+
+    ```bash
+    kubectl patch felixconfiguration default -p '{"spec":{"flowLogsCollectTcpStats":true}}'
+    ```
 
 [Next -> Module 2](../modules/configuring-demo-apps.md)
