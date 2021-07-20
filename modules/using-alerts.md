@@ -25,6 +25,6 @@
     ![alerts view](../img/alerts-view.png)
 
     You can also review the alerts configuration and templates by navigating to alerts configuration in the top right corner.
+<br>
 
-
-
+[Next -> Module 8](../modules/packet-capture.md)
