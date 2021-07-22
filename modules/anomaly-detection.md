@@ -1,6 +1,7 @@
 # Module 8: Anomaly Detection
 
 **Goal:** Configure Anomaly Detection to alert upon abnormal/suspicious traffic
+---
 
 Calico offers [Anomaly Detection](https://docs.tigera.io/threat/anomaly-detection/) (AD) as a part of its [threat defense](https://docs.tigera.io/threat/) capabilities.
 Use official documentation for the most recent [configuration instructions](https://docs.tigera.io/threat/anomaly-detection/customizing).
@@ -41,7 +42,7 @@ Use official documentation for the most recent [configuration instructions](http
         	#   value: "True"
 
 ```
-2. We need to substitute the Cluster Name in the YAML file with the variable CALICOCLUSTERNAME we configured in Module 1. This enables the Machine Learning jobs to target the correct indices in Elastic Search
+2. We need to substitute the Cluster Name in the YAML file with the variable `CALICOCLUSTERNAME` we configured in Module 1. This enables the Machine Learning jobs to target the correct indices in Elastic Search
 	```bash
 	sed -i "" "s/\$CALICOCLUSTERNAME/$CALICOCLUSTERNAME/g" ./demo/90-anomaly-detection/ad-jobs-deployment-managed.yaml
 	```
@@ -51,7 +52,7 @@ Use official documentation for the most recent [configuration instructions](http
 	kubectl apply -f ./demo/90-anomaly-detection/ad-jobs-deployment-managed.yaml
 	```
 
-4. Simulate anomaly.
+4. Simulate anomaly by using an NMAP port scan above the threshold set in our Deployment env vars listed in Step 1.
 
 	```bash
 	# mock port scan
