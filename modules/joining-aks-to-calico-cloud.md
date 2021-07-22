@@ -32,6 +32,12 @@
 
     Your Connected Cluster Name is arwb4wbh-management-managed-aksjesie2-aks-rg-jesie208-03cfb8-9713ae4f-hcp-eastus-azmk8s-io  
     ```
+    Set the Calico Cluster Name as a variable to use later in this workshop. The Cluster Name can also be obtained from the Calico Cloud Web UI at a later date. For the example above `CALICOCLUSTERNAME` should be set to __arwb4wbh-management-managed-aksjesie2-aks-rg-jesie208-03cfb8-9713ae4f-hcp-eastus-azmk8s-io__
+    
+    ```bash
+    export CALICOCLUSTERNAME=<Cluster Name>
+    echo export CALICOCLUSTERNAME=$CALICOCLUSTERNAME >> ~/.bashrc
+    ```
     
     In calico cloud management UI, you can see your own aks cluster added in "managed cluster", you can also confirm by
     ```bash
