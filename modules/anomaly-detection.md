@@ -5,17 +5,18 @@
 Calico offers [Anomaly Detection](https://docs.tigera.io/threat/anomaly-detection/) (AD) as a part of its [threat defense](https://docs.tigera.io/threat/) capabilities.
 Use official documentation for the most recent [configuration instructions](https://docs.tigera.io/threat/anomaly-detection/customizing).
 
-##Steps
+## Steps
 
-1. Deploy anomaly detection jobs for the managed cluster.
+1. Review the Anomaly Detection jobs for the managed cluster.
 
 >Instructions below for a Managed cluster only. Follow [configuration documentation](https://docs.tigera.io/threat/anomaly-detection/customizing) to configure AD jobs for management and standalone clusters.
+<br>
 
-	```bash
-	# download jobs manifest
-	curl https://docs.tigera.io/manifests/threatdef/ad-jobs-deployment.yaml -O
+```bash
+	less ./demo/90-anomaly-detection/ad-jobs-deployment-managed.yaml
 
-	# # The following AD jobs and thresholds have been configured as env vars in the ad-jobs-deployment.yaml. In production these values may trigger more alerts than required
+	# The following AD jobs and thresholds have been configured as env vars in the ad-jobs-deployment.yaml. 
+	# In production these values may trigger more alerts than required
 		# - name: AD_max_docs
         	#   value: "100000"
         	# - name: AD_train_interval_minutes
@@ -39,18 +40,18 @@ Use official documentation for the most recent [configuration instructions](http
         	# - name: AD_debug
         	#   value: "True"
 
-
-	# We need to substitute the Cluster Name with the variable CALICOCLUSTERNAME we configured in [Module 1][../modules/joining-aks-to-calico-cloud.md]
-
+```
+2. We need to substitute the Cluster Name in the YAML file with the variable CALICOCLUSTERNAME we configured in Module 1. This enables the Machine Learning jobs to target the correct indices in Elastic Search
+	```bash
 	sed -i "" "s/\$CALICOCLUSTERNAME/$CALICOCLUSTERNAME/g" ./demo/90-anomaly-detection/ad-jobs-deployment-managed.yaml
 	```
 
-2. Now apply the Anomaly Detection deployment YAML
+3. Now apply the Anomaly Detection deployment YAML
 	```bash
 	kubectl apply -f ./demo/90-anomaly-detection/ad-jobs-deployment-managed.yaml
 	```
 
-3. Simulate anomaly.
+4. Simulate anomaly.
 
 	```bash
 	# mock port scan
