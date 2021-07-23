@@ -1,4 +1,4 @@
-# Module 10: Honeypod Threat Defence
+# Module 10: Honeypod Threat Detection
 
 **Goal:** Deploy honeypod resources and generate alerts when suspicous traffic is detected
 ---
