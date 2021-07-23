@@ -50,3 +50,5 @@
     ```bash
     kubectl delete -f demo/80-packet-capture/packet-capture.yaml
     ```
+
+[Next -> Module 9](../modules/anomaly-detection.md)
