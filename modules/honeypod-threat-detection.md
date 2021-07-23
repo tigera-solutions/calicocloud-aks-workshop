@@ -1,4 +1,4 @@
-# Module 9: Honeypod Threat Defence
+# Module 10: Honeypod Threat Defence
 
 **Goal:** Deploy honeypod resources and generate alerts when suspicous traffic is detected
 ---
@@ -126,3 +126,6 @@ Note: in order to deploy honeypod resources a pull secret is required to downloa
 Head to `Alerts` view in the Enterprise Manager UI to view the related alerts. Note the alerts can take a few minutes to generate. 
 
 <img src="../img/honeypod-threat-alert.png" alt="honeypod-threat-alert" width="100%"/>
+
+
+**Congratulations on completing this Workshop!**
