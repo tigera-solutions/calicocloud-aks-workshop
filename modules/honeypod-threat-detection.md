@@ -1,12 +1,15 @@
-# Honeypod Threat Defence
+# Module 9: Honeypod Threat Defence
+
+**Goal:** Deploy honeypod resources and generate alerts when suspicous traffic is detected
+<br>
+<br>
 
 Calico offers [Honeypod](https://docs.tigera.io/threat/honeypod/) capability which is based upon the same principles as traditional honeypots. Calico is able to detect traffic which probes the Honeypod resources which can be an indicator of compromise. Refer to the [official honeypod configuration documentation](https://docs.tigera.io/threat/honeypod/honeypods) for more details.
 <br>
 
-Note: in order to deploy honeypod resources a pull secret is required to download images from Tigera's respository. This will be supplied to you as part of this workshop
+Note: in order to deploy honeypod resources a pull secret is required to download images from Tigera's respository. This will be supplied to you as part of this workshop 
 
-**Goal:** Deploy honeypod resources and generate alerts when suspicous traffic is detected
----
+## Steps
 
 1. Configure honeypod namespace and Alerts for SSH detection
 
@@ -36,7 +39,7 @@ Note: in order to deploy honeypod resources a pull secret is required to downloa
     kubectl get pods -n tigera-internal
     kubectl get pods -n tigera-intrusion-detection | grep -i honeypod
     ```
-    Output should resemble:
+    >Output should resemble:
     
     ```bash
     kubectl get pods -n tigera-internal
@@ -53,7 +56,7 @@ Note: in order to deploy honeypod resources a pull secret is required to downloa
     ```bash
     kubectl get globalalerts | grep -i honeypod
     ```
-    Output should resemble:
+    >Output should resemble:
 
     ```bash
     kubectl get globalalerts | grep -i honeypod
@@ -65,12 +68,16 @@ Note: in order to deploy honeypod resources a pull secret is required to downloa
     ```
 5. Test honeypod use cases
 
+    - Ping exposed Honeypod IP
+
     ```bash
-    # ping exposed pod IP
     POD_IP=$(kubectl -n tigera-internal get po --selector app=tigera-internal-app -o jsonpath='{.items[0].status.podIP}')
     kubectl -n dev exec netshoot -- ping -c5 $POD_IP
-
-    > kubectl -n dev exec netshoot -- ping -c5 $POD_IP
+    ```
+    >Output should resemble:    
+    
+    ```bash
+    kubectl -n dev exec netshoot -- ping -c5 $POD_IP
     PING 10.240.0.74 (10.240.0.74) 56(84) bytes of data.
     64 bytes from 10.240.0.74: icmp_seq=1 ttl=63 time=0.103 ms
     64 bytes from 10.240.0.74: icmp_seq=2 ttl=63 time=0.065 ms
@@ -81,13 +88,18 @@ Note: in order to deploy honeypod resources a pull secret is required to downloa
     --- 10.240.0.74 ping statistics ---
     5 packets transmitted, 5 received, 0% packet loss, time 4094ms
     rtt min/avg/max/mdev = 0.050/0.070/0.103/0.018 ms
-
-    # curl nginx service
+    ```
+    <br>
+    
+    - curl HoneyPod nginx service
+    ```bash
     SVC_URL=$(kubectl -n tigera-internal get svc -l app=tigera-dashboard-internal-debug -ojsonpath='{.items[0].metadata.name}')
     SVC_PORT=$(kubectl -n tigera-internal get svc -l app=tigera-dashboard-internal-debug -ojsonpath='{.items[0].spec.ports[0].port}')
     kubectl -n dev exec netshoot -- curl -m3 -skI $SVC_URL.tigera-internal:$SVC_PORT | grep -i http
-
-    > kubectl -n dev exec netshoot -- curl -m3 -skI $SVC_URL.tigera-internal:$SVC_PORT                                                              ✔  chris-aks-calicloud ⎈
+    ```
+    >Output should resemble: 
+    ```bash
+    kubectl -n dev exec netshoot -- curl -m3 -skI $SVC_URL.tigera-internal:$SVC_PORT
     HTTP/1.1 200 OK
     Server: nginx/1.16.1
     Date: Fri, 23 Jul 2021 21:32:31 GMT
@@ -97,14 +109,21 @@ Note: in order to deploy honeypod resources a pull secret is required to downloa
     Connection: keep-alive
     ETag: "5e0a3556-70"
     Accept-Ranges: bytes
-
-    # query MySQL service
+    ```
+    <br>
+    
+    - Query HoneyPod MySQL service
+    ```bash
     SVC_URL=$(kubectl -n tigera-internal get svc -l app=tigera-internal-backend -ojsonpath='{.items[0].metadata.name}')
     SVC_PORT=$(kubectl -n tigera-internal get svc -l app=tigera-internal-backend -ojsonpath='{.items[0].spec.ports[0].port}')
     kubectl -n dev exec netshoot -- nc -zv $SVC_URL.tigera-internal $SVC_PORT
-
-    > kubectl -n dev exec netshoot -- nc -zv $SVC_URL.tigera-internal $SVC_PORT
+    ```
+    >Output should resemble
+    ```bash
+    kubectl -n dev exec netshoot -- nc -zv $SVC_URL.tigera-internal $SVC_PORT
     Connection to tigera-internal-backend.tigera-internal 3306 port [tcp/mysql] succeeded!
     ```
 
-Head to `Alerts` view in the Enterprise Manager UI to view the related alerts. Note the alerts can take a few minutes to generate.
+Head to `Alerts` view in the Enterprise Manager UI to view the related alerts. Note the alerts can take a few minutes to generate. 
+
+<img src="../img/honeypod-threat-alert.png" alt="honeypod-threat-alert" width="100%"/>
