@@ -14,10 +14,12 @@ Note: in order to deploy honeypod resources a pull secret is required to downloa
 
     ```bash
     # create dedicated namespace and RBAC for honeypods
-    kubectl apply -f https://docs.tigera.io/manifests/threatdef/honeypod/common.yaml 
-    # add tigera pull secret to the namespace
-    # replace <pull-secrets.json> with path to your pull secret. The pull secret must be obtained from Tigera
-    kubectl create secret generic tigera-pull-secret --from-file=.dockerconfigjson=<pull-secrets.json> --type=kubernetes.io/dockerconfigjson -n tigera-internal
+    kubectl apply -f https://docs.tigera.io/manifests/threatdef/honeypod/common.yaml
+    
+    # add tigera pull secret to the namespace. We clone the existing secret from the calico-system NameSpace
+    kubectl get secret tigera-pull-secret --namespace=calico-system -o yaml | \
+    grep -v '^[[:space:]]*namespace:[[:space:]]*calico-system' | \
+    kubectl apply --namespace=tigera-internal -f -
     ```
 
 2. Deploy sample honeypods
