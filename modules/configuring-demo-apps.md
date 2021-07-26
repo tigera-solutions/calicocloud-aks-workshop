@@ -67,9 +67,10 @@
 
     kubectl get pods -n dev
     NAME                         READY   STATUS    RESTARTS   AGE
-    centos                       1/1     Running   0          6m
-    dev-nginx-754f647b8b-g8sbn   1/1     Running   0          6m
-    dev-nginx-754f647b8b-h65kk   1/1     Running   0          6m
+    centos                       1/1     Running   0          48s
+    dev-nginx-754f647b8b-99fsn   1/1     Running   0          48s
+    dev-nginx-754f647b8b-hlrw8   1/1     Running   0          48s
+    netshoot                     1/1     Running   0          48s
     ```
 
     The pods will be visible in "service graph", for example in `default` namespace. This may take 1-2 mins to update in Service Graph:
@@ -101,7 +102,8 @@
     > Before we implement network secruity rules we need to install curl on the loadgenerator pod for testing purposes later in the workshop. Note the installation will not survive a reboot so repeat this installation as necessary
 
     ```bash
-    kubectl exec -it $(kubectl get po -l app=loadgenerator -ojsonpath='{.items[0].metadata.name}') -- sh -c 'apt-get update && apt install curl -y'
+    kubectl exec -it $(kubectl get po -l app=loadgenerator -ojsonpath='{.items[0].metadata.name}') -- sh -c 'apt-get update'
+    kubectl exec -it $(kubectl get po -l app=loadgenerator -ojsonpath='{.items[0].metadata.name}') -- sh -c 'apt install curl -y'
     ```
 
 [Next -> Module 3](../modules/using-security-controls.md)
