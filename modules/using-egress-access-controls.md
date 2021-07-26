@@ -48,7 +48,7 @@
 
     # test egress access to api.twilio.com
     kubectl -n dev exec -t centos -- sh -c 'curl -m3 -skI https://api.twilio.com 2>/dev/null | grep -i http'
-    # test egress access to www.google.com
+    # test egress access to www.bing.com
     kubectl -n dev exec -t centos -- sh -c 'curl -m3 -skI https://www.bing.com 2>/dev/null | grep -i http'
     ```
 
