@@ -55,7 +55,7 @@ less ./demo/90-anomaly-detection/ad-jobs-deployment-managed.yaml
 
 	```bash
 	# mock port scan
-	POD_IP=$(kubectl -n tigera-internal get po --selector app=tigera-internal-app -o jsonpath='{.items[0].status.podIP}')
+	POD_IP=$(kubectl -n dev get po --selector app=centos -o jsonpath='{.items[0].status.podIP}')
 	kubectl -n dev exec netshoot -- nmap -Pn -r -p 1-1000 $POD_IP
 	```
 	>Output should resemble
