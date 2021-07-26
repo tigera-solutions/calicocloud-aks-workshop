@@ -74,6 +74,9 @@
     # apply enforcing default-deny policy manifest
     kubectl apply -f demo/10-security-controls/default-deny.yaml
     ```
+    If the above yaml definition is deployed the policy `Staged default-deny` can be deleted through the Web UI. Within the policy board click the edit icon from the `Staged default deny` policy in the `default` tier. Then click `Delete`
+    
+    <img src="../img/edit-policy.png" alt="edit-policy" width="100%"/>
 
 4. Test connectivity with policieis in place.
 
