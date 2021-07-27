@@ -38,7 +38,6 @@ Note: in order to deploy honeypod resources a pull secret is required to downloa
 
     ```bash
     kubectl get pods -n tigera-internal
-    kubectl get pods -n tigera-intrusion-detection | grep -i honeypod
     ```
     >Output should resemble:
     
