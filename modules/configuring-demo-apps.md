@@ -49,7 +49,8 @@
     ```
     
     ```bash
-    #confirm the pod/deployments are running
+    #confirm the pod/deployments are running. Note the loadgenerator pod waits for the frontend pod to respond to http calls before coming up and can take a few minutes. Eventually, the status of the pods in the default namespace will look as follows: 
+    
     kubectl get pods
     NAME                                     READY   STATUS    RESTARTS   AGE
     adservice-7cbc9bd9-jkjhq                 1/1     Running   0          86s
