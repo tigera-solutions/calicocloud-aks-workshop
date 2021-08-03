@@ -111,16 +111,17 @@ echo export CLIENTSECRET=$CLIENTSECRET >> ~/.bashrc
     
     ```bash
     az aks get-versions -l $LOCATION --output table
-   
-    #KubernetesVersion    Upgrades
-    #-------------------  ------------------------
-    #1.21.1(preview)      None available
-    #1.20.7               1.21.1(preview)
-    #1.20.5               1.20.7, 1.21.1(preview)
-    #1.19.11              1.20.5, 1.20.7
-    #1.19.9               1.19.11, 1.20.5, 1.20.7
-    #1.18.19              1.19.9, 1.19.11
-    #1.18.17              1.18.19, 1.19.9, 1.19.11
+    ```
+    ```
+    KubernetesVersion    Upgrades
+    -------------------  ------------------------
+    1.21.1(preview)      None available
+    1.20.7               1.21.1(preview)
+    1.20.5               1.20.7, 1.21.1(preview)
+    1.19.11              1.20.5, 1.20.7
+    1.19.9               1.19.11, 1.20.5, 1.20.7
+    1.18.19              1.19.9, 1.19.11
+    1.18.17              1.18.19, 1.19.9, 1.19.11
     ```
     
     For this lab we'll use 1.20.7
@@ -169,11 +170,12 @@ echo export CLIENTSECRET=$CLIENTSECRET >> ~/.bashrc
     
 	```bash
 	kubectl get nodes
-
-	#NAME                                STATUS   ROLES   AGE    VERSION
-	#aks-nodepool1-29374799-vmss000000   Ready    agent   118s   v1.20.7
-	#aks-nodepool1-29374799-vmss000001   Ready    agent   2m3s   v1.20.7
-	#aks-nodepool1-29374799-vmss000002   Ready    agent   2m     v1.20.7
+	```
+	```
+	NAME                                STATUS   ROLES   AGE    VERSION
+	aks-nodepool1-29374799-vmss000000   Ready    agent   118s   v1.20.7
+	aks-nodepool1-29374799-vmss000001   Ready    agent   2m3s   v1.20.7
+	aks-nodepool1-29374799-vmss000002   Ready    agent   2m     v1.20.7
 	```
 
 	To see more details about your cluster:
