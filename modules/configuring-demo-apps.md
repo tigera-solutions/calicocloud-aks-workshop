@@ -7,11 +7,11 @@
 1. Download this repo into your environment:
 
     ```bash
-    git clone https://github.com/tigera-solutions/calicocloud-aks-workshop.git 
+    git clone https://github.com/Azure/kubernetes-hackfest.git
     ```
     
     ```bash
-    cd calicocloud-aks-workshop
+    cd ./kubernetes-hackfest/labs/networking
     ```
 
 
@@ -90,7 +90,7 @@
 
 6. Deploy global alerts.
 
-    >The alerts will be explored in a later lab.
+    >The alerts will be explored in a later lab. Ignore any warning messages - these do not affect the deployment of resources.
 
     ```bash
     kubectl apply -f demo/50-alerts/globalnetworkset.changed.yaml
