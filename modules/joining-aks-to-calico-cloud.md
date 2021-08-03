@@ -2,13 +2,22 @@
 
 **Goal:** Join AKS cluster to Calico Cloud management plane.
 
->In order to complete this module, you must have [Calico Cloud trial account](https://www.calicocloud.io/home).
+IMPORTANT: In order to complete this module, you must have [Calico Cloud trial account](https://www.calicocloud.io/home).
 
 ## Steps
 
-1. Join AKS cluster to Calico Cloud management plane.
+1. Navigate to [https://www.calicocloud.io/home](https://www.calicocloud.io/home) and sign up for a 14 day trial account - no credit cards required. Returning users can login.
+
+   ![calico-cloud-login](../img/calico-cloud-login.png)
+
+2. Upon signing into the Calico Cloud UI the Welcome screen shows four use cases which will give a quick tour for learning more. This step can be skipped. Tip: the menu icons on the left can be expanded to display the worded menu as shown:
+
+   ![expand-menu](../img/expand-menu.png)
+
+
+3. Join AKS cluster to Calico Cloud management plane.
     
-    Use your Calico Cloud account to login Calico Cloud management UI. Click the "Managed Cluster" in your left side of browser.
+    Click the "Managed Cluster" in your left side of browser.
     ![managed-cluster](../img/managed-cluster.png)
     
     Click on "connect cluster"
@@ -53,9 +62,15 @@
     intrusion-detection             True        False         False      4m49s
     log-collector                   True        False         False      4m19s
     management-cluster-connection   True        False         False      4m54s
+    ```
+    
+4. Navigating the Calico Cloud UI
 
+    Once the cluster has successfully connected to Calico Cloud you can review the cluster status in the UI. Click on `Managed Clusters` from the left side menu and look for the `connected` status of your cluster. You will also see a `Tigera-labs` cluster for demo purposes. Ensure you are in the correct cluster context by clicking the `Cluster` dropdown in the top right corner. This will list the connected clusters. Click on your cluster to switch context otherwise the current cluster context is in *bold* font.
+    
+    ![cluster-selection](../img/cluster-selection.png)
 
-2. Configure log aggregation and flush intervals in aks cluster, we will use 60s instead of default value 300s for lab testing only.   
+5. Configure log aggregation and flush intervals in aks cluster, we will use 60s instead of default value 300s for lab testing only.   
 
     ```bash
     kubectl patch felixconfiguration.p default -p '{"spec":{"flowLogsFlushInterval":"60s"}}'
@@ -63,14 +78,14 @@
     kubectl patch felixconfiguration.p default -p '{"spec":{"flowLogsFileAggregationKindForAllowed":1}}'
     ```
 
-3. Configure Felix for log data collection in aks cluster
+6. Configure Felix for log data collection in aks cluster
 
     ```bash
     kubectl patch felixconfiguration default --type='merge' -p '{"spec":{"policySyncPathPrefix":"/var/run/nodeagent","l7LogsFileEnabled":true}}'
 
     ```
 
-4. Configure Felix to collect TCP stats - this uses eBPF TC program and requires miniumum Kernel version of v5.3.0. Further [documentation](https://docs.tigera.io/visibility/elastic/flow/tcpstats)
+7. Configure Felix to collect TCP stats - this uses eBPF TC program and requires miniumum Kernel version of v5.3.0. Further [documentation](https://docs.tigera.io/visibility/elastic/flow/tcpstats)
 
     ```bash
     kubectl patch felixconfiguration default -p '{"spec":{"flowLogsCollectTcpStats":true}}'
