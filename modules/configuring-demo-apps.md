@@ -45,7 +45,7 @@
     kubectl apply -f demo/dev/app.manifests.yaml
 
     # deploy boutiqueshop app stack
-    kubectl apply -f https://raw.githubusercontent.com/GoogleCloudPlatform/microservices-demo/master/release/kubernetes-manifests.yaml
+    kubectl apply -f ./demo/boutique-app.manifests.yaml
     ```
     
     ```bash
