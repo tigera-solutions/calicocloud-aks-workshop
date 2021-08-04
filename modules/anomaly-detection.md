@@ -1,4 +1,4 @@
-# Module 9: Anomaly Detection
+# Module 8: Anomaly Detection
 
 **Goal:** Configure Anomaly Detection to alert upon abnormal/suspicious traffic
 ---
