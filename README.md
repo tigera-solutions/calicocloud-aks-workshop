@@ -47,11 +47,10 @@ In this workshop we are going to focus on these main use cases (with links to Ca
 - [Module 3: Using security controls](modules/using-security-controls.md)
 - [Module 4: Using egress access controls](modules/using-egress-access-controls.md)
 - [Module 5: Using observability tools](modules/using-observability-tools.md)
-- [Module 6: Using compliance reports](modules/using-compliance-reports.md)
-- [Module 7: Using alerts](modules/using-alerts.md)
-- [Module 8: Packet Capture](modules/packet-capture.md)
-- [Module 9: Anomaly Detection](modules/anomaly-detection.md)
-- [Module 10: HoneyPod Threat Detection](modules/honeypod-threat-detection.md)
+- [Module 6: Using alerts](modules/using-alerts.md)
+- [Module 7: Packet Capture](modules/packet-capture.md)
+- [Module 8: Anomaly Detection](modules/anomaly-detection.md)
+- [Module 9: Using compliance reports](modules/using-compliance-reports.md)
 
 
 ## Cleanup
@@ -60,7 +59,7 @@ In this workshop we are going to focus on these main use cases (with links to Ca
 
     ```bash
     kubectl delete -f demo/dev/app.manifests.yaml
-    kubectl delete -f https://raw.githubusercontent.com/GoogleCloudPlatform/microservices-demo/master/release/kubernetes-manifests.yaml
+    kubectl delete -f demo/boutiqueshop/boutique-app.manifests.yaml
     ```
 
 2. Delete AKS cluster.
