@@ -56,17 +56,15 @@ less ./demo/90-anomaly-detection/ad-jobs-deployment-managed.yaml
 	```bash
 	# mock port scan
 	POD_IP=$(kubectl -n dev get po --selector app=centos -o jsonpath='{.items[0].status.podIP}')
-	kubectl -n dev exec netshoot -- nmap -Pn -r -p 1-1000 $POD_IP
+	kubectl -n dev exec netshoot -- nmap -Pn -r -p 1-250 $POD_IP
 	```
-	>Output should resemble
-	```bash
-	kubectl -n dev exec netshoot -- nmap -Pn -r -p 1-1000 $POD_IP
-	
+	```
+	# expected output
 	Host discovery disabled (-Pn). All addresses will be marked 'up' and scan times will be slower.
 	Starting Nmap 7.91 ( https://nmap.org ) at 2021-07-23 20:20 UTC
 	Nmap scan report for 10.240.0.89
 	Host is up.
-	All 1000 scanned ports on 10.240.0.89 are filtered
+	All 250 scanned ports on 10.240.0.89 are filtered
 
 	Nmap done: 1 IP address (1 host up) scanned in 201.37 seconds
 	```
@@ -74,5 +72,5 @@ less ./demo/90-anomaly-detection/ad-jobs-deployment-managed.yaml
 
 <img src="../img/anomaly-detection-alert.png" alt="Anomaly Detection Alert" width="100%"/>
 
-[Next -> Module 10](../modules/honeypod-threat-detection.md)
+[Next -> Module 9](../modules/using-compliance-reports.md)
 
