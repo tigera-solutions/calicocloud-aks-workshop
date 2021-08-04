@@ -1,4 +1,4 @@
-# Module 6: Using compliance reports
+# Module 9: Using compliance reports
 
 **Goal:** Use global reports to satisfy compliance requirementes.
 
@@ -34,4 +34,5 @@
 2. Reports are generated 30 minutes after the end of the report as [documented](https://docs.tigera.io/v3.8/compliance/overview#change-the-default-report-generation-time). As the compliance reports deployed in the [manifests](https://github.com/tigera-solutions/calicocloud-aks-workshop/tree/main/demo/40-compliance-reports) are scheduled to run every 30 minutes the generation of reports will take between 30-60 mins depending when the manifests were deloyed.
 <br>
 
-[Next -> Module 7](../modules/using-alerts.md)
+*Congratulations on completing this workshop!*
+Follow the cleanup instructions on the [main page](../README.md) if required
