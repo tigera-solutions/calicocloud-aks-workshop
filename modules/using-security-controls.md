@@ -1,6 +1,6 @@
 # Module 3: Using security controls
 
-**Goal:** Leverage network policies to segment connections within aks cluster and prevent known bad actors from accessing the workloads.
+**Goal:** Leverage network policies to segment connections within the AKS cluster and prevent known bad actors from accessing the workloads.
 
 ## Steps
 
@@ -48,8 +48,13 @@
     kubectl apply -f demo/10-security-controls/staged.default-deny.yaml
     ```
 
-    You should be able to view the potential affect of the staged `default-deny` policy if you navigate to the `Dashboard` view in your calicocloud manager UI and look at the `Packets by Policy` histogram.
-      ![staged-default-deny](../img/staged-default-deny.png)
+    Review the network policy created by clicking `Policies` on the left menu. A staged default deny policy has been created in the `default` tier. You can view or edit the policy by clicking the view or edit icons.
+    
+    <img src="../img/staged-default-deny.png" alt="staged-default-deny.png" width="100%"/>
+
+    You can view the potential affect of the staged `default-deny` policy if you navigate to the `Dashboard` view in your Calico Cloud Manager UI and look at the `Packets by Policy` histogram.
+    
+    <img src="../img/dashboard-default-deny.png" alt="dashboard-default-deny.png" width="100%"/>
 
     ```bash
     # make a request across namespaces and view Packets by Policy histogram
