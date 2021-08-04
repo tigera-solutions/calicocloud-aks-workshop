@@ -74,7 +74,14 @@
     netshoot                     1/1     Running   0          48s
     ```
 
-    The pods will be visible in "service graph", for example in `default` namespace. This may take 1-2 mins to update in Service Graph:
+    The pods will be visible in "service graph", for example in `default` namespace. This may take 1-2 mins to update in Service Graph. To view resources in the `default` namespace click on the `Service Graph` icon on the left menu which will display a top level view of the cluster resources:
+    <br>
+    
+    ![service-graph-top level](../img/service-graph-top-level.png)
+    
+    Double click on the `default` Namespace as highlighted to bring only resources in the `default` namespace in view along with other resources communicating into or out of the `deafult` Namespace.
+    <br>
+    
       ![service-graph-default](../img/service-graph-default.png)
 
     Note that pod/resource limits on your nodes may prevent pods from deploying. Ensure the nodes in the cluster are scaled appropriately
