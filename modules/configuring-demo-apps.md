@@ -7,11 +7,11 @@
 1. Download this repo into your environment:
 
     ```bash
-    git clone https://github.com/Azure/kubernetes-hackfest.git
+    git clone https://github.com/tigera-solutions/calicocloud-aks-workshop.git
     ```
     
     ```bash
-    cd ./kubernetes-hackfest/labs/networking
+    cd calicocloud-aks-workshop
     ```
 
 
@@ -45,7 +45,7 @@
     kubectl apply -f demo/dev/app.manifests.yaml
 
     # deploy boutiqueshop app stack
-    kubectl apply -f ./demo/boutique-app.manifests.yaml
+    kubectl apply -f demo/boutiqueshop/boutique-app.manifests.yaml
     ```
     
     ```bash
@@ -110,7 +110,10 @@
     > Before we implement network secruity rules we need to install curl on the loadgenerator pod for testing purposes later in the workshop. Note the installation will not survive a reboot so repeat this installation as necessary
 
     ```bash
+    ##install update package 
     kubectl exec -it $(kubectl get po -l app=loadgenerator -ojsonpath='{.items[0].metadata.name}') -- sh -c 'apt-get update'
+
+    ##install curl 
     kubectl exec -it $(kubectl get po -l app=loadgenerator -ojsonpath='{.items[0].metadata.name}') -- sh -c 'apt install curl -y'
     ```
 

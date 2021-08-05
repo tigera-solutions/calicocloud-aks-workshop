@@ -187,7 +187,18 @@ echo export CLIENTSECRET=$CLIENTSECRET >> ~/.bashrc
 
     The easiest way to retrieve captured `*.pcap` files is to use [calicoctl](https://docs.tigera.io/maintenance/clis/calicoctl/) CLI. The following binary installations are available:
 
-    a) Linux
+    a) CloudShell
+    ```bash    
+    # download and configure calicoctl
+    curl -o calicoctl -O -L https://docs.tigera.io/download/binaries/v3.8.1/calicoctl
+    chmod +x calicoctl
+    
+    # verify calicoctl is running 
+    ./calicoctl version
+    ```
+
+    
+    b) Linux
 
     >Tip: Consider navigating to a location that’s in your PATH. For example, /usr/local/bin/
     ```bash    
@@ -198,7 +209,7 @@ echo export CLIENTSECRET=$CLIENTSECRET >> ~/.bashrc
     # verify calicoctl is running 
     calicoctl version
     ```
-    b) MacOS
+    c) MacOS
     
 
     >Tip: Consider navigating to a location that’s in your PATH. For example, /usr/local/bin/
