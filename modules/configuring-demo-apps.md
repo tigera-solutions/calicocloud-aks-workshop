@@ -11,7 +11,7 @@
     ```
     
     ```bash
-    cd calicocloud-aks-workshop
+    cd ./calicocloud-aks-workshop
     ```
 
 
