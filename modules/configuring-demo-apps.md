@@ -2,6 +2,12 @@
 
 **Goal:** Deploy and configure demo applications.
 
+This workshop will deploy Namespace `dev` where several pods will be created to demonstrate connectivity within the Namespace and cross-Namespace to the `default` Namespace where the Boutiquestore (Microservices) Demo apps will be deployed. We will use a subset of these pods to demonstrate how Calico Network Policy can provide pod security and microsegmentation techniques. 
+In [Module 8](../modules/anomaly-detection.md) we introduce Namespace `tigera-intrusion-detection` which contains specific Calico pods to run the Anomaly Detection engine.
+<br>
+
+![workshop-environment](../img/workshop-environment.png)
+
 ## Steps
 
 1. Download this repo into your environment:
