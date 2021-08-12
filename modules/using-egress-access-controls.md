@@ -52,8 +52,11 @@
     kubectl -n dev exec -t centos -- sh -c 'curl -m3 -skI https://www.bing.com 2>/dev/null | grep -i http'
     ```
 
-    Access to the `api.twilio.com` endpoint should be allowed by the DNS policy but not to any other external endpoints like `www.bing.com` unless we modify the policy to include that domain name.
-
+    Access to the `api.twilio.com` endpoint should be allowed by the DNS policy but not to any other external endpoints like `www.bing.com` unless we modify the policy to include that domain name. The connectivity is represented in the diagram below
+    <br>
+    
+    <img src="../img/connectivity-diagram.png " alt="connectivity-diagram" width="75%"/>
+    
     b. Edit the policy to use a `NetworkSet` instead of inline DNS rule.
 
     ```bash
