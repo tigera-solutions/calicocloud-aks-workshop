@@ -2,11 +2,11 @@
 
 **Goal:** Join AKS cluster to Calico Cloud management plane.
 
-IMPORTANT: In order to complete this module, you must have [Calico Cloud trial account](https://www.calicocloud.io/home). Issues with being unable to navigate menus in the UI are often due to browsers blocking scripts - please ensure you disable any script blockers.
+IMPORTANT: In order to complete this module, you must have [Calico Cloud trial account](https://www.calicocloud.io/?utm_campaign=calicocloud&utm_medium=digital&utm_source=microsoft). Issues with being unable to navigate menus in the UI are often due to browsers blocking scripts - please ensure you disable any script blockers.
 
 ## Steps
 
-1. Navigate to [https://www.calicocloud.io/home](https://www.calicocloud.io/home) and sign up for a 14 day trial account - no credit cards required. Returning users can login.
+1. Navigate to [https://www.calicocloud.io/?utm_campaign=calicocloud&utm_medium=digital&utm_source=microsoft](https://www.calicocloud.io/?utm_campaign=calicocloud&utm_medium=digital&utm_source=microsoft) and sign up for a 14 day trial account - no credit cards required. Returning users can login.
 
    ![calico-cloud-login](../img/calico-cloud-login.png)
 
@@ -23,11 +23,11 @@ IMPORTANT: In order to complete this module, you must have [Calico Cloud trial a
     Click on "connect cluster"
      ![connect-cluster](../img/connect-cluster.png)
 
-    choose AKS and click next
+    Choose AKS and click next
       ![choose-aks](../img/choose-aks.png)
 
 
-    run installation script in your aks cluster. 
+    Run installation script in your aks cluster. 
     ```bash
     # script should look similar to this
     curl https://installer.calicocloud.io/xxxxxx_yyyyyyy-saay-management_install.sh | bash
