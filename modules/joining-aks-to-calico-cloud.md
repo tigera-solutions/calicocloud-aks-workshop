@@ -23,11 +23,11 @@ IMPORTANT: In order to complete this module, you must have [Calico Cloud trial a
     Click on "connect cluster"
      ![connect-cluster](../img/connect-cluster.png)
 
-    choose AKS and click next
+    Choose AKS and click next
       ![choose-aks](../img/choose-aks.png)
 
 
-    run installation script in your aks cluster. 
+    Run installation script in your aks cluster. 
     ```bash
     # script should look similar to this
     curl https://installer.calicocloud.io/xxxxxx_yyyyyyy-saay-management_install.sh | bash
