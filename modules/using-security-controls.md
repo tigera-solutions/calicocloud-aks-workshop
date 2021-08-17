@@ -85,7 +85,7 @@
     
     <img src="../img/edit-policy.png" alt="edit-policy" width="100%"/>
 
-4. Test connectivity with policieis in place.
+4. Test connectivity with policies in place.
 
     a. The only connections between the components within each namespaces should be allowed as configured by the policies.
 
