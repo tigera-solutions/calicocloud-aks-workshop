@@ -46,6 +46,11 @@
     # view *.pcap content
     tcpdump -Xr frontend-XXXXXX.pcap
     ```
+    > You will need to install the tcpdump binary to follow the instructions above. If you are using `Cloud Shell` you can download the pcap file to your local terminal and use tcpdump or any other application to inspect the file. 
+
+    ```bash
+    download frontend-XXXXXX.pcap
+    ```
 
 4. Stop packet capture
 
