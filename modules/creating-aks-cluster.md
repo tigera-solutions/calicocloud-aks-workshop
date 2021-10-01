@@ -114,14 +114,13 @@ echo export CLIENTSECRET=$CLIENTSECRET >> ~/.bashrc
     ```
     ```
     KubernetesVersion    Upgrades
-    -------------------  ------------------------
-    1.21.1(preview)      None available
-    1.20.7               1.21.1(preview)
-    1.20.5               1.20.7, 1.21.1(preview)
-    1.19.11              1.20.5, 1.20.7
-    1.19.9               1.19.11, 1.20.5, 1.20.7
-    1.18.19              1.19.9, 1.19.11
-    1.18.17              1.18.19, 1.19.9, 1.19.11
+    -------------------  -----------------------
+    1.21.2               None available
+    1.21.1               1.21.2
+    1.20.9               1.21.1, 1.21.2
+    1.20.7               1.20.9, 1.21.1, 1.21.2
+    1.19.13              1.20.7, 1.20.9
+    1.19.11              1.19.13, 1.20.7, 1.20.9
     ```
     
     For this lab we'll use 1.20.7
@@ -152,10 +151,9 @@ echo export CLIENTSECRET=$CLIENTSECRET >> ~/.bashrc
     ```
     
     ```bash
-    Name           Location    ResourceGroup      KubernetesVersion    ProvisioningState    Fqdn
-    -------------  ----------  -----------------  -------------------  -------------------  -----------------------------------------------------------------
-    aksjessie2081  eastus      aks-rg-jessie2081  1.20.7               Succeeded             aksjessie2-aks-rg-jessie208-03cfb8-9713ae4f.hcp.eastus.azmk8s.io
-    
+    Name                     Location    ResourceGroup              KubernetesVersion    ProvisioningState    Fqdn
+    -----------------------  ----------  -------------------------  -------------------  -------------------  --------------------------------------------------------------------
+    chris-aks-calicloud      westus2     chris-rg-aks-calicloud     1.20.7               Succeeded            chris-aks--chris-rg-aks-cal-03cfb8-af74a1d5.hcp.westus2.azmk8s.io
     ```
     
 5.  Get the Kubernetes config files for your new AKS cluster
@@ -172,10 +170,10 @@ echo export CLIENTSECRET=$CLIENTSECRET >> ~/.bashrc
 	kubectl get nodes
 	```
 	```
-	NAME                                STATUS   ROLES   AGE    VERSION
-	aks-nodepool1-29374799-vmss000000   Ready    agent   118s   v1.20.7
-	aks-nodepool1-29374799-vmss000001   Ready    agent   2m3s   v1.20.7
-	aks-nodepool1-29374799-vmss000002   Ready    agent   2m     v1.20.7
+	NAME                                STATUS   ROLES   AGE   VERSION
+    aks-nodepool1-31190216-vmss000003   Ready    agent   20h   v1.20.7
+    aks-nodepool1-31190216-vmss000004   Ready    agent   20h   v1.20.7
+    aks-nodepool1-31190216-vmss000005   Ready    agent   20h   v1.20.7
 	```
 
 	To see more details about your cluster:
@@ -185,12 +183,12 @@ echo export CLIENTSECRET=$CLIENTSECRET >> ~/.bashrc
 	
 7.  Install `calicoctl` CLI for use in later labs
 
-    The easiest way to retrieve captured `*.pcap` files is to use [calicoctl](https://docs.tigera.io/maintenance/clis/calicoctl/) CLI. The following binary installations are available:
+    The easiest way to retrieve captured `*.pcap` files is to use [calicoctl](https://docs.tigera.io/v3.9/maintenance/clis/calicoctl/) CLI. The following binary installations are available:
 
     a) CloudShell
     ```bash    
     # download and configure calicoctl
-    curl -o calicoctl -O -L https://docs.tigera.io/download/binaries/v3.8.1/calicoctl
+    curl -o calicoctl -O -L https://downloads.tigera.io/ee/binaries/v3.9.0/calicoctl
     chmod +x calicoctl
     
     # verify calicoctl is running 
@@ -203,7 +201,7 @@ echo export CLIENTSECRET=$CLIENTSECRET >> ~/.bashrc
     >Tip: Consider navigating to a location that’s in your PATH. For example, /usr/local/bin/
     ```bash    
     # download and configure calicoctl
-    curl -o calicoctl -O -L https://docs.tigera.io/download/binaries/v3.8.1/calicoctl
+    curl -o calicoctl -O -L https://downloads.tigera.io/ee/binaries/v3.9.0/calicoctl
     chmod +x calicoctl
     
     # verify calicoctl is running 
@@ -215,7 +213,7 @@ echo export CLIENTSECRET=$CLIENTSECRET >> ~/.bashrc
     >Tip: Consider navigating to a location that’s in your PATH. For example, /usr/local/bin/
     ```bash    
     # download and configure calicoctl
-    curl -o calicoctl -O -L  https://docs.tigera.io/download/binaries/v3.8.1/calicoctl-darwin-amd64
+    curl -o calicoctl -O -L  https://downloads.tigera.io/ee/binaries/v3.9.0/calicoctl-darwin-amd64
     chmod +x calicoctl
     
     # verify calicoctl is running 
@@ -228,7 +226,7 @@ Note: If the location of calicoctl is not already in your PATH, move the file to
     >Tip: Consider runing powershell as administraor and navigating to a location that’s in your PATH. For example, C:\Windows.
     
     ```pwsh
-    Invoke-WebRequest -Uri "https://docs.tigera.io/download/binaries/v3.8.1/calicoctl-windows-amd64.exe" -OutFile "calicocttl.exe"
+    Invoke-WebRequest -Uri "https://downloads.tigera.io/ee/binaries/v3.9.0/calicoctl-windows-amd64.exe" -OutFile "kubectl-calico.exe"
     ```
     
    

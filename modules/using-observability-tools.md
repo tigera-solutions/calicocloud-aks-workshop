@@ -1,12 +1,8 @@
-# Module 5: Using observability tools
+# Module 6: Using observability tools
 
 **Goal:** Explore Calico observability tools.
 
 ## Calico observability tools
-
->If you are interested in enabling collection of application layer metrics for your workloads, refer to [Configure L7 logs](https://docs.tigera.io/visibility/elastic/l7/configure) documentation to enable application layer metrics collection.
-
-
 
 1. Dashboard
 
@@ -72,4 +68,4 @@
 
     Some of the default dashboards you get access to are DNS Logs, Flow Logs, Audit Logs, Kuernetes API calls, L7 HTTP metrics, and others.
 
-[Next -> Module 6](../modules/using-alerts.md)
+[Next -> Module 7](../modules/using-alerts.md)
