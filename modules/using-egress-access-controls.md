@@ -76,8 +76,8 @@
     ```
     As access to twilio is permitted and access to bing is denied we are able to whitelist domains as described next
 
-    c. As a bonus example, you can modify the `external-apis` network set in calico cloud management UI to include `*.azure.com` domain name or `*.microsoft.com`which would allow access to azure/microsoft subdomains. 
+    c. As a bonus example, you can modify the `external-apis` network set in calico cloud management UI to include `*.azure.com` domain name or `*.microsoft.com` which would allow access to azure/microsoft subdomains. 
     
     <img src="../img/add-DNS-in-networkset.png " alt="add-DNS-in-networkset" width="50%"/>
 
-[Next -> Module 5](../modules/using-observability-tools.md)
+[Next -> Module 5](../modules/layer7-logging.md)

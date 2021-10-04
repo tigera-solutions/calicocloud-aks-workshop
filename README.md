@@ -9,13 +9,13 @@ The intent of this workshop is to introduce Calico Cloud(https://www.calicocloud
 
 ## Learning Objectives
 
-In this workshop we are going to focus on these main use cases (with links to Calico docs for further info). Note that features for policy and visibility as outlined in this workshop are identical between Calico Cloud and Calico Enterprise. Consult the [Calico Enterprise docs](https://docs.tigera.io/) for further reading:
+In this workshop we are going to focus on these main use cases (with links to Calico docs for further info). Note that features for policy and visibility as outlined in this workshop are identical between Calico Cloud and Calico Enterprise. Consult the [Calico Enterprise docs](https://docs.tigera.io/v3.9/about/about-calico-enterprise/) for further reading:
 
 - **Integration:** [Integrating Calico Cloud into the AKS clusters.](https://docs.calicocloud.io/install/system-requirements)
-- **East-West security:** [leveraging zero-trust security approach.](https://docs.tigera.io/security/adopt-zero-trust)
+- **East-West security:** [leveraging zero-trust security approach.](https://docs.tigera.io/v3.9/security/adopt-zero-trust)
 - **Egress access controls:** [using DNS policy to access external resources by their fully qualified domain names (FQDN).](https://docs.calicocloud.io/use-cases/security-controls/global-egress)
 - **Observability:** [exploring various logs and application level metrics collected by Calico.](https://docs.calicocloud.io/use-cases/troubleshoot-apps)
-- **Compliance:** [providing proof of security compliance.](https://docs.tigera.io/compliance/)
+- **Compliance:** [providing proof of security compliance.](https://docs.tigera.io/v3.9/compliance/overview)
 
 ## Join the Slack Channel
 
@@ -46,11 +46,13 @@ In this workshop we are going to focus on these main use cases (with links to Ca
 - [Module 2: Configuring demo applications](modules/configuring-demo-apps.md)
 - [Module 3: Using security controls](modules/using-security-controls.md)
 - [Module 4: Using egress access controls](modules/using-egress-access-controls.md)
-- [Module 5: Using observability tools](modules/using-observability-tools.md)
-- [Module 6: Using alerts](modules/using-alerts.md)
-- [Module 7: Packet Capture](modules/packet-capture.md)
-- [Module 8: Anomaly Detection](modules/anomaly-detection.md)
-- [Module 9: Using compliance reports](modules/using-compliance-reports.md)
+- [Module 5: Layer 7 Logging](modules/layer7-logging.md)
+- [Module 6: Using observability tools](modules/using-observability-tools.md)
+- [Module 7: Using alerts](modules/using-alerts.md)
+- [Module 8: Packet Capture](modules/packet-capture.md)
+- [Module 9: Anomaly Detection](modules/anomaly-detection.md)
+- [Module 10: Honeypod Threat Detection](modules/honeypod-threat-detection.md) 
+- [Module 11: Using compliance reports](modules/using-compliance-reports.md)
 
 
 ## Cleanup
