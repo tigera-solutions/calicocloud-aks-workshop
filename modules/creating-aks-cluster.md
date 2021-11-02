@@ -183,12 +183,13 @@ echo export CLIENTSECRET=$CLIENTSECRET >> ~/.bashrc
 
 7.  Install `calicoctl` CLI for use in later labs
 
-    The easiest way to retrieve captured `*.pcap` files is to use [calicoctl](https://docs.tigera.io/v3.9/maintenance/clis/calicoctl/) CLI. The following binary installations are available:
+    The easiest way to retrieve captured `*.pcap` files is to use [calicoctl](https://docs.tigera.io/maintenance/clis/calicoctl/) CLI. The following binary installations are available:
 
     a) CloudShell
     ```bash    
     # download and configure calicoctl
-    curl -o calicoctl -O -L https://downloads.tigera.io/ee/binaries/v3.9.0/calicoctl
+    curl -o calicoctl -O -L https://downloads.tigera.io/ee/binaries/v3.10.0/calicoctl
+
     chmod +x calicoctl
     
     # verify calicoctl is running 
@@ -197,32 +198,31 @@ echo export CLIENTSECRET=$CLIENTSECRET >> ~/.bashrc
 
     
     b) Linux
-
     >Tip: Consider navigating to a location that’s in your PATH. For example, /usr/local/bin/
     ```bash    
     # download and configure calicoctl
-    curl -o calicoctl -O -L https://downloads.tigera.io/ee/binaries/v3.9.0/calicoctl
+    curl -o calicoctl -O -L https://downloads.tigera.io/ee/binaries/v3.10.0/calicoctl
     chmod +x calicoctl
     
     # verify calicoctl is running 
     calicoctl version
     ```
-    c) MacOS
-    
 
+    c) MacOS
     >Tip: Consider navigating to a location that’s in your PATH. For example, /usr/local/bin/
     ```bash    
     # download and configure calicoctl
-    curl -o calicoctl -O -L  https://downloads.tigera.io/ee/binaries/v3.9.0/calicoctl-darwin-amd64
+    curl -o calicoctl -O -L  https://downloads.tigera.io/ee/binaries/v3.10.0/calicoctl-darwin-amd64
+
     chmod +x calicoctl
     
     # verify calicoctl is running 
     calicoctl version
     ```
     Note: If you are faced with `cannot be opened because the developer cannot be verified` error when using `calicoctl` for the first time. go to `Applicaitons` \> `System Prefences` \> `Security & Privacy` in the `General` tab at the bottom of the window click `Allow anyway`.  
-Note: If the location of calicoctl is not already in your PATH, move the file to one that is or add its location to your PATH. This will allow you to invoke it without having to prepend its location.
+    Note: If the location of calicoctl is not already in your PATH, move the file to one that is or add its location to your PATH. This will allow you to invoke it without having to prepend its location.
 
-    c) Windows - using powershell command to download the calicoctl binary  
+    d) Windows - using powershell command to download the calicoctl binary  
     >Tip: Consider runing powershell as administraor and navigating to a location that’s in your PATH. For example, C:\Windows.
     
     ```pwsh
