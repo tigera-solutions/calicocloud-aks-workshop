@@ -123,10 +123,11 @@ echo export CLIENTSECRET=$CLIENTSECRET >> ~/.bashrc
     1.19.11              1.19.13, 1.20.7, 1.20.9
     ```
     
-    For this lab we'll use 1.20.7
+     For this lab we'll use 1.21.1
     
     ```bash
-    K8SVERSION=1.20.7
+    K8SVERSION=1.21.1
+    echo export K8SVERSION=1.21.1 >> ~/.bashrc
     ```
     
     > The below command can take 10-20 minutes to run as it is creating the AKS cluster. Please be PATIENT and grab a coffee/tea/kombucha...
@@ -135,25 +136,24 @@ echo export CLIENTSECRET=$CLIENTSECRET >> ~/.bashrc
     # Create AKS Cluster - it is important to set the network-plugin as azure in order to connec to Calico Cloud
     az aks create -n $CLUSTERNAME -g $RGNAME \
     --kubernetes-version $K8SVERSION \
-    --service-principal $APPID \
-    --client-secret $CLIENTSECRET \
-    --generate-ssh-keys -l $LOCATION \
+    --enable-managed-identity \
     --node-count 3 \
     --network-plugin azure \
     --no-wait
     
     ```
+
     
 4.  Verify your cluster status. The `ProvisioningState` should be `Succeeded`
     
     ```bash
-    az aks list -o table
+    az aks list -o table -g $RGNAME
     ```
     
     ```bash
-    Name                     Location    ResourceGroup              KubernetesVersion    ProvisioningState    Fqdn
-    -----------------------  ----------  -------------------------  -------------------  -------------------  --------------------------------------------------------------------
-    chris-aks-calicloud      westus2     chris-rg-aks-calicloud     1.20.7               Succeeded            chris-aks--chris-rg-aks-cal-03cfb8-af74a1d5.hcp.westus2.azmk8s.io
+    Name                 Location    ResourceGroup      KubernetesVersion    ProvisioningState    Fqdn
+    -------------------  ----------  -----------------  -------------------  -------------------  ----------------------------------------------------------------
+    jessie-aks-workshop  eastus      aks-rg-jessie1023  1.21.1               Succeeded            jessie-aks-aks-rg-jessie102-03cfb8-23b9dfec.hcp.eastus.azmk8s.io
     ```
     
 5.  Get the Kubernetes config files for your new AKS cluster
@@ -170,17 +170,17 @@ echo export CLIENTSECRET=$CLIENTSECRET >> ~/.bashrc
 	kubectl get nodes
 	```
 	```
-	NAME                                STATUS   ROLES   AGE   VERSION
-    aks-nodepool1-31190216-vmss000003   Ready    agent   20h   v1.20.7
-    aks-nodepool1-31190216-vmss000004   Ready    agent   20h   v1.20.7
-    aks-nodepool1-31190216-vmss000005   Ready    agent   20h   v1.20.7
+    NAME                                STATUS   ROLES   AGE   VERSION
+    aks-nodepool1-36555681-vmss000000   Ready    agent   47m   v1.21.1
+    aks-nodepool1-36555681-vmss000001   Ready    agent   47m   v1.21.1
+    aks-nodepool1-36555681-vmss000002   Ready    agent   47m   v1.21.1
 	```
 
 	To see more details about your cluster:
 	```bash
 	kubectl cluster-info
 	```
-	
+
 7.  Install `calicoctl` CLI for use in later labs
 
     The easiest way to retrieve captured `*.pcap` files is to use [calicoctl](https://docs.tigera.io/v3.9/maintenance/clis/calicoctl/) CLI. The following binary installations are available:

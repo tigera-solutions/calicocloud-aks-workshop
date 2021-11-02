@@ -7,16 +7,6 @@ spec:
   reportType: inventory
   schedule: '*/10 * * * *'
 
-#---
-#apiVersion: projectcalico.org/v3
-#kind: GlobalReport
-#metadata:
-#  name: cluster-network-access
-#spec:
-#  reportType: network-access
-#  schedule: '*/10 * * * *'
-
-# uncomment policy-audit report if you configured audit logs for EKS cluster https://docs.tigera.io/compliance/compliance-reports/compliance-managed-cloud#enable-audit-logs-in-eks
 ---
 apiVersion: projectcalico.org/v3
 kind: GlobalReport
@@ -30,10 +20,7 @@ spec:
 apiVersion: projectcalico.org/v3
 kind: GlobalReport
 metadata:
-  name: default-dev-network-access
+  name: cluster-network-access
 spec:
   reportType: network-access
-  endpoints:
-    namespaces:
-      names: ["dev","default"]
   schedule: '*/10 * * * *'

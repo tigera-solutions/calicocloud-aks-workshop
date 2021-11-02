@@ -39,13 +39,18 @@ IMPORTANT: In order to complete this module, you must have [Calico Cloud trial a
     # output once your cluster join the calico cloud
     Install Successful
 
-    Your Connected Cluster Name is arwb4wbh-management-managed-aksjesie2-aks-rg-jesie208-03cfb8-9713ae4f-hcp-eastus-azmk8s-io  
+    Your Connected Cluster Name is qzmi9wp8-management-managed-xxxxxxxxxxxx-hcp-eastus-azmk8s-io
     ```
-    Set the Calico Cluster Name as a variable to use later in this workshop. The Cluster Name can also be obtained from the Calico Cloud Web UI at a later date. For the example above `CALICOCLUSTERNAME` should be set to __arwb4wbh-management-managed-aksjesie2-aks-rg-jesie208-03cfb8-9713ae4f-hcp-eastus-azmk8s-io__
+    Set the Calico Cluster Name as a variable to use later in this workshop. The Cluster Name can also be obtained from the Calico Cloud Web UI at a later date. For the example above `CALICOCLUSTERNAME` should be set to __arwb4wbh-management-managed-xxxxxxxxxxxxx-hcp-eastus-azmk8s-io__
     
     ```bash
     export CALICOCLUSTERNAME=<Cluster Name>
-    echo export CALICOCLUSTERNAME=$CALICOCLUSTERNAME >> ~/.bashrc
+
+    #For Linux terminal
+    echo export CALICOCLUSTERNAME=$CALICOCLUSTERNAME | tee -a ~/.bash_profile
+
+    #For Mac terminal
+    echo export CALICOCLUSTERNAME=$CALICOCLUSTERNAME | tee -a ~/.zshrc 
     ```
     
     In calico cloud management UI, you can see your own aks cluster added in "managed cluster", you can also confirm by

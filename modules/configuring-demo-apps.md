@@ -94,7 +94,7 @@ In [Module 9](../modules/anomaly-detection.md) we introduce Namespace `tigera-in
 
 5. Deploy compliance reports.
 
-    >The reports will be needed for one of a later lab.
+    >The reports run as cronjob and will be needed for one of a later lab.
 
     ```bash
     kubectl apply -f demo/40-compliance-reports/daily-cis-results.yaml
@@ -116,15 +116,8 @@ In [Module 9](../modules/anomaly-detection.md) we introduce Namespace `tigera-in
     > Before we implement network secruity rules we need to install curl on the loadgenerator pod for testing purposes later in the workshop. Note the installation will not survive a reboot so repeat this installation as necessary
 
     ```bash
-    ##install update package 
-    kubectl exec -it $(kubectl get po -l app=loadgenerator -ojsonpath='{.items[0].metadata.name}') -- sh -c 'apt-get update'
-
-    sleep 10
-    ```
-
-    ```bash
-    ##install curl 
-    kubectl exec -it $(kubectl get po -l app=loadgenerator -ojsonpath='{.items[0].metadata.name}') -- sh -c 'apt install curl -y'
+    ##install update package and curl
+    kubectl exec -it $(kubectl get po -l app=loadgenerator -ojsonpath='{.items[0].metadata.name}') -- sh -c 'apt-get update && apt install curl -y'
     ```
 
 [Next -> Module 3](../modules/using-security-controls.md)
