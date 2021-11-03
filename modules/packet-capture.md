@@ -6,26 +6,37 @@ Packet captures are Kubernetes Custom Resources and thus native Kubernetes RBAC 
 
 ## Steps
 
-1. Confirm `calicoctl` binary is installed. Follow instructions in [Module 0 Step 7](./creating-aks-cluster.md) if installation is required
+1. Initial packet capture job from manager UI. 
 
-    The easiest way to retrieve captured `*.pcap` files is to use [calicoctl](https://docs.tigera.io/v3.9/maintenance/clis/calicoctl/) CLI.
+   ![packet capture](../img/packet-capture-ui.png)
 
-    ```bash
-    # confirm calicoctl is executable
-    calicoctl version
-    ```
-    
-    ```bash
-    # confirm calicoctl is executable from CloudShell
-    ./calicoctl version
-    ```
 
+2. Schedule the packet capture job with specific port.
+
+   ![test packet capture](../img/test-packet-capture.png)
+
+
+3. You will see the job scheduled in service graph.
+
+
+   ![schedule packet capture](../img/schedule-packet-capture.png)
+
+
+4. Download the pcap file once the job is `Capturing` or `Finished`. 
+   
+   ![download packet capture](../img/download-packet-capture.png)
+   
+
+
+   
 
 2. Configure packet capture.
 
     Navigate to `demo/80-packet-capture` and review YAML manifests that represent packet capture definition. Each packet capture is configured by deploying a `PacketCapture` resource that targets endpoints using `selector` and `labels`.
 
     Deploy packet capture definition to capture packets for `default/frontend` pods.
+
+    test-packet-capture.png
 
     ```bash
     kubectl apply -f demo/80-packet-capture/packet-capture.yaml
