@@ -10,15 +10,12 @@ In [Module 9](../modules/anomaly-detection.md) we introduce Namespace `tigera-in
 
 ## Steps
 
-1. Download this repo into your environment:
+1. Confirm your current folder is in this repo.
 
-    ```bash
-    git clone https://github.com/tigera-solutions/calicocloud-aks-workshop.git
-    ```
-    
-    ```bash
-    cd ./calicocloud-aks-workshop
-    ```
+   ```text
+   jessie@Azure:~/calicocloud-aks-workshop$ pwd
+   /home/jessie/calicocloud-aks-workshop
+   ```
 
 
 2. Deploy policy tiers.
