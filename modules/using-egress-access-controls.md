@@ -1,44 +1,11 @@
-# Module 4: Using egress access controls
+# Module 4: DNS egress access controls
 
 **Goal:** Configure egress access for specific workloads.
 
 ## Steps
 
-1. Test connectivity within the cluster and to the external endpoint.
 
-    a. Test connectivity between `dev/centos` pod and `default/frontend` pod.
-
-    ```bash
-    # test connectivity from dev namespace to default namespace
-    kubectl -n dev exec -t centos -- sh -c 'curl -m3 -sI http://frontend.default 2>/dev/null | grep -i http'
-    ```
-
-    b. Test connectivity from `dev/centos` to the external endpoint.
-
-    ```bash
-    # test connectivity from dev namespace to the Internet
-    kubectl -n dev exec -t centos -- sh -c 'curl -m3 -sI http://www.bing.com 2>/dev/null | grep -i http'
-    ```
-
-    The access should be denied as the policies configured in previous module do not allow it.
-
-2. Implement egress policy to allow egress access from a workload in one namespace, e.g. `dev/centos`, to a service in another namespace, e.g. `default/frontend`. After the deployment, you can view the policy details under `platform` tier in `Policies Board`
-
-    a. Deploy egress policy.
-
-    ```bash
-    kubectl apply -f demo/20-egress-access-controls/centos-to-frontend.yaml
-    ```
-
-    b. Test connectivity between `dev/centos` pod and `default/frontend` service.
-
-    ```bash
-    kubectl -n dev exec -t centos -- sh -c 'curl -m3 -sI http://frontend.default 2>/dev/null | grep -i http'
-    ```
-
-    The access should be allowed once the egress policy is in place.
-
-3. Implement DNS policy to allow the external endpoint access from a specific workload, e.g. `dev/centos`.
+1. Implement DNS policy to allow the external endpoint access from a specific workload, e.g. `dev/centos`.
 
     a. Apply a policy to allow access to `api.twilio.com` endpoint using DNS rule.
 

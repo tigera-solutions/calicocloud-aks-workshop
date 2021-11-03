@@ -1,4 +1,4 @@
-# Module 3: Using security controls
+# Module 3: Pod access controls
 
 **Goal:** Leverage network policies to segment connections within the AKS cluster and prevent known bad actors from accessing the workloads.
 
@@ -107,7 +107,7 @@
     kubectl exec -it $(kubectl get po -l app=loadgenerator -ojsonpath='{.items[0].metadata.name}') -- sh -c 'curl -m3 -sI http://nginx-svc.dev 2>/dev/null | grep -i http'
     ```
 
-    c. The connections to the Internet should be blocked by the configured policies.
+    c. The connections to the Internet should be blocked by the configured `default-deny` policies.
 
     ```bash
     # test connectivity from dev namespace to the Internet
@@ -117,27 +117,23 @@
     kubectl exec -it $(kubectl get po -l app=loadgenerator -ojsonpath='{.items[0].metadata.name}') -- sh -c 'curl -m3 -sI www.bing.com 2>/dev/null | grep -i http'
     ```
 
-5. Protect workloads from known bad actors.
 
-    Calico offers `GlobalThreatfeed` resource to prevent known bad actors from accessing Kubernetes pods. We will configure a `Network Set` resource to reference an external threatfeed which will dynamically update the IP addresses or FQDNs/domains. Then we configure a network policy to deny traffic to these blacklisted destinations.
-    
+5. Implement egress policy to allow egress access from a workload in one namespace, e.g. `dev/centos`, to a service in another namespace, e.g. `default/frontend`. After the deployment, you can view the policy details under `platform` tier in `Policies Board`
+
+    a. Deploy egress policy.
 
     ```bash
-    # deploy feodo tracker threatfeed
-    kubectl apply -f demo/10-security-controls/feodotracker.threatfeed.yaml
-    # deploy network policy that uses the threadfeed
-    kubectl apply -f demo/10-security-controls/feodo-block-policy.yaml
+    kubectl apply -f demo/20-egress-access-controls/centos-to-frontend.yaml
     ```
-    <br>
-    
-    You should be able to view the `threatfeed.feodo-tracker` details in `Network Sets` view and the `block-feodo`policy in `Policies Board` view in your calicocloud manager UI.
-    
-    ![network-set-grid](../img/network-set-grid.png)
-    
+
+    b. Test connectivity between `dev/centos` pod and `default/frontend` service.
+
     ```bash
-    # try to ping any of the IPs in from the feodo tracker list, and the packet will be deny.
-    IP=$(kubectl get globalnetworkset threatfeed.feodo-tracker -ojson | jq '.spec.nets[0]' | sed -e 's/^"//' -e 's/"$//' -e 's/\/32//')
-    kubectl -n dev exec -t centos -- sh -c "ping -c1 $IP"
+    kubectl -n dev exec -t centos -- sh -c 'curl -m3 -sI http://frontend.default 2>/dev/null | grep -i http'
     ```
+
+    The access should be allowed once the egress policy is in place.
+
+
     
 [Next -> Module 4](../modules/using-egress-access-controls.md)
