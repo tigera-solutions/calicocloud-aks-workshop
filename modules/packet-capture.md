@@ -27,12 +27,9 @@ Packet captures are Kubernetes Custom Resources and thus native Kubernetes RBAC 
    ![download packet capture](../img/download-packet-capture.png)
    
 
-
+5. create packet capture from yaml file with label selector.
    
-
-2. Configure packet capture.
-
-    Navigate to `demo/80-packet-capture` and review YAML manifests that represent packet capture definition. Each packet capture is configured by deploying a `PacketCapture` resource that targets endpoints using `selector` and `labels`.
+   Navigate to `demo/80-packet-capture` and review YAML manifests that represent packet capture definition. Each packet capture is configured by deploying a `PacketCapture` resource that targets endpoints using `selector` and `labels`.
 
     Deploy packet capture definition to capture packets for `default/frontend` pods.
 
@@ -45,32 +42,5 @@ Packet captures are Kubernetes Custom Resources and thus native Kubernetes RBAC 
     >Once the `PacketCapture` resource is deployed, Calico starts capturing packets for all endpoints configured in the `selector` field.
 
 
-3. Fetch and review captured payload.
-
-    >The captured `*.pcap` files are stored on the hosts where pods are running at the time the `PacketCapture` resource is active.
-
-    Retrieve captured `*.pcap` files and review the content.
-
-    ```bash
-    # get pcap files
-    calicoctl captured-packets copy packet-capture-frontend --namespace default
-
-    ls frontend-*
-    # view *.pcap content
-    tcpdump -Xr frontend-XXXXXX.pcap
-    ```
-    > You will need to install the tcpdump binary to follow the instructions above. If you are using `Cloud Shell` you can download the pcap file to your local terminal and use tcpdump or any other application to inspect the file. 
-
-    ```bash
-    download frontend-XXXXXX.pcap
-    ```
-
-4. Stop packet capture
-
-    Stop packet capture by removing the `PacketCapture` resource.
-
-    ```bash
-    kubectl delete -f demo/80-packet-capture/packet-capture.yaml
-    ```
 
 [Next -> Module 8](../modules/using-compliance-reports.md)
