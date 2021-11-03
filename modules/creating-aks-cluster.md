@@ -181,7 +181,17 @@ echo export CLIENTSECRET=$CLIENTSECRET >> ~/.bashrc
 	kubectl cluster-info
 	```
 
-7.  Install `calicoctl` CLI for use in later labs
+7. Download this repo into your environment:
+
+    ```bash
+    git clone https://github.com/tigera-solutions/calicocloud-aks-workshop.git
+    ```
+    
+    ```bash
+    cd ./calicocloud-aks-workshop
+    ```
+
+8. *[Optional]*  Install `calicoctl` CLI for use in later labs
 
     The easiest way to retrieve captured `*.pcap` files is to use [calicoctl](https://docs.tigera.io/maintenance/clis/calicoctl/) CLI. The following binary installations are available:
 
