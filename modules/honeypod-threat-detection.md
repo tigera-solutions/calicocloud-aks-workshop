@@ -1,4 +1,4 @@
-# Module 10: Honeypod Threat Detection
+# Module 11: Honeypod Threat Detection
 
 **Goal:** Deploy honeypod resources and generate alerts when suspicous traffic is detected
 ---
@@ -119,4 +119,7 @@ Head to `Alerts` view in the Enterprise Manager UI to view the related alerts. N
 <img src="../img/honeypod-threat-alert.png" alt="honeypod-threat-alert" width="100%"/>
 <br>
 
-[Next -> Module 11](../modules/using-compliance-reports.md)
+
+## Congratulations on completing this workshop! ##
+
+Follow the cleanup instructions on the [main page](../README.md) if required

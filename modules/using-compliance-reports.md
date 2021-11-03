@@ -1,4 +1,4 @@
-# Module 11: Using compliance reports
+# Module 8: Using compliance reports
 
 **Goal:** Use global reports to satisfy compliance requirementes.
 
@@ -40,6 +40,4 @@
 
 <br>
 
-## Congratulations on completing this workshop! ##
-
-Follow the cleanup instructions on the [main page](../README.md) if required
+[Next -> Module 9](../modules/using-alerts.md)

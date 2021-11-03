@@ -1,4 +1,4 @@
-# Module 9: Anomaly Detection
+# Module 10: Anomaly Detection
 
 **Goal:** Configure Anomaly Detection to alert upon abnormal/suspicious traffic
 ---
@@ -77,5 +77,5 @@ less ./demo/90-anomaly-detection/ad-jobs-deployment-managed.yaml
 
 <img src="../img/anomaly-detection-alert.png" alt="Anomaly Detection Alert" width="100%"/>
 
-[Next -> Module 10](../modules/honeypod-threat-detection.md)
+[Next -> Module 11](../modules/honeypod-threat-detection.md)
 

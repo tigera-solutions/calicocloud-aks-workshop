@@ -1,4 +1,4 @@
-# Module 8: Packet Capture
+# Module 7: Packet Capture
 
 **Goal:** Configure packet capture for specific pods and review captured payload.
 
@@ -62,4 +62,4 @@ Packet captures are Kubernetes Custom Resources and thus native Kubernetes RBAC 
     kubectl delete -f demo/80-packet-capture/packet-capture.yaml
     ```
 
-[Next -> Module 9](../modules/anomaly-detection.md)
+[Next -> Module 8](../modules/using-compliance-reports.md)
