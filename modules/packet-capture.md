@@ -33,13 +33,14 @@ Packet captures are Kubernetes Custom Resources and thus native Kubernetes RBAC 
 
     Deploy packet capture definition to capture packets for `default/frontend` pods.
 
-    test-packet-capture.png
 
     ```bash
     kubectl apply -f demo/80-packet-capture/packet-capture.yaml
     ```
 
-    >Once the `PacketCapture` resource is deployed, Calico starts capturing packets for all endpoints configured in the `selector` field.
+    Once the `PacketCapture` resource is deployed, Calico starts capturing packets for endpoints configured in the `selector` field. You can see this job in service graph as well. 
+
+    ![frontend packet capture](../img/frontend-packet-capture.png)
 
 
 
