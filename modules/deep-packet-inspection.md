@@ -10,7 +10,7 @@
 1. Configure deep packet inspection in your target workload, we will use `hipstershop/frontend` as example.
 
    ```bash
-   kubectl apply -f demo/dpi/sample-dpi-frontend.yaml
+   kubectl apply -f demo/60-deep-packet-inspection/sample-dpi-frontend.yaml
    ```  
    
 
@@ -18,32 +18,37 @@
 
     > For a data transfer rate of 1GB/sec on workload endpoints being monitored, we recommend a minimum of 1 CPU and 1GB RAM.
    
-    ```bash
-     kubectl apply -f demo/dpi/resource-dpi.yaml
-    ```
+   ```bash
+   kubectl apply -f demo/60-deep-packet-inspection/resource-dpi.yaml
+   ```
 
 3. Verify deep packet inspection is running and the daemonset of `tigera-dpi` is also running. 
 
 
    ```bash
-   kubectl get deeppacketinspections.crd.projectcalico.org -n hipstershop
+   kubectl get deeppacketinspections.crd.projectcalico.org 
    ```
-
+   
+   ```text
+   NAME                  AGE
+   sample-dpi-frontend   40s
+   ```
+   
    ```bash
    kubectl get pods -n tigera-dpi
+   ```
+
+   ```text  
    NAME               READY   STATUS    RESTARTS   AGE
-   tigera-dpi-66858   1/1     Running   0          3h58m
-   tigera-dpi-x67sj   1/1     Running   0          3h58m
+   tigera-dpi-6mhz6   1/1     Running   0          2m2s
+   tigera-dpi-kvqmp   1/1     Running   0          2m2s
+   tigera-dpi-lj8sg   1/1     Running   0          2m2s
    ```
 
 4. Trigger a snort alert basing on existing alert rules, we will use rule [21562](https://www.snort.org/rule_docs/1-21562)    
 
    ```bash
-   SVC_IP=$(kubectl -n hipstershop get svc frontend-external -ojsonpath='{.status.loadBalancer.ingress[0].ip}')
-
-   # use below command if you are using `EKS` cluster, as EKS is using hostname instead of ip for loadbalancer
-   SVC_IP=$(kubectl -n hipstershop get svc frontend-external -ojsonpath='{.status.loadBalancer.ingress[0].hostname}')
-
+   SVC_IP=$(kubectl get svc frontend-external -ojsonpath='{.status.loadBalancer.ingress[0].ip}')
    ```
    
    ```bash
@@ -58,8 +63,6 @@
     ![ee event log](../img/ee-event-log.png)
 
 
+## Congratulations on completing this workshop! ##
 
-
-[Next -> Wireguard Encryption](../modules/encryption.md) 
-
-[Menu](../README.md)
+Follow the cleanup instructions on the [main page](../README.md) if required

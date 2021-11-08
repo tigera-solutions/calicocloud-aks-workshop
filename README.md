@@ -53,6 +53,7 @@ In this workshop we are going to focus on these main use cases (with links to Ca
 - [Module 9: Using alerts](modules/using-alerts.md)
 - [Module 10: Anomaly Detection](modules/anomaly-detection.md)
 - [Module 11: Honeypod Threat Detection](modules/honeypod-threat-detection.md) 
+- [Module 12: Deep Packet Inspection](modules/deep-packet-inspection.md) 
 
 
 

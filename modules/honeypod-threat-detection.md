@@ -120,6 +120,5 @@ Head to `Alerts` view in the Enterprise Manager UI to view the related alerts. N
 <br>
 
 
-## Congratulations on completing this workshop! ##
+[Next -> Module 12](../modules/deep-packet-inspection.md)
 
-Follow the cleanup instructions on the [main page](../README.md) if required
