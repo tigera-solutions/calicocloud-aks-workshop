@@ -63,7 +63,8 @@ less ./demo/90-anomaly-detection/ad-jobs-deployment-managed.yaml
 	POD_IP=$(kubectl -n dev get po --selector app=centos -o jsonpath='{.items[0].status.podIP}')
 	kubectl -n dev exec netshoot -- nmap -Pn -r -p 1-600 $POD_IP
 	```
-	```
+	
+	```text
 	# expected output
 	Host discovery disabled (-Pn). All addresses will be marked 'up' and scan times will be slower.
 	Starting Nmap 7.91 ( https://nmap.org ) at 2021-10-01 17:31 UTC

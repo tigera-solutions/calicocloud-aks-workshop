@@ -12,7 +12,7 @@ Calico offers [Honeypod](https://docs.tigera.io/v3.9/threat/honeypod/) capabilit
 
     ```bash
     # create dedicated namespace and RBAC for honeypods
-    kubectl apply -f https://docs.tigera.io/v3.9/manifests/threatdef/honeypod/common.yaml 
+    kubectl apply -f https://docs.tigera.io/manifests/threatdef/honeypod/common.yaml 
     
     # add tigera pull secret to the namespace. We clone the existing secret from the calico-system NameSpace
     kubectl get secret tigera-pull-secret --namespace=calico-system -o yaml | \
@@ -24,13 +24,13 @@ Calico offers [Honeypod](https://docs.tigera.io/v3.9/threat/honeypod/) capabilit
 
     ```bash
     # expose pod IP to test IP enumeration use case
-    kubectl apply -f https://docs.tigera.io/v3.9/manifests/threatdef/honeypod/ip-enum.yaml 
+    kubectl apply -f https://docs.tigera.io/manifests/threatdef/honeypod/ip-enum.yaml 
 
     # expose nginx service that can be reached via ClusterIP or DNS
-    kubectl apply -f https://docs.tigera.io/v3.9/manifests/threatdef/honeypod/expose-svc.yaml 
+    kubectl apply -f https://docs.tigera.io/manifests/threatdef/honeypod/expose-svc.yaml 
 
     # expose MySQL service
-    kubectl apply -f https://docs.tigera.io/v3.9/manifests/threatdef/honeypod/vuln-svc.yaml
+    kubectl apply -f https://docs.tigera.io/manifests/threatdef/honeypod/vuln-svc.yaml
     ```
 3. Verify newly deployed pods are running
 
@@ -39,9 +39,7 @@ Calico offers [Honeypod](https://docs.tigera.io/v3.9/threat/honeypod/) capabilit
     ```
     >Output should resemble:
     
-    ```bash
-    kubectl get pods -n tigera-internal
-    
+    ```text
     NAME                                         READY   STATUS    RESTARTS   AGE
     tigera-internal-app-7jlg8                    1/1     Running   0          60s
     tigera-internal-app-lptd6                    1/1     Running   0          60s
@@ -49,6 +47,7 @@ Calico offers [Honeypod](https://docs.tigera.io/v3.9/threat/honeypod/) capabilit
     tigera-internal-dashboard-859fb4f577-6tgqj   1/1     Running   0          51s
     tigera-internal-db-58547d8655-hgjrc          1/1     Running   0          43s
     ```
+
 4. Verify honeypod alerts are deployed
 
     ```bash
@@ -56,8 +55,7 @@ Calico offers [Honeypod](https://docs.tigera.io/v3.9/threat/honeypod/) capabilit
     ```
     >Output should resemble:
 
-    ```bash
-    kubectl get globalalerts | grep -i honeypod
+    ```text
     honeypod.fake.svc         2021-10-01T18:41:55Z
     honeypod.ip.enum          2021-10-01T18:41:53Z
     honeypod.network.ssh      2021-10-01T18:40:05Z
