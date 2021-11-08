@@ -94,8 +94,7 @@ Calico offers [Honeypod](https://docs.tigera.io/v3.9/threat/honeypod/) capabilit
     kubectl -n dev exec netshoot -- curl -m3 -skI $SVC_URL.tigera-internal:$SVC_PORT | grep -i http
     ```
     >Output should resemble: 
-    ```bash
-    kubectl -n dev exec netshoot -- curl -m3 -skI $SVC_URL.tigera-internal:$SVC_PORT | grep -i http
+    ```text
     HTTP/1.1 200 OK
     ```
     <br>
@@ -107,8 +106,7 @@ Calico offers [Honeypod](https://docs.tigera.io/v3.9/threat/honeypod/) capabilit
     kubectl -n dev exec netshoot -- nc -zv $SVC_URL.tigera-internal $SVC_PORT
     ```
     >Output should resemble
-    ```bash
-    kubectl -n dev exec netshoot -- nc -zv $SVC_URL.tigera-internal $SVC_PORT
+    ```text
     Connection to tigera-internal-backend.tigera-internal 3306 port [tcp/mysql] succeeded!
     ```
 
