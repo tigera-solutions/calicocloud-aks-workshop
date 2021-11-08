@@ -20,47 +20,19 @@ Follow the prequisite steps if you need to verify your Azure subscription and Se
 	# View subscriptions
 	az account list   
  
-  # Verify selected subscription
-  az account show
-  ```
+    # Verify selected subscription
+    az account show
+    ```
     
     ```
-  # Set correct subscription (if needed)
-  az account set --subscription <subscription_id>
+    # Set correct subscription (if needed)
+    az account set --subscription <subscription_id>
   
-  # Verify correct subscription is now set
-  az account show
-  ```
+    # Verify correct subscription is now set
+    az account show
+    ```
     
-- Create Azure Service Principal to use through the labs
 
-	```bash
-	az ad sp create-for-rbac --skip-assignment
-	```
-
-- This will return the following. !!!IMPORTANT!!! - Please copy this information down as you'll need it for labs going forward.
-
-	```bash
-	"appId": "7248f250-0000-0000-0000-dbdeb8400d85",
-	"displayName": "azure-cli-2017-10-15-02-20-15",
-	"name": "http://azure-cli-2017-10-15-02-20-15",
-	"password": "77851d2c-0000-0000-0000-cb3ebc97975a",
-	"tenant": "72f988bf-0000-0000-0000-2d7cd011db47"
-	```
-
-- Set the values from above as variables **(replace <appid><password>with your values)</password></appid>**.
-
-> **Warning:** Several of the following steps have you echo values to your .bashrc file. This is done so that you can get those values back if your session reconnects. You will want to remember to clean these up at the end of the training, in particular if you're running on your own, or your company's, subscription.
-
-DON'T MESS THIS STEP UP. REPLACE THE VALUES IN BRACKETS!!!
-
-```bash
-# Persist for Later Sessions in Case of Timeout
-APPID=<appId>
-echo export APPID=$APPID >> ~/.bashrc
-CLIENTSECRET=<password>
-echo export CLIENTSECRET=$CLIENTSECRET >> ~/.bashrc
-```
 
 ## Steps
 
@@ -114,9 +86,11 @@ echo export CLIENTSECRET=$CLIENTSECRET >> ~/.bashrc
     ```
     ```
     KubernetesVersion    Upgrades
-    -------------------  -----------------------
-    1.21.2               None available
-    1.21.1               1.21.2
+    -------------------  ----------------------------------------
+    1.22.2(preview)      None available
+    1.22.1(preview)      1.22.2(preview)
+    1.21.2               1.22.1(preview), 1.22.2(preview)
+    1.21.1               1.21.2, 1.22.1(preview), 1.22.2(preview)
     1.20.9               1.21.1, 1.21.2
     1.20.7               1.20.9, 1.21.1, 1.21.2
     1.19.13              1.20.7, 1.20.9
@@ -192,8 +166,6 @@ echo export CLIENTSECRET=$CLIENTSECRET >> ~/.bashrc
     ```
 
 8. *[Optional]*  Install `calicoctl` CLI for use in later labs
-
-    The easiest way to retrieve captured `*.pcap` files is to use [calicoctl](https://docs.tigera.io/maintenance/clis/calicoctl/) CLI. The following binary installations are available:
 
     a) CloudShell
     ```bash    
