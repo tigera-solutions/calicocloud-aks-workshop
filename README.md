@@ -68,7 +68,7 @@ In this workshop we are going to focus on these main use cases (with links to Ca
 2. Delete AKS cluster.
 
     ```bash
-    az aks delete --name $CLUSTERNAME
+    az aks delete --name $CLUSTERNAME --resource-group $RGNAME
     ```
 
 3. Delete the azure resource group. 
