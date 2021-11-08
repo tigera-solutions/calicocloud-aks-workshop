@@ -39,7 +39,7 @@
    
    a. Review and apply the yaml file for the managed cluster.
 
-    Instructions below for a Managed cluster only. Follow [configuration documentation](https://docs.tigera.io/compliance/overview#run-reports) to configure compliance jobs for management and standalone clusters.
+    Instructions below for a Managed cluster only. Follow [configuration documentation](https://docs.tigera.io/compliance/overview#run-reports) to configure compliance jobs for management and standalone clusters. We will need change the START/END time accordingly.
 
    ```bash
    vi demo/40-compliance-reports/compliance-reporter-pod.yaml

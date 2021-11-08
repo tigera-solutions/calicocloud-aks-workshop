@@ -13,7 +13,10 @@
     >We implemented alerts in one of the first labs in order to see how our activity can trigger them.
 
     ```bash
-    kubectl get globalalert                         
+    kubectl get globalalert 
+    ```
+
+    ```text                        
     NAME                      CREATED AT
     dns.unsanctioned.access   2021-06-10T03:24:41Z
     network.lateral.access    2021-06-10T03:24:43Z
