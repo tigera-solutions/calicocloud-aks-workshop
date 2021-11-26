@@ -49,9 +49,6 @@
     - When you select any edge, you will get details about the flows representing that edge.
     - If you expand a namespace by double-clicking on it, you will get the view of all components of the namespace.
 
-
-
-
 6. Flow Visualizations
 
     The `Flow Visualizations` view shows all point-to-point flows in the cluster. It allows you to see the cluster traffic from the network point of view.
@@ -66,6 +63,6 @@
 
     ![kibana flows](../img/kibana-flow-logs.png)
 
-    Some of the default dashboards you get access to are DNS Logs, Flow Logs, Audit Logs, Kuernetes API calls, L7 HTTP metrics, and others.
+    Some of the default dashboards you get access to are DNS Logs, Flow Logs, Audit Logs, Kubernetes API calls, L7 HTTP metrics, and others.
 
 [Next -> Module 7](../modules/packet-capture.md)

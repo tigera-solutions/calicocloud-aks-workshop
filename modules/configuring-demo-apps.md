@@ -2,7 +2,7 @@
 
 **Goal:** Deploy and configure demo applications.
 
-This workshop will deploy Namespace `dev` where several pods will be created to demonstrate connectivity within the Namespace and cross-Namespace to the `default` Namespace where the Boutiquestore (Microservices) Demo apps will be deployed. We will use a subset of these pods to demonstrate how Calico Network Policy can provide pod security and microsegmentation techniques. 
+This workshop will deploy Namespace `dev` where several pods will be created to demonstrate connectivity within the Namespace and cross-Namespace to the `default` Namespace where the Boutiquestore (Microservices) Demo apps will be deployed. We will use a subset of these pods to demonstrate how Calico Network Policy can provide pod security and microsegmentation techniques.
 In [Module 9](../modules/anomaly-detection.md) we introduce Namespace `tigera-intrusion-detection` which contains specific Calico pods to run the Anomaly Detection engine.
 <br>
 
@@ -17,7 +17,6 @@ In [Module 9](../modules/anomaly-detection.md) we introduce Namespace `tigera-in
    /home/jessie/calicocloud-aks-workshop
    ```
 
-
 2. Deploy policy tiers.
 
     We are going to deploy some policies into policy tier to take advantage of hierarcical policy management.
@@ -26,9 +25,7 @@ In [Module 9](../modules/anomaly-detection.md) we introduce Namespace `tigera-in
     kubectl apply -f demo/tiers/tiers.yaml
     ```
 
-    This will add tiers `security` and `platform` to the aks cluster. 
-
-
+    This will add tiers `security` and `platform` to the aks cluster.
 
 3. Deploy base policy.
 
@@ -39,7 +36,6 @@ In [Module 9](../modules/anomaly-detection.md) we introduce Namespace `tigera-in
     ```
 
     This will add `allow-kube-dns` policy to your `platform` tier.
-    
 
 4. Deploy demo applications.
 
@@ -50,7 +46,7 @@ In [Module 9](../modules/anomaly-detection.md) we introduce Namespace `tigera-in
     # deploy boutiqueshop app stack
     kubectl apply -f demo/boutiqueshop/boutique-app.manifests.yaml
     ```
-    
+
     ```bash
     #confirm the pod/deployments are running. Note the loadgenerator pod waits for the frontend pod to respond to http calls before coming up and can take a few minutes. Eventually, the status of the pods in the default namespace will look as follows: 
     
@@ -79,12 +75,12 @@ In [Module 9](../modules/anomaly-detection.md) we introduce Namespace `tigera-in
 
     The pods will be visible in "service graph", for example in `default` namespace. This may take 1-2 mins to update in Service Graph. To view resources in the `default` namespace click on the `Service Graph` icon on the left menu which will display a top level view of the cluster resources:
     <br>
-    
+
     ![service-graph-top level](../img/service-graph-top-level.png)
-    
+
     Double click on the `default` Namespace as highlighted to bring only resources in the `default` namespace in view along with other resources communicating into or out of the `deafult` Namespace.
     <br>
-    
+
       ![service-graph-default](../img/service-graph-default.png)
 
     Note that pod/resource limits on your nodes may prevent pods from deploying. Ensure the nodes in the cluster are scaled appropriately
@@ -109,8 +105,8 @@ In [Module 9](../modules/anomaly-detection.md) we introduce Namespace `tigera-in
     ```
 
 7. Install curl on loadgenerator pod
- 
-    > Before we implement network secruity rules we need to install curl on the loadgenerator pod for testing purposes later in the workshop. Note the installation will not survive a reboot so repeat this installation as necessary
+
+    > Before we implement network security rules we need to install curl on the loadgenerator pod for testing purposes later in the workshop. Note the installation will not survive a reboot so repeat this installation as necessary
 
     ```bash
     ##install update package and curl
