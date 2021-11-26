@@ -39,11 +39,11 @@ Follow the prequisite steps if you need to verify your Azure subscription and Se
 - This will return the following. !!!IMPORTANT!!! - Please copy this information down as you'll need it for labs going forward.
 
  ```bash
-"appId": "7248f250-0000-0000-0000-dbdeb8400d85",
-"displayName": "azure-cli-2017-10-15-02-20-15",
-"name": "http://azure-cli-2017-10-15-02-20-15",
-"password": "77851d2c-0000-0000-0000-cb3ebc97975a",
-"tenant": "72f988bf-0000-0000-0000-2d7cd011db47"
+ “appId”: “ce493696-xxxx-xxxx-xxxx-99d6cfd09436",
+ “displayName”: “jessieazurexxxx”,
+ “name”: “ce493696-xxxx-xxxx-xxxx-99d6cfd09436",
+ “password”: “YhutxxxxYwNxxxxQntNxxxx_VyVnxxxx”,
+ “tenant”: “b0497432-xxxx-xxxx-xxxx-7d4072ca6006"
  ```
 
 - Set the values from above as variables **(replace <appid><password>with your values)</password></appid>**.
