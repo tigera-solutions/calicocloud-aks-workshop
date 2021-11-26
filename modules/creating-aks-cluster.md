@@ -8,7 +8,7 @@ The following guide is based upon the repos from [lastcoolnameleft](https://gith
 
 > This workshop uses AKS cluster with Linux containers. To create a Windows Server container on an AKS cluster, consider exploring [AKS documents](https://docs.microsoft.com/en-us/azure/aks/windows-container-cli). This cluster deployment utilizes Azure CLI v2.x from your local terminal or via Azure Cloud Shell. Instructions for installing Azure CLI can be found [here](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli).
 
-\[If you already have AKS cluster, make sure the network plugin is "azure", then you can skip this module and go to [module 2](/Applications/Joplin.app/Contents/Resources/modules/joining-aks-to-calico-cloud.md "../modules/joining-aks-to-calico-cloud.md")
+If you already have an AKS cluster, make sure the network plugin is "azure", then you can skip this module and go to [module 2](/Applications/Joplin.app/Contents/Resources/modules/joining-aks-to-calico-cloud.md "../modules/joining-aks-to-calico-cloud.md")
 
 ## Prerequisite Tasks
 
@@ -22,18 +22,12 @@ Follow the prequisite steps if you need to verify your Azure subscription and Se
  
   # Verify selected subscription
   az account show
-  ```
-
-    ```
 
 # Set correct subscription (if needed)
-
   az account set --subscription <subscription_id>
   
 # Verify correct subscription is now set
-
   az account show
-
   ```
 
 - Create Azure Service Principal to use through the labs
