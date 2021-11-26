@@ -3,16 +3,21 @@
 **Goal:** Enable Layer 7 visibility for Pod traffic.
 ---
 
-Calico Cloud can be enabled for Layer 7 application visibility which captures the HTTP calls applications are making. Application visibility does not require a service mesh but does utilise envoy for capturing logs. Envoy is deployed as part of an L7 Log Collector DaemonSet per Kubernetes node - this requires less resources than a sidecar per pod. For more info please review the [documentation](https://docs.tigera.io/v3.9/visibility/elastic/l7/configure).
+Calico Cloud can be enabled for Layer 7 application visibility which captures the HTTP calls applications are making. Application visibility does not require a service mesh but does utilise envoy for capturing logs. Envoy is deployed as part of an L7 Log Collector DaemonSet per Kubernetes node - this requires less resources than a sidecar per pod. For more info please review the [documentation](https://docs.tigera.io/visibility/elastic/l7/configure).
 
 ## Steps
 
-1.  Configure Felix for log data collection
+1.  Configure Felix for log data collection and patch Felix with AKS specific parameters
 
     >Enable the Policy Sync API in Felix - we configure this cluster-wide
 
     ```bash
     kubectl patch felixconfiguration default --type='merge' -p '{"spec":{"policySyncPathPrefix":"/var/run/nodeagent"}}'
+    ```
+
+    ```bash
+    kubectl patch installation default --type=merge -p '{"spec": {"kubernetesProvider": "AKS"}}'
+    kubectl patch installation default --type=merge -p '{"spec": {"flexVolumePath": "/etc/kubernetes/volumeplugins/"}}'
     ```
 
 
@@ -31,16 +36,17 @@ Calico Cloud can be enabled for Layer 7 application visibility which captures th
     ```bash
     kubectl create configmap envoy-config -n calico-system --from-file=envoy-config.yaml
     ```
-4.  Apply the L7 Log Collector DaemonSet manifest and patch Felix with AKS specific parameters
-    ```bash
-    kubectl apply -f l7-collector-daemonset.yaml
-    kubectl patch installation default --type=merge -p '{"spec": {"kubernetesProvider": "AKS"}}'
-    kubectl patch installation default --type=merge -p '{"spec": {"flexVolumePath": "/etc/kubernetes/volumeplugins/"}}'
-    ```
-5.  Enable L7 log collection daemonset mode in Felix
+
+4.  Enable L7 log collection daemonset mode in Felix
     ```bash
     kubectl patch felixconfiguration default --type='merge' -p '{"spec":{"tproxyMode":"Enabled"}}'
     ```
+
+5.  Apply the L7 Log Collector DaemonSet manifest.
+    ```bash
+    kubectl apply -f l7-collector-daemonset.yaml
+    ```
+
     >If successfully deployed an `l7-log-collector` pod will be deployed on each node. To verify:
     ```bash
     kubectl get pod -n calico-system
@@ -76,7 +82,10 @@ Calico Cloud can be enabled for Layer 7 application visibility which captures th
     kubectl annotate svc -n default shippingservice projectcalico.org/l7-logging=true
     ```
     
-    >L7 flow logs will require a few minutes to generate.
+    >L7 flow logs will require a few minutes to generate, you can also restart pods which will lead l7 logs pop up quicker.  
+    ```bash
+    kubectl delete pods --all
+    ```
 
 7.  Review L7 logs
 

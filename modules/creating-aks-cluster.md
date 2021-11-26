@@ -113,9 +113,11 @@ echo export CLIENTSECRET=$CLIENTSECRET >> ~/.bashrc
 
     ```bash
     KubernetesVersion    Upgrades
-    -------------------  -----------------------
-    1.21.2               None available
-    1.21.1               1.21.2
+    -------------------  ----------------------------------------
+    1.22.2(preview)      None available
+    1.22.1(preview)      1.22.2(preview)
+    1.21.2               1.22.1(preview), 1.22.2(preview)
+    1.21.1               1.21.2, 1.22.1(preview), 1.22.2(preview)
     1.20.9               1.21.1, 1.21.2
     1.20.7               1.20.9, 1.21.1, 1.21.2
     1.19.13              1.20.7, 1.20.9
@@ -193,8 +195,6 @@ echo export CLIENTSECRET=$CLIENTSECRET >> ~/.bashrc
     ```
 
 8. *[Optional]*  Install `calicoctl` CLI for use in later labs
-
-    The easiest way to retrieve captured `*.pcap` files is to use [calicoctl](https://docs.tigera.io/maintenance/clis/calicoctl/) CLI. The following binary installations are available:
 
     a) CloudShell
 

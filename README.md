@@ -53,25 +53,42 @@ In this workshop we are going to focus on these main use cases (with links to Ca
 - [Module 9: Using alerts](modules/using-alerts.md)
 - [Module 10: Anomaly Detection](modules/anomaly-detection.md)
 - [Module 11: Honeypod Threat Detection](modules/honeypod-threat-detection.md) 
+- [WIP][Module 12: Deep Packet Inspection](modules/deep-packet-inspection.md) 
 
 
 
 ## Cleanup
 
-1. Delete application stack to clean up any `loadbalancer` services.
+1. Disconnect your cluster from calicocloud by following the instruction [here](https://docs.calicocloud.io/operations/disconnect)
+
+   > Whether you’ve finished with your Calico Cloud Trial or decided to disconnect your cluster from Calico Cloud, we know you want your cluster to remain functional. We highly recommend running a simple script to migrate your cluster to open-source Project Calico.
+
+   ```bash
+   curl -O https://installer.calicocloud.io/manifests/v3.10.0-0/downgrade.sh
+   ```
+
+   ```bash
+   chmod +x downgrade.sh
+   ```
+   
+   ```bash
+   ./downgrade.sh --remove-all-calico-policy --remove-prometheus
+   ```
+
+2. Delete application stack to clean up any `loadbalancer` services.
 
     ```bash
     kubectl delete -f demo/dev/app.manifests.yaml
     kubectl delete -f demo/boutiqueshop/boutique-app.manifests.yaml
-    ```
+    ```    
 
-2. Delete AKS cluster.
+3. Delete AKS cluster.
 
     ```bash
-    az aks delete --name $CLUSTERNAME
+    az aks delete --name $CLUSTERNAME --resource-group $RGNAME
     ```
 
-3. Delete the azure resource group. 
+4. Delete the azure resource group. 
 
     ```bash
     az group delete --resource-group $RGNAME
