@@ -24,7 +24,7 @@ Calico Cloud can be enabled for Layer 7 application visibility which captures th
 2.  Prepare scripts for deploying L7 Log Collector DaemonSet
 
     ```bash
-    DOCS_LOCATION=${DOCS_LOCATION:="https://docs.tigera.io"}
+    DOCS_LOCATION=${DOCS_LOCATION:="https://docs.tigera.io/v3.10"}
 
     #Download manifest file for L7 log collector daemonset
     curl ${DOCS_LOCATION}/manifests/l7/daemonset/l7-collector-daemonset.yaml -O
