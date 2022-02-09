@@ -23,51 +23,48 @@ IMPORTANT: In order to complete this module, you must have [Calico Cloud trial a
     Click on "connect cluster"
      ![connect-cluster](../img/connect-cluster.png)
 
-    Choose AKS and click next
+    Enter the name of the cluster, Choose AKS and click next
       ![choose-aks](../img/choose-aks.png)
 
 
     Run installation script in your aks cluster. 
     ```bash
     # script should look similar to this
-    curl https://installer.calicocloud.io/xxxxxx_yyyyyyy-saay-management_install.sh | bash
+    kubectl apply -f https://installer.calicocloud.io/manifests/cc-operator/latest/deploy.yaml && curl -H "Authorization: Bearer xxxxxxxxxxxx" "https://www.calicocloud.io/api/managed-cluster/deploy.yaml" | kubectl apply -f -
     ```
-
-    Joining the cluster to Calico Cloud can take a few minutes. Wait for the installation script to finish before you proceed to the next step.
+    > Output should look similar to:
+    ```bash
+    namespace/calico-cloud created
+    customresourcedefinition.apiextensions.k8s.io/installers.operator.calicocloud.io created
+    serviceaccount/calico-cloud-controller-manager created
+    role.rbac.authorization.k8s.io/calico-cloud-leader-election-role created
+    clusterrole.rbac.authorization.k8s.io/calico-cloud-metrics-reader created
+    clusterrole.rbac.authorization.k8s.io/calico-cloud-proxy-role created
+    rolebinding.rbac.authorization.k8s.io/calico-cloud-leader-election-rolebinding created
+    clusterrolebinding.rbac.authorization.k8s.io/calico-cloud-installer-rbac created
+    clusterrolebinding.rbac.authorization.k8s.io/calico-cloud-proxy-rolebinding created
+    configmap/calico-cloud-manager-config created
+    service/calico-cloud-controller-manager-metrics-service created
+    deployment.apps/calico-cloud-controller-manager created
+    % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                    Dload  Upload   Total   Spent    Left  Speed
+    100   355  100   355    0     0    541      0 --:--:-- --:--:-- --:--:--   541
+    secret/api-key created
+    installer.operator.calicocloud.io/aks-westus created
+    ```
+    Joining the cluster to Calico Cloud can take a few minutes. Meanwhile the Calico resources can be monitored until they are all reporting `Available` as `True`
 
     ```bash
-    # output once your cluster join the calico cloud
-    Install Successful
+    Every 2.0s: kubectl get tigerastatus                                                                                                                    
 
-    Your Connected Cluster Name is qzmi9wp8-management-managed-xxxxxxxxxxxx-hcp-eastus-azmk8s-io
-    ```
-    Set the Calico Cluster Name as a variable to use later in this workshop. The Cluster Name can also be obtained from the Calico Cloud Web UI at a later date. For the example above `CALICOCLUSTERNAME` should be set to __arwb4wbh-management-managed-xxxxxxxxxxxxx-hcp-eastus-azmk8s-io__
-    
-    ```bash
-    export CALICOCLUSTERNAME=<Cluster Name>
-
-    #For Linux terminal
-    echo export CALICOCLUSTERNAME=$CALICOCLUSTERNAME | tee -a ~/.bash_profile
-
-    #For Mac terminal
-    echo export CALICOCLUSTERNAME=$CALICOCLUSTERNAME | tee -a ~/.zshrc 
-    ```
-    
-    In calico cloud management UI, you can see your own aks cluster added in "managed cluster", you can also confirm by
-    ```bash
-    kubectl get tigerastatus
-    ```
-    
-    ```bash
-    #make sure all customer resources are "AVAILABLE=True" 
     NAME                            AVAILABLE   PROGRESSING   DEGRADED   SINCE
-    apiserver                       True        False         False      19h
-    calico                          True        False         False      18h
-    compliance                      True        False         False      19h
-    intrusion-detection             True        False         False      19h
-    log-collector                   True        False         False      19h
-    management-cluster-connection   True        False         False      19h
-    monitor                         True        False         False      19h
+    apiserver                       True        False         False      96s
+    calico                          True        False         False      16s
+    compliance                      True        False         False      21s
+    intrusion-detection             True        False         False      41s
+    log-collector                   True        False         False      21s
+    management-cluster-connection   True        False         False      51s
+    monitor                         True        False         False      2m1s
     ```
     
 4. Navigating the Calico Cloud UI

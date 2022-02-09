@@ -44,7 +44,7 @@ In [Module 9](../modules/anomaly-detection.md) we introduce Namespace `tigera-in
     kubectl apply -f demo/dev/app.manifests.yaml
 
     # deploy boutiqueshop app stack
-    kubectl apply -f demo/boutiqueshop/boutique-app.manifests.yaml
+    kubectl apply -f https://raw.githubusercontent.com/GoogleCloudPlatform/microservices-demo/master/release/kubernetes-manifests.yaml
     ```
 
     ```bash
@@ -52,18 +52,18 @@ In [Module 9](../modules/anomaly-detection.md) we introduce Namespace `tigera-in
     
     kubectl get pods
     NAME                                     READY   STATUS    RESTARTS   AGE
-    adservice-7cbc9bd9-jkjhq                 1/1     Running   0          86s
-    cartservice-d7db78c66-4rw8p              1/1     Running   0          87s
-    checkoutservice-784bfc794f-7np5p         1/1     Running   0          87s
-    currencyservice-5898885559-74s5z         1/1     Running   0          86s
-    emailservice-6bd8b47657-s4drk            1/1     Running   0          87s
-    frontend-764c5c755f-8xjcs                1/1     Running   0          87s
-    loadgenerator-84cbcd768c-6tcx5           1/1     Running   0          87s
-    paymentservice-6c676df669-m5j6g          1/1     Running   0          87s
-    productcatalogservice-7fcf4f8cc-nkvnd    1/1     Running   0          87s
-    recommendationservice-79f5f4bbf5-qgqfv   1/1     Running   0          87s
-    redis-cart-74594bd569-l4kt9              1/1     Running   0          86s
-    shippingservice-b5879cdbf-r8xqb          1/1     Running   0          86s
+    adservice-85598d856b-7zhlp               1/1     Running   0          113s
+    cartservice-c77f6b866-hmbbj              1/1     Running   0          114s
+    checkoutservice-654c47f4b6-l6wlk         1/1     Running   0          115s
+    currencyservice-59bc889674-2xh2q         1/1     Running   0          114s
+    emailservice-5b9fff7cb8-f49gk            1/1     Running   0          115s
+    frontend-77b88cc7cb-btssz                1/1     Running   0          115s
+    loadgenerator-6958f5bc8b-6lfrz           1/1     Running   0          114s
+    paymentservice-68dd9755bb-ddqd2          1/1     Running   0          114s
+    productcatalogservice-557ff44b96-88f7w   1/1     Running   0          114s
+    recommendationservice-64dc9dfbc8-rwzdq   1/1     Running   0          115s
+    redis-cart-5b569cd47-6mstt               1/1     Running   0          114s
+    shippingservice-5488d5b6cb-l79nw         1/1     Running   0          114s
 
     kubectl get pods -n dev
     NAME                         READY   STATUS    RESTARTS   AGE

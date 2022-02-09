@@ -15,39 +15,23 @@ Calico Cloud can be enabled for Layer 7 application visibility which captures th
     kubectl patch felixconfiguration default --type='merge' -p '{"spec":{"policySyncPathPrefix":"/var/run/nodeagent"}}'
     ```
 
-    ```bash
-    kubectl patch installation default --type=merge -p '{"spec": {"kubernetesProvider": "AKS"}}'
-    kubectl patch installation default --type=merge -p '{"spec": {"flexVolumePath": "/etc/kubernetes/volumeplugins/"}}'
-    ```
-
-
-2.  Prepare scripts for deploying L7 Log Collector DaemonSet
+2.  Since Calico Cloud v3.11 L7 visibility is deployed using an `ApplicationLayer` resource. Calico's operator will deploy the envoy and log collector containers as a daemonset. To deploy the ApplicationLayer resource:
 
     ```bash
-    DOCS_LOCATION=${DOCS_LOCATION:="https://docs.tigera.io/v3.10"}
-
-    #Download manifest file for L7 log collector daemonset
-    curl ${DOCS_LOCATION}/manifests/l7/daemonset/l7-collector-daemonset.yaml -O
-
-    #Download and install Envoy Config
-    curl ${DOCS_LOCATION}/manifests/l7/daemonset/envoy-config.yaml -O
-    ```
-3.  Create the Envoy config in `calico-system` namespace
-    ```bash
-    kubectl create configmap envoy-config -n calico-system --from-file=envoy-config.yaml
-    ```
-
-4.  Enable L7 log collection daemonset mode in Felix
-    ```bash
-    kubectl patch felixconfiguration default --type='merge' -p '{"spec":{"tproxyMode":"Enabled"}}'
+    kubectl apply -f -<<EOF
+    apiVersion: operator.tigera.io/v1
+    kind: ApplicationLayer
+    metadata:
+      name: tigera-secure
+    spec:
+      logCollection:
+        collectLogs: Enabled
+        logIntervalSeconds: 5
+        logRequestsPerInterval: -1
+    EOF
     ```
 
-5.  Apply the L7 Log Collector DaemonSet manifest.
-    ```bash
-    kubectl apply -f l7-collector-daemonset.yaml
-    ```
-
-    >If successfully deployed an `l7-log-collector` pod will be deployed on each node. To verify:
+3.  If successfully deployed an `l7-log-collector` pod will be deployed on each node. To verify:
     ```bash
     kubectl get pod -n calico-system
     ```
@@ -66,7 +50,7 @@ Calico Cloud can be enabled for Layer 7 application visibility which captures th
     l7-log-collector-jxzjq                     2/2     Running   0          15m
     ```
 
-6.  Annotate the Boutiqueshop Services
+4.  Annotate the Boutiqueshop Services
 
     ```bash
     kubectl annotate svc -n default adservice projectcalico.org/l7-logging=true
@@ -82,7 +66,7 @@ Calico Cloud can be enabled for Layer 7 application visibility which captures th
     kubectl annotate svc -n default shippingservice projectcalico.org/l7-logging=true
     ```
     
-    >L7 flow logs will require a few minutes to generate, you can also restart pods which will lead l7 logs pop up quicker.  
+    >L7 flow logs will require a few minutes to generate, you can also restart pods which will enable L7 logs more quickly.  
     ```bash
     kubectl delete pods --all
     ```

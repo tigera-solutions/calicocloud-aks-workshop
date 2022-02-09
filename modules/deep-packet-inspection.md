@@ -1,4 +1,4 @@
-# Security: Deep packet inspection (only available for calicocloud 3.10 version)
+# Security: Deep packet inspection (only available for calicocloud 3.10+ version)
 
 **Goal:** Use DPI on select workloads to efficiently make use of cluster resources and minimize the impact of false positives. 
 
@@ -7,7 +7,7 @@
 
 ## Steps
 
-1. Configure deep packet inspection in your target workload, we will use `hipstershop/frontend` as example.
+1. Configure deep packet inspection in your target workload, we will use `boutiqueshop/frontend` as example.
 
    ```bash
    kubectl apply -f demo/60-deep-packet-inspection/sample-dpi-frontend.yaml

@@ -45,8 +45,15 @@
    vi demo/40-compliance-reports/compliance-reporter-pod.yaml
    ```
 
-   b. We need to substitute the Cluster Name in the YAML file with the variable `CALICOCLUSTERNAME` we configured in Module 1. This enables compliance jobs to target the correct index in Elastic Search
+   b. We need to substitute the Cluster Name in the YAML file with the correct cluster name index. We can obtain this value and set as a variable `CALICOCLUSTERNAME`. This enables compliance jobs to target the correct index in Elastic Search
 	```bash
+    # obtain ElasticSearch index and set as variable
+    
+    CALICOCLUSTERNAME=$(kubectl get deployment -n tigera-intrusion-detection intrusion-detection-controller -ojson | \
+    jq -r '.spec.template.spec.containers[0].env[] | select(.name == "CLUSTER_NAME").value')
+
+    # Set correct index in manifest
+    
 	sed -i "s/\$CALICOCLUSTERNAME/${CALICOCLUSTERNAME}/g" ./demo/40-compliance-reports/compliance-reporter-pod.yaml
 	```
 	For other variations/shells the following syntax may be required
