@@ -113,21 +113,21 @@ echo export CLIENTSECRET=$CLIENTSECRET >> ~/.bashrc
 
     ```bash
     KubernetesVersion    Upgrades
-    -------------------  ----------------------------------------
-    1.22.2(preview)      None available
-    1.22.1(preview)      1.22.2(preview)
-    1.21.2               1.22.1(preview), 1.22.2(preview)
-    1.21.1               1.21.2, 1.22.1(preview), 1.22.2(preview)
-    1.20.9               1.21.1, 1.21.2
-    1.20.7               1.20.9, 1.21.1, 1.21.2
-    1.19.13              1.20.7, 1.20.9
-    1.19.11              1.19.13, 1.20.7, 1.20.9
+    -------------------  ------------------------
+    1.22.4               None available
+    1.22.2               1.22.4
+    1.21.7               1.22.2, 1.22.4
+    1.21.2               1.21.7, 1.22.2, 1.22.4
+    1.20.13              1.21.2, 1.21.7
+    1.20.9               1.20.13, 1.21.2, 1.21.7
+    1.19.13              1.20.9, 1.20.13
+    1.19.11              1.19.13, 1.20.9, 1.20.13
     ```
 
      For this lab we'll use 1.21.1
 
     ```bash
-    K8SVERSION=1.21.1
+    K8SVERSION=1.22.4
     echo export K8SVERSION=1.21.1 >> ~/.bashrc
     ```
 
@@ -153,7 +153,7 @@ echo export CLIENTSECRET=$CLIENTSECRET >> ~/.bashrc
     ```bash
     Name                 Location    ResourceGroup      KubernetesVersion    ProvisioningState    Fqdn
     -------------------  ----------  -----------------  -------------------  -------------------  ----------------------------------------------------------------
-    jessie-aks-workshop  eastus      aks-rg-jessie1023  1.21.1               Succeeded            jessie-aks-aks-rg-jessie102-03cfb8-23b9dfec.hcp.eastus.azmk8s.io
+    jessie-aks-workshop  eastus      aks-rg-jessie      1.22.4               Succeeded            aks-jessie-aks-rg-jessie-03cfb8-b2e2e308.hcp.eastus.azmk8s.io
     ```
 
 5. Get the Kubernetes config files for your new AKS cluster
@@ -166,23 +166,23 @@ echo export CLIENTSECRET=$CLIENTSECRET >> ~/.bashrc
 
     > Note: It can take 5 minutes for your nodes to appear and be in READY state. You can run `watch kubectl get nodes` to monitor status. Otherwise, the cluster is ready when the output is similar to the following:
 
- ```bash
- kubectl get nodes
- ```
+    ```bash
+    kubectl get nodes
+    ```
 
- ```bash
+    ```bash
     NAME                                STATUS   ROLES   AGE   VERSION
-    aks-nodepool1-36555681-vmss000000   Ready    agent   47m   v1.21.1
-    aks-nodepool1-36555681-vmss000001   Ready    agent   47m   v1.21.1
-    aks-nodepool1-36555681-vmss000002   Ready    agent   47m   v1.21.1
+    aks-nodepool1-36555681-vmss000000   Ready    agent   47m   v1.22.4
+    aks-nodepool1-36555681-vmss000001   Ready    agent   47m   v1.22.4
+    aks-nodepool1-36555681-vmss000002   Ready    agent   47m   v1.22.4
 
- ```
+    ```
 
- To see more details about your cluster:
+    To see more details about your cluster:
 
- ```bash
- kubectl cluster-info
- ```
+    ```bash
+    kubectl cluster-info
+    ```
 
 7. Download this repo into your environment:
 
@@ -200,7 +200,7 @@ echo export CLIENTSECRET=$CLIENTSECRET >> ~/.bashrc
 
     ```bash
     # download and configure calicoctl
-    curl -o calicoctl -O -L https://downloads.tigera.io/ee/binaries/v3.10.0/calicoctl
+    curl -o calicoctl -O -L https://downloads.tigera.io/ee/binaries/v3.11.2/calicoctl
 
     chmod +x calicoctl
     
@@ -213,7 +213,7 @@ echo export CLIENTSECRET=$CLIENTSECRET >> ~/.bashrc
 
     ```bash
     # download and configure calicoctl
-    curl -o calicoctl -O -L https://downloads.tigera.io/ee/binaries/v3.10.0/calicoctl
+    curl -o calicoctl -O -L https://downloads.tigera.io/ee/binaries/v3.11.2/calicoctl
     chmod +x calicoctl
     
     # verify calicoctl is running 
@@ -225,7 +225,7 @@ echo export CLIENTSECRET=$CLIENTSECRET >> ~/.bashrc
 
     ```bash
     # download and configure calicoctl
-    curl -o calicoctl -O -L  https://downloads.tigera.io/ee/binaries/v3.10.0/calicoctl-darwin-amd64
+    curl -o calicoctl -O -L  https://downloads.tigera.io/ee/binaries/v3.11.2/calicoctl-darwin-amd64
 
     chmod +x calicoctl
     
@@ -240,7 +240,7 @@ echo export CLIENTSECRET=$CLIENTSECRET >> ~/.bashrc
     >Tip: Consider runing powershell as administraor and navigating to a location that’s in your PATH. For example, C:\Windows.
 
     ```pwsh
-    Invoke-WebRequest -Uri "https://downloads.tigera.io/ee/binaries/v3.9.0/calicoctl-windows-amd64.exe" -OutFile "kubectl-calico.exe"
+    Invoke-WebRequest -Uri "https://downloads.tigera.io/ee/binaries/v3.11.2/calicoctl-windows-amd64.exe" -OutFile "kubectl-calico.exe"
     ```
 
 ---
