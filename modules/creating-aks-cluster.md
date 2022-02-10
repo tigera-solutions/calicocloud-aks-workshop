@@ -124,11 +124,11 @@ echo export CLIENTSECRET=$CLIENTSECRET >> ~/.bashrc
     1.19.11              1.19.13, 1.20.9, 1.20.13
     ```
 
-     For this lab we'll use 1.21.1
+    For this lab we'll use 1.22.4
 
     ```bash
     K8SVERSION=1.22.4
-    echo export K8SVERSION=1.21.1 >> ~/.bashrc
+    echo export K8SVERSION=1.22.4 >> ~/.bashrc
     ```
 
     > The below command can take 10-20 minutes to run as it is creating the AKS cluster. Please be PATIENT and grab a coffee/tea/kombucha...
