@@ -60,7 +60,7 @@
 
     ```bash
     # make a request across namespaces and view Packets by Policy histogram
-    for i in {1..10}; do kubectl -n dev exec -t centos -- sh -c 'curl -m3 -sI http://frontend.default 2>/dev/null | grep -i http'; sleep 2; done
+    for i in {1..5}; do kubectl -n dev exec -t centos -- sh -c 'curl -m3 -sI http://frontend.default 2>/dev/null | grep -i http'; sleep 2; done
     ```
 
     >The staged policy does not affect the traffic directly but allows you to view the policy impact if it were to be enforced.
