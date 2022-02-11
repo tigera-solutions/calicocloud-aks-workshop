@@ -71,7 +71,7 @@ Calico Cloud can be enabled for Layer 7 application visibility which captures th
     kubectl delete pods --all
     ```
 
-7.  Review L7 logs
+5.  Review L7 logs
 
     The HTTP logs can be reviewed from `Service Graph` and then clicking the `HTTP` tab. Details of each flow can be reviewed by drilling down into the flow record
 
