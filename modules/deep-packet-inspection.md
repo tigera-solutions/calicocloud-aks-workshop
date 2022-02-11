@@ -1,4 +1,4 @@
-# Security: Deep packet inspection (only available for calicocloud 3.10+ version)
+# Security: Deep packet inspection 
 
 **Goal:** Use DPI on select workloads to efficiently make use of cluster resources and minimize the impact of false positives. 
 
