@@ -200,7 +200,7 @@ echo export CLIENTSECRET=$CLIENTSECRET >> ~/.bashrc
 
     ```bash
     # download and configure calicoctl
-    curl -o calicoctl -O -L https://downloads.tigera.io/ee/binaries/v3.11.2/calicoctl
+    curl -o calicoctl -O -L https://downloads.tigera.io/ee/binaries/v3.12.0/calicoctl
 
     chmod +x calicoctl
     
@@ -213,7 +213,7 @@ echo export CLIENTSECRET=$CLIENTSECRET >> ~/.bashrc
 
     ```bash
     # download and configure calicoctl
-    curl -o calicoctl -O -L https://downloads.tigera.io/ee/binaries/v3.11.2/calicoctl
+    curl -o calicoctl -O -L https://downloads.tigera.io/ee/binaries/v3.12.0/calicoctl
     chmod +x calicoctl
     
     # verify calicoctl is running 
@@ -225,7 +225,7 @@ echo export CLIENTSECRET=$CLIENTSECRET >> ~/.bashrc
 
     ```bash
     # download and configure calicoctl
-    curl -o calicoctl -O -L  https://downloads.tigera.io/ee/binaries/v3.11.2/calicoctl-darwin-amd64
+    curl -o calicoctl -O -L  https://downloads.tigera.io/ee/binaries/v3.12.0/calicoctl-darwin-amd64
 
     chmod +x calicoctl
     
@@ -240,8 +240,9 @@ echo export CLIENTSECRET=$CLIENTSECRET >> ~/.bashrc
     >Tip: Consider runing powershell as administraor and navigating to a location that’s in your PATH. For example, C:\Windows.
 
     ```pwsh
-    Invoke-WebRequest -Uri "https://downloads.tigera.io/ee/binaries/v3.11.2/calicoctl-windows-amd64.exe" -OutFile "kubectl-calico.exe"
+    Invoke-WebRequest -Uri "https://downloads.tigera.io/ee/binaries/v3.12.0/calicoctl-windows-amd64.exe" -OutFile "kubectl-calico.exe"
     ```
+
 
 ---
 
