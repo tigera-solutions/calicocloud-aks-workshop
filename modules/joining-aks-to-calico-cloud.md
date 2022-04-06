@@ -12,6 +12,8 @@ IMPORTANT: In order to complete this module, you must have [Calico Cloud trial a
 
 2. Upon signing into the Calico Cloud UI the Welcome screen shows four use cases which will give a quick tour for learning more. This step can be skipped. Tip: the menu icons on the left can be expanded to display the worded menu as shown:
 
+   ![get-start](../img/get-start.png)
+
    ![expand-menu](../img/expand-menu.png)
 
 
@@ -23,15 +25,14 @@ IMPORTANT: In order to complete this module, you must have [Calico Cloud trial a
     Click on "connect cluster"
      ![connect-cluster](../img/connect-cluster.png)
 
-    Enter the name of the cluster, Choose AKS and click next
+    choose AKS and click next
       ![choose-aks](../img/choose-aks.png)
 
+    Run installation script in your aks cluster, script should look similar to this
 
-    Run installation script in your aks cluster. 
-    ```bash
-    # script should look similar to this
-    kubectl apply -f https://installer.calicocloud.io/manifests/cc-operator/latest/deploy.yaml && curl -H "Authorization: Bearer xxxxxxxxxxxx" "https://www.calicocloud.io/api/managed-cluster/deploy.yaml" | kubectl apply -f -
-    ```
+      ![install-script](../img/script.png)
+    
+
     > Output should look similar to:
     ```bash
     namespace/calico-cloud created
@@ -46,16 +47,16 @@ IMPORTANT: In order to complete this module, you must have [Calico Cloud trial a
     configmap/calico-cloud-manager-config created
     service/calico-cloud-controller-manager-metrics-service created
     deployment.apps/calico-cloud-controller-manager created
-    % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                    Dload  Upload   Total   Spent    Left  Speed
-    100   355  100   355    0     0    541      0 --:--:-- --:--:-- --:--:--   541
+      % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+    100   365  100   365    0     0   1312      0 --:--:-- --:--:-- --:--:--  1312
     secret/api-key created
-    installer.operator.calicocloud.io/aks-westus created
+    installer.operator.calicocloud.io/aks-calicocloud-repo created
     ```
     Joining the cluster to Calico Cloud can take a few minutes. Meanwhile the Calico resources can be monitored until they are all reporting `Available` as `True`
 
     ```bash
-    Every 2.0s: kubectl get tigerastatus                                                                                                                    
+    kubectl get tigerastatus -w                                                                                                                   
 
     NAME                            AVAILABLE   PROGRESSING   DEGRADED   SINCE
     apiserver                       True        False         False      96s
@@ -66,14 +67,14 @@ IMPORTANT: In order to complete this module, you must have [Calico Cloud trial a
     management-cluster-connection   True        False         False      51s
     monitor                         True        False         False      2m1s
     ```
-    
+
 4. Navigating the Calico Cloud UI
 
     Once the cluster has successfully connected to Calico Cloud you can review the cluster status in the UI. Click on `Managed Clusters` from the left side menu and look for the `connected` status of your cluster. You will also see a `Tigera-labs` cluster for demo purposes. Ensure you are in the correct cluster context by clicking the `Cluster` dropdown in the top right corner. This will list the connected clusters. Click on your cluster to switch context otherwise the current cluster context is in *bold* font.
     
     ![cluster-selection](../img/cluster-selection.png)
 
-5. Configure log aggregation and flush intervals in aks cluster, we will use 10s instead of default value 300s for lab testing only.   
+5. Configure log aggregation and flush intervals in aks cluster, we will use 60s instead of default value 300s for lab testing only.   
 
     ```bash
     kubectl patch felixconfiguration.p default -p '{"spec":{"flowLogsFlushInterval":"10s"}}'
@@ -81,11 +82,10 @@ IMPORTANT: In order to complete this module, you must have [Calico Cloud trial a
     kubectl patch felixconfiguration.p default -p '{"spec":{"flowLogsFileAggregationKindForAllowed":1}}'
     ```
 
-6. Configure Felix to collect TCP stats - this uses eBPF TC program and requires miniumum Kernel version of v5.3.0. Further [documentation](https://docs.tigera.io/v3.9/visibility/elastic/flow/tcpstats)
-    >[Felix](https://docs.tigera.io/reference/architecture/overview#felix) is one of the Calico components that is responsible for configuring routes, ACLs, and anything else required on the host to provide desired connectivity for the endpoints on that host.
+6. Configure Felix to collect TCP stats - this uses eBPF TC program and requires miniumum Kernel version of v5.3.0. Further [documentation](https://docs.tigera.io/visibility/elastic/flow/tcpstats)
 
     ```bash
     kubectl patch felixconfiguration default -p '{"spec":{"flowLogsCollectTcpStats":true}}'
     ```
 
-[Next -> Module 2](../modules/configuring-demo-apps.md)
+[Next -> Module 2](../calicocloud/configuring-demo-apps.md)
