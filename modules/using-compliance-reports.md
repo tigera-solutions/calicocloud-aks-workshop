@@ -8,17 +8,20 @@
 
     >We have deployed a few compliance reports in one of the first labs and by this time a few reports should have been already generated. 
     ```bash
-    kubectl get globalreport                                                          
-    NAME                         CREATED AT
-    cluster-inventory            2021-09-30T23:58:05Z
-    cluster-policy-audit         2021-09-30T23:58:05Z
-    daily-cis-results            2021-09-30T23:58:04Z
-    cluster-network-access   2021-09-30T23:58:05Z
+    kubectl get globalreport        
+    ```
+
+    ```text                                                   
+    NAME                     CREATED AT
+    cluster-inventory        2022-04-07T00:29:45Z
+    cluster-network-access   2022-04-07T00:29:45Z
+    cluster-policy-audit     2022-04-07T00:29:45Z
+    daily-cis-results        2022-04-07T00:29:44Z
     ```
 
     >If you don't see any reports, you can manually kick off report generation task. Follow the steps below if you need to do so.
 
-    Calico provides `GlobalReport` resource to offer [Compliance reports](https://docs.tigera.io/v3.9/compliance/overview) capability. There are several types of reports that you can configure:
+    Calico provides `GlobalReport` resource to offer [Compliance reports](https://docs.tigera.io/compliance/overview) capability. There are several types of reports that you can configure:
 
     - CIS benchmarks
     - Inventory
@@ -41,22 +44,24 @@
 
     Instructions below for a Managed cluster only. Follow [configuration documentation](https://docs.tigera.io/compliance/overview#run-reports) to configure compliance jobs for management and standalone clusters. We will need change the START/END time accordingly.
 
-   ```bash
-   vi demo/40-compliance-reports/compliance-reporter-pod.yaml
-   ```
+    ```bash
+    vi demo/40-compliance-reports/compliance-reporter-pod.yaml
+    ```
 
    b. We need to substitute the Cluster Name in the YAML file with the correct cluster name index. We can obtain this value and set as a variable `CALICOCLUSTERNAME`. This enables compliance jobs to target the correct index in Elastic Search
+
 	```bash
     # obtain ElasticSearch index and set as variable
-    
     CALICOCLUSTERNAME=$(kubectl get deployment -n tigera-intrusion-detection intrusion-detection-controller -ojson | \
     jq -r '.spec.template.spec.containers[0].env[] | select(.name == "CLUSTER_NAME").value')
-
-    # Set correct index in manifest
+    ```
     
+    ```bash
+    # Set correct index in manifest
 	sed -i "s/\$CALICOCLUSTERNAME/${CALICOCLUSTERNAME}/g" ./demo/40-compliance-reports/compliance-reporter-pod.yaml
 	```
-	For other variations/shells the following syntax may be required
+	
+    For other variations/shells the following syntax may be required
 
 	```bash
 	sed -i "" "s/\$CALICOCLUSTERNAME/${CALICOCLUSTERNAME}/g" ./demo/40-compliance-reports/compliance-reporter-pod.yaml
@@ -69,11 +74,9 @@
 
     Once the `run-reporter` job finished, you should be able to see this report in manager UI and download the csv file. 
 
-3. Reports are generated 30 minutes after the end of the report as [documented](https://docs.tigera.io/v3.9/compliance/overview#change-the-default-report-generation-time). As the compliance reports deployed in the [manifests](https://github.com/tigera-solutions/calicocloud-aks-workshop/tree/main/demo/40-compliance-reports) are scheduled to run every 10 minutes the generation of reports will take between 30-40 mins depending when the manifests were deloyed.
-<br>
+3. Reports are generated 30 minutes after the end of the report as [documented](https://docs.tigera.io/compliance/overview#change-the-default-report-generation-time). As the compliance reports deployed in the [manifests](https://github.com/tigera-solutions/calicocloud-aks-workshop/tree/main/demo/40-compliance-reports) are scheduled to run every 10 minutes the generation of reports will take between 30-60 mins depending when the manifests were deloyed.
 
 <br>
-
 
 
 [Next -> Module 9](../modules/using-alerts.md)
