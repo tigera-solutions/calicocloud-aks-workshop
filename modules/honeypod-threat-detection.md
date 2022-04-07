@@ -3,7 +3,7 @@
 **Goal:** Deploy honeypod resources and generate alerts when suspicous traffic is detected
 ---
 
-Calico offers [Honeypod](https://docs.tigera.io/v3.11/threat/honeypod/) capability which is based upon the same principles as traditional honeypots. Calico is able to detect traffic which probes the Honeypod resources which can be an indicator of compromise. Refer to the [official honeypod configuration documentation](https://docs.tigera.io/v3.11/threat/honeypod/honeypods) for more details.
+Calico offers [Honeypod](https://docs.tigera.io/threat/honeypod/) capability which is based upon the same principles as traditional honeypots. Calico is able to detect traffic which probes the Honeypod resources which can be an indicator of compromise. Refer to the [official honeypod configuration documentation](https://docs.tigera.io/threat/honeypod/honeypods) for more details.
 <br>
 
 ## Steps
