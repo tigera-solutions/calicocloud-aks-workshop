@@ -48,7 +48,7 @@
     kubectl apply -f demo/10-security-controls/staged.default-deny.yaml
     ```
 
-    Review the network policy created by clicking `Policies` on the left menu. A staged default deny policy has been created in the `default` tier. You can view or edit the policy by clicking the view or edit icons.
+    Review the network policy created by clicking `Policies` on the left menu. A staged default deny policy has been created in the `default` tier. You can view or edit the policy by double clicking the policy.
     
     <img src="../img/staged-default-deny.png" alt="staged-default-deny.png" width="100%"/>
 
@@ -75,7 +75,7 @@
     kubectl apply -f demo/boutiqueshop/policies.yaml
     ```
     
-    Now as we have proper policies in place, we can enforce `default-deny` policy moving closer to zero-trust security approach. You can either enforced the already deployed staged `default-deny` policy using the `Policies Board` view in your calicocloud Manager UI, or you can apply an enforcing `default-deny` policy manifest.
+    Now as we have proper policies in place, we can enforce `default-deny` policy moving closer to zero-trust security approach. You can either enforced the already deployed staged `default-deny` policy using the `Policies Board` view in your Calico Cloud Manager UI, or you can apply an enforcing `default-deny` policy manifest.
 
     ```bash
     # apply enforcing default-deny policy manifest
@@ -84,6 +84,8 @@
     If the above yaml definition is deployed the policy `Staged default-deny` can be deleted through the Web UI. Within the policy board click the edit icon from the `Staged default deny` policy in the `default` tier. Then click `Delete`
     
     <img src="../img/edit-policy.png" alt="edit-policy" width="100%"/>
+
+    <img src="../img/delete-policy.png" alt="edit-policy" width="100%"/>
 
 4. Test connectivity with policies in place.
 

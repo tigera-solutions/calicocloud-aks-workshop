@@ -48,7 +48,7 @@
     ```bash
     # test egress access to www.azure.com and www.microsoft.com after you whitelist from UI.
     kubectl -n dev exec -t centos -- sh -c 'curl -m3 -skI https://www.microsoft.com 2>/dev/null | grep -i http'
-    # test egress access to www.bing.com
+    # test egress access to www.azure.com
     kubectl -n dev exec -t centos -- sh -c 'curl -m3 -skI https://www.azure.com 2>/dev/null | grep -i http'
     ```
     
