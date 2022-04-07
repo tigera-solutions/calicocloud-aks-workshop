@@ -45,18 +45,19 @@
    tigera-dpi-lj8sg   1/1     Running   0          2m2s
    ```
 
-4. Trigger a snort alert basing on existing alert rules, we will use rule [21562](https://www.snort.org/rule_docs/1-21562)    
+4. Trigger a snort alert basing on existing alert rules, we will use rule [57461](https://www.snort.org/rule_docs/1-57461)    
 
    ```bash
    SVC_IP=$(kubectl get svc frontend-external -ojsonpath='{.status.loadBalancer.ingress[0].ip}')
    ```
-   
+
    ```bash
-   #curl your loadbalancer with head and smk data from outside of cluster
-   curl http://$SVC_IP:80 -H 'User-Agent: Mozilla/4.0' -XPOST --data-raw 'smk=1234'
+   #curl your loadbalancer from outside of cluster
+   curl http://$SVC_IP:80/secid_canceltoken.cgi -H 'X-CMD: Test' -H 'X-KEY: Test' -XPOST
    ```
 
-5. Confirm the `Signature Triggered Alert` in manager UI and also in Kibana `ee_event`
+
+5. Confirm the `Signature Triggered Alert` in manager UI and also in Kibana - Discover `tigera_secure_ee_events*` index.
     ![Signature Alert](../img/signature-alert.png)
 
 
