@@ -72,11 +72,11 @@
 
 
 
- - Generate `Suspicious IPs/Domains` alerts by curl those list above. Use `facebookint.com` and `188.34.185.85` as example:
+ - Generate `Suspicious IPs/Domains` alerts by curl those list above. Use `markettrendingcenter.com` and `188.34.185.85` as example:
    
     ```bash
     # generate suspicious DNS alerts
-    kubectl -n dev exec -t netshoot -- sh -c "ping -c1 facebookint.com"
+    kubectl -n dev exec -t netshoot -- sh -c "ping -c1 markettrendingcenter.com"
 
     # generate suspicious IP alerts
     kubectl -n dev exec -t netshoot -- sh -c "ping -c3 188.34.185.85"
