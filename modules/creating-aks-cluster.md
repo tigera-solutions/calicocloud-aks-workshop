@@ -153,7 +153,7 @@ echo export CLIENTSECRET=$CLIENTSECRET >> ~/.bashrc
     ```bash
     Name                 Location    ResourceGroup      KubernetesVersion    ProvisioningState    Fqdn
     -------------------  ----------  -----------------  -------------------  -------------------  ----------------------------------------------------------------
-    jessie-aks-workshop  eastus      aks-rg-jessie      1.22.4               Succeeded            aks-jessie-aks-rg-jessie-03cfb8-b2e2e308.hcp.eastus.azmk8s.io
+    aks-calicocloud-repo    eastus      aks-rg-jessie    1.22.4               Succeeded            aks-calico-aks-rg-jessie-03cfb8-b45d6762.hcp.eastus.azmk8s.io
     ```
 
 5. Get the Kubernetes config files for your new AKS cluster

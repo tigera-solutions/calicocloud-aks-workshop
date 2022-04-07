@@ -13,8 +13,7 @@ In [Module 9](../modules/anomaly-detection.md) we introduce Namespace `tigera-in
 1. Confirm your current folder is in this repo.
 
    ```text
-   jessie@Azure:~/calicocloud-aks-workshop$ pwd
-   /home/jessie/calicocloud-aks-workshop
+   /home/azure/calicocloud-aks-workshop
    ```
 
 2. Deploy policy tiers.
