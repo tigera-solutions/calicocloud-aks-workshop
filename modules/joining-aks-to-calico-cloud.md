@@ -6,7 +6,7 @@ IMPORTANT: In order to complete this module, you must have [Calico Cloud trial a
 
 ## Steps
 
-1. Navigate to [calicocloud](https://www.calicocloud.io/?utm_campaign=calicocloud&utm_medium=digital&utm_source=microsoft) and sign up for a 14 day trial account - no credit cards required. Returning users can login.
+1. Navigate to [calicocloud.io](https://www.calicocloud.io/?utm_campaign=calicocloud&utm_medium=digital&utm_source=microsoft) and sign up for a 14 day trial account - no credit cards required. Returning users can login.
 
    ![calico-cloud-login](../img/calico-cloud-login.png)
 
@@ -16,12 +16,11 @@ IMPORTANT: In order to complete this module, you must have [Calico Cloud trial a
 
    ![expand-menu](../img/expand-menu.png)
 
-
 3. Join AKS cluster to Calico Cloud management plane.
-    
+
     Click the "Managed Cluster" in your left side of browser.
     ![managed-cluster](../img/managed-cluster.png)
-    
+
     Click on "connect cluster"
      ![connect-cluster](../img/connect-cluster.png)
 
@@ -31,10 +30,10 @@ IMPORTANT: In order to complete this module, you must have [Calico Cloud trial a
     Run installation script in your aks cluster, script should look similar to this
 
       ![install-script](../img/script.png)
-    
 
-    > Output should look similar to:
-    ```bash
+    Output should look similar to:
+
+    ```text
     namespace/calico-cloud created
     customresourcedefinition.apiextensions.k8s.io/installers.operator.calicocloud.io created
     serviceaccount/calico-cloud-controller-manager created
@@ -53,6 +52,7 @@ IMPORTANT: In order to complete this module, you must have [Calico Cloud trial a
     secret/api-key created
     installer.operator.calicocloud.io/aks-calicocloud-repo created
     ```
+
     Joining the cluster to Calico Cloud can take a few minutes. Meanwhile the Calico resources can be monitored until they are all reporting `Available` as `True`
 
     ```bash
@@ -71,10 +71,10 @@ IMPORTANT: In order to complete this module, you must have [Calico Cloud trial a
 4. Navigating the Calico Cloud UI
 
     Once the cluster has successfully connected to Calico Cloud you can review the cluster status in the UI. Click on `Managed Clusters` from the left side menu and look for the `connected` status of your cluster. You will also see a `Tigera-labs` cluster for demo purposes. Ensure you are in the correct cluster context by clicking the `Cluster` dropdown in the top right corner. This will list the connected clusters. Click on your cluster to switch context otherwise the current cluster context is in *bold* font.
-    
+
     ![cluster-selection](../img/cluster-selection.png)
 
-5. Configure log aggregation and flush intervals in aks cluster, we will use 10s instead of default value 300s for lab testing only.   
+5. Configure log aggregation and flush intervals for Calico cluster, we will use 10s instead of default value 300s for lab testing only.
 
     ```bash
     kubectl patch felixconfiguration.p default -p '{"spec":{"flowLogsFlushInterval":"10s"}}'
@@ -82,7 +82,7 @@ IMPORTANT: In order to complete this module, you must have [Calico Cloud trial a
     kubectl patch felixconfiguration.p default -p '{"spec":{"flowLogsFileAggregationKindForAllowed":1}}'
     ```
 
-6. Configure Felix to collect TCP stats - this uses eBPF TC program and requires miniumum Kernel version of v5.3.0. Further [documentation](https://docs.tigera.io/visibility/elastic/flow/tcpstats)
+6. Configure Felix to collect TCP stats - this uses eBPF TC program and requires minimum Kernel version of v5.3.0. Further [documentation](https://docs.tigera.io/visibility/elastic/flow/tcpstats)
 
     ```bash
     kubectl patch felixconfiguration default -p '{"spec":{"flowLogsCollectTcpStats":true}}'
