@@ -8,34 +8,26 @@ Packet captures are Kubernetes Custom Resources and thus native Kubernetes RBAC 
 
 1. Choose an endpoint you want to capture from from manager UI, we will use `Redis` as example.
 
-  > Note: You can see the endpoint details from UI, and we choose the service port `6379` for capture the traffic.
+   > Note: You can see the endpoint details from UI, and we choose the service port `6379` for capture the traffic.
 
    ![select endpoint](../img/select-ep.png)
 
    ![initial packet capture](../img/initiate-pc.png)
 
-
 2. Schedule the packet capture job with specific port and time.
 
    ![schedule the job](../img/schedule-packet-capture-job.png)
 
-
 3. You will see the job scheduled in service graph.
-
 
    ![schedule packet capture](../img/schedule-packet-capture.png)
 
+4. Download the pcap file once the job is `Capturing` or `Finished`.
 
-4. Download the pcap file once the job is `Capturing` or `Finished`. 
-   
    ![download packet capture](../img/download-packet-capture.png)
-   
 
-5. Open the pcap file with wireshark or other utilis, you will see the ingress and egress traffic associate with `redis` pods i.e `10.240.0.71`
-   
-   
+5. Open the pcap file with wireshark or tcpdump, you will see the ingress and egress traffic associate with `redis` pods i.e `10.240.0.71`
+
     ![redis packet capture](../img/redis-pcap.png)
-
-
 
 [Next -> Module 8](../modules/using-compliance-reports.md)
