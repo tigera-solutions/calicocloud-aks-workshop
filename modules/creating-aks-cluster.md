@@ -203,8 +203,9 @@ Follow the prerequisite steps if you need to verify your Azure subscription and 
     a) CloudShell
 
     ```bash
+    CALICOVERSION=$(kubectl get clusterinformations default -ojsonpath='{.spec.cnxVersion}')
     # download and configure calicoctl
-    curl -o calicoctl -O -L https://downloads.tigera.io/ee/binaries/v3.14.1/calicoctl
+    curl -o calicoctl -O -L https://downloads.tigera.io/ee/binaries/$CALICOVERSION/calicoctl
 
     chmod +x calicoctl
     
@@ -216,8 +217,9 @@ Follow the prerequisite steps if you need to verify your Azure subscription and 
     >Tip: Consider navigating to a location that’s in your PATH. For example, /usr/local/bin/
 
     ```bash
+    CALICOVERSION=$(kubectl get clusterinformations default -ojsonpath='{.spec.cnxVersion}')
     # download and configure calicoctl
-    curl -o calicoctl -O -L https://downloads.tigera.io/ee/binaries/v3.14.1/calicoctl
+    curl -o calicoctl -O -L https://downloads.tigera.io/ee/binaries/$CALICOVERSION/calicoctl
     chmod +x calicoctl
     
     # verify calicoctl is running 
@@ -228,8 +230,9 @@ Follow the prerequisite steps if you need to verify your Azure subscription and 
     >Tip: Consider navigating to a location that’s in your PATH. For example, /usr/local/bin/
 
     ```bash
+    CALICOVERSION=$(kubectl get clusterinformations default -ojsonpath='{.spec.cnxVersion}')
     # download and configure calicoctl
-    curl -o calicoctl -O -L  https://downloads.tigera.io/ee/binaries/v3.14.1/calicoctl-darwin-amd64
+    curl -o calicoctl -O -L  https://downloads.tigera.io/ee/binaries/$CALICOVERSION/calicoctl-darwin-amd64
 
     chmod +x calicoctl
     
@@ -244,7 +247,8 @@ Follow the prerequisite steps if you need to verify your Azure subscription and 
     >Tip: Consider runing powershell as administraor and navigating to a location that’s in your PATH. For example, C:\Windows.
 
     ```pwsh
-    Invoke-WebRequest -Uri "https://downloads.tigera.io/ee/binaries/v3.14.1/calicoctl-windows-amd64.exe" -OutFile "kubectl-calico.exe"
+    $CALICOVERSION=$(kubectl get clusterinformations default -ojsonpath='{.spec.cnxVersion}')
+    Invoke-WebRequest -Uri "https://downloads.tigera.io/ee/binaries/$CALICOVERSION/calicoctl-windows-amd64.exe" -OutFile "kubectl-calico.exe"
     ```
 
 ---
