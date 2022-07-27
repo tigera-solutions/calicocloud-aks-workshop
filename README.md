@@ -89,3 +89,9 @@ In this workshop we are going to focus on these main use cases (with links to Ca
     ```bash
     az group delete --resource-group $RGNAME
     ```
+
+5. Clean up workshop variables from `~/.bashrc`.
+
+    ```bash
+    sed -i "/UNIQUE_SUFFIX/d; /RGNAME/d; /LOCATION/d; /CLUSTERNAME/d; /K8SVERSION/d" ~/.bashrc
+    ```
