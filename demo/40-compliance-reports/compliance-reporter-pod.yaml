@@ -21,19 +21,21 @@ spec:
     # Modify this image name, if you have re-tagged the image and are using a local
     # docker image repository.
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    image: quay.io/tigera/compliance-reporter:v3.12.0
+    image: quay.io/tigera/compliance-reporter:$CALICOVERSION
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     env:
       # Modify this value with name of an existing globalreport resource.
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     - name: TIGERA_COMPLIANCE_REPORT_NAME
-      value: <report name e.g. cluster-policy-audit>
+      value: $REPORT_NAME
       # Modify these values with the start and end time frame that should be reported on.
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     - name: TIGERA_COMPLIANCE_REPORT_START_TIME
-      value: <report start time in UTC RFC3339 format, e.g.  2019-03-23T14:20:00Z>
+      # value: <report start time in UTC RFC3339 format, e.g.  2019-03-23T14:20:00Z>
+      value: "$START_TIME"
     - name: TIGERA_COMPLIANCE_REPORT_END_TIME
-      value: <report start time in UTC RFC3339 format, e.g. 2019-03-23T15:10:00Z>
+      # value: <report start time in UTC RFC3339 format, e.g. 2019-03-23T15:10:00Z>
+      value: "$END_TIME"
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     - name: LOG_LEVEL
       value: "warning"
