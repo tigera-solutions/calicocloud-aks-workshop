@@ -12,59 +12,64 @@ If you already have an AKS cluster, make sure the network plugin is "azure", the
 
 ## Prerequisite Tasks
 
-Follow the prequisite steps if you need to verify your Azure subscription and Service Principal otherwise proceed to step 1.
+Follow the prerequisite steps if you need to verify your Azure subscription and Service Principal otherwise proceed to step 1.
 
-- Ensure you are using the correct Azure subscription you want to deploy AKS to.
+1. Ensure you are using the correct Azure subscription you want to deploy AKS to.
 
- ```
- # View subscriptions
- az account list   
- 
-  # Verify selected subscription
-  az account show
+    ```bash
+    # View subscriptions
+    az account list
 
-# Set correct subscription (if needed)
-  az account set --subscription <subscription_id>
-  
-# Verify correct subscription is now set
-  az account show
-  ```
+    # Verify selected subscription
+    az account show
 
-- Create Azure Service Principal to use through the labs
+    # Set correct subscription (if needed)
+    az account set --subscription <subscription_id>
 
- ```bash
- az ad sp create-for-rbac --skip-assignment
- ```
+    # Verify correct subscription is now set
+    az account show
+    ```
 
-- This will return the following. !!!IMPORTANT!!! - Please copy this information down as you'll need it for labs going forward.
+2. *[Optional]* Create Azure Service Principal for AKS resource
 
- ```bash
- “appId”: “ce493696-xxxx-xxxx-xxxx-99d6cfd09436",
- “displayName”: “jessieazurexxxx”,
- “name”: “ce493696-xxxx-xxxx-xxxx-99d6cfd09436",
- “password”: “YhutxxxxYwNxxxxQntNxxxx_VyVnxxxx”,
- “tenant”: “b0497432-xxxx-xxxx-xxxx-7d4072ca6006"
- ```
+    >Use this step **only** if you cannot create an AKS cluster with a managed identity, otherwise skip this step. If you do use your custom service principal to create the AKS cluster, you'll have to add `--service-principal <SP_CLIENT_ID>` and `--client-secret <SP_CLIENT_SECRET>` parameter to the `az aks create ...` command below.
 
-- Set the values from above as variables **(replace <appid><password>with your values)</password></appid>**.
+    - Create service principal account.
 
-> **Warning:** Several of the following steps have you echo values to your .bashrc file. This is done so that you can get those values back if your session reconnects. You will want to remember to clean these up at the end of the training, in particular if you're running on your own, or your company's, subscription.
+    ```bash
+    az ad sp create-for-rbac --skip-assignment
+    ```
 
-DON'T MESS THIS STEP UP. REPLACE THE VALUES IN BRACKETS!!!
+    - This will return the following. **IMPORTANT** - Note this information as you'll need it to provision the AKS cluster. You'll need to use `appId` as the `--service-principal` parameter value and `password` as the `--client-secret` parameter value.
 
-```bash
-# Persist for Later Sessions in Case of Timeout
-APPID=<appId>
-echo export APPID=$APPID >> ~/.bashrc
-CLIENTSECRET=<password>
-echo export CLIENTSECRET=$CLIENTSECRET >> ~/.bashrc
-```
+    ```bash
+    # this is an example output
+    “appId”: “ce493696-xxxx-xxxx-xxxx-99d6cfd09436",
+    “displayName”: “jessieazurexxxx”,
+    “name”: “ce493696-xxxx-xxxx-xxxx-99d6cfd09436",
+    “password”: “YhutxxxxYwNxxxxQntNxxxx_VyVnxxxx”,
+    “tenant”: “b0497432-xxxx-xxxx-xxxx-7d4072ca6006"
+    ```
+
+    - Set the values from above as variables **(replace `appId` and `password` with your values)**.
+
+    >**Warning:** Several of the following steps save some variables to the `.bashrc` file. This is done so that you can get those values back if your session disconnects. You will want to clean these up once you're done with this workshop.
+
+    **Make sure to replace the `<appId>` and `<password>` tokens below with the values from your newly created service principal object.**
+
+    ```bash
+    # Persist for Later Sessions in Case of Timeout
+    APPID=<appId>
+    echo export APPID=$APPID >> ~/.bashrc
+    CLIENTSECRET=<password>
+    echo export CLIENTSECRET=$CLIENTSECRET >> ~/.bashrc
+    ```
 
 ## Steps
 
 1. Create a unique identifier suffix for resources to be created in this lab.
 
- ```bash
+    ```bash
     UNIQUE_SUFFIX=$USER$RANDOM
     # Remove Underscores and Dashes (Not Allowed in AKS and ACR Names)
     UNIQUE_SUFFIX="${UNIQUE_SUFFIX//_}"
@@ -73,26 +78,26 @@ echo export CLIENTSECRET=$CLIENTSECRET >> ~/.bashrc
     echo $UNIQUE_SUFFIX
     # Persist for Later Sessions in Case of Timeout
     echo export UNIQUE_SUFFIX=$UNIQUE_SUFFIX >> ~/.bashrc
- ```
+    ```
 
-    **_ Note this value as it will be used in the next couple labs. _**
+    **Note this value as it will be used in the next couple labs.**
 
-2. Create an Azure Resource Group in your chosen region. We will use East US in this example.
+2. Create an Azure Resource Group in desired region.
 
-   ```bash
-   # Set Resource Group Name using the unique suffix
-   RGNAME=aks-rg-$UNIQUE_SUFFIX
-   # Persist for Later Sessions in Case of Timeout
-   echo export RGNAME=$RGNAME >> ~/.bashrc
-   # Set Region (Location)
-   LOCATION=eastus
-   # Persist for Later Sessions in Case of Timeout
-   echo export LOCATION=eastus >> ~/.bashrc
-   # Create Resource Group
-   az group create -n $RGNAME -l $LOCATION
-   ```
+    ```bash
+    # Set Resource Group Name using the unique suffix
+    RGNAME=aks-rg-$UNIQUE_SUFFIX
+    # Persist for Later Sessions in Case of Timeout
+    echo export RGNAME=$RGNAME >> ~/.bashrc
+    # Set Region (Location)
+    LOCATION=eastus
+    # Persist for Later Sessions in Case of Timeout
+    echo export LOCATION=$LOCATION >> ~/.bashrc
+    # Create Resource Group
+    az group create -n $RGNAME -l $LOCATION
+    ```
 
-3. Create your AKS cluster in the resource group created in step 2 with 3 nodes. We will check for a recent version of kubnernetes before proceeding. You will use the Service Principal information from the prerequisite tasks.
+3. Create your AKS cluster in the resource group created in step 2 with 3 nodes. We will check for a recent version of Kubernetes before proceeding. You will use the Service Principal information from the prerequisite tasks.
 
     Use Unique CLUSTERNAME
 
@@ -102,36 +107,35 @@ echo export CLIENTSECRET=$CLIENTSECRET >> ~/.bashrc
     # Look at AKS Cluster Name for Future Reference
     echo $CLUSTERNAME
     # Persist for Later Sessions in Case of Timeout
-    echo export CLUSTERNAME=aks${UNIQUE_SUFFIX} >> ~/.bashrc
+    echo export CLUSTERNAME=${CLUSTERNAME} >> ~/.bashrc
     ```
 
-    Get available kubernetes versions for the region. You will likely see more recent versions in your lab.
+    Get available Kubernetes versions for the region. You will likely see more recent versions in your lab.
 
     ```bash
     az aks get-versions -l $LOCATION --output table
     ```
 
-    ```bash
+    ```text
     KubernetesVersion    Upgrades
     -------------------  ------------------------
-    1.22.4               None available
-    1.22.2               1.22.4
-    1.21.7               1.22.2, 1.22.4
-    1.21.2               1.21.7, 1.22.2, 1.22.4
-    1.20.13              1.21.2, 1.21.7
-    1.20.9               1.20.13, 1.21.2, 1.21.7
-    1.19.13              1.20.9, 1.20.13
-    1.19.11              1.19.13, 1.20.9, 1.20.13
+    1.24.0(preview)      None available
+    1.23.8               1.24.0(preview)
+    1.23.5               1.23.8, 1.24.0(preview)
+    1.22.11              1.23.5, 1.23.8
+    1.22.6               1.22.11, 1.23.5, 1.23.8
+    1.21.14              1.22.6, 1.22.11
+    1.21.9               1.21.14, 1.22.6, 1.22.11
     ```
 
-    For this lab we'll use 1.22.4
+    For this lab we'll use 1.22.11
 
     ```bash
-    K8SVERSION=1.22.4
-    echo export K8SVERSION=1.22.4 >> ~/.bashrc
+    K8SVERSION=1.22.11
+    echo export K8SVERSION=$K8SVERSION >> ~/.bashrc
     ```
 
-    > The below command can take 10-20 minutes to run as it is creating the AKS cluster. Please be PATIENT and grab a coffee/tea/kombucha...
+    >The below command can take several minutes to run as it is creating the AKS cluster.
 
     ```bash
     # Create AKS Cluster - it is important to set the network-plugin as azure in order to connect to Calico Cloud
@@ -153,7 +157,7 @@ echo export CLIENTSECRET=$CLIENTSECRET >> ~/.bashrc
     ```bash
     Name                 Location    ResourceGroup      KubernetesVersion    ProvisioningState    Fqdn
     -------------------  ----------  -----------------  -------------------  -------------------  ----------------------------------------------------------------
-    aks-calicocloud-repo    eastus      aks-rg-jessie    1.22.4               Succeeded            aks-calico-aks-rg-jessie-03cfb8-b45d6762.hcp.eastus.azmk8s.io
+    aks-calicocloud-repo    eastus      aks-rg-jessie    1.22.11               Succeeded            aks-calico-aks-rg-jessie-03cfb8-b45d6762.hcp.eastus.azmk8s.io
     ```
 
 5. Get the Kubernetes config files for your new AKS cluster
@@ -172,9 +176,9 @@ echo export CLIENTSECRET=$CLIENTSECRET >> ~/.bashrc
 
     ```bash
     NAME                                STATUS   ROLES   AGE   VERSION
-    aks-nodepool1-36555681-vmss000000   Ready    agent   47m   v1.22.4
-    aks-nodepool1-36555681-vmss000001   Ready    agent   47m   v1.22.4
-    aks-nodepool1-36555681-vmss000002   Ready    agent   47m   v1.22.4
+    aks-nodepool1-36555681-vmss000000   Ready    agent   47m   v1.22.11
+    aks-nodepool1-36555681-vmss000001   Ready    agent   47m   v1.22.11
+    aks-nodepool1-36555681-vmss000002   Ready    agent   47m   v1.22.11
 
     ```
 
@@ -194,13 +198,13 @@ echo export CLIENTSECRET=$CLIENTSECRET >> ~/.bashrc
     cd ./calicocloud-aks-workshop
     ```
 
-8. *[Optional]*  Install `calicoctl` CLI for use in later labs
+8. *[Optional]*  Install `calicoctl` CLI to use in later labs
 
     a) CloudShell
 
     ```bash
     # download and configure calicoctl
-    curl -o calicoctl -O -L https://downloads.tigera.io/ee/binaries/v3.12.0/calicoctl
+    curl -o calicoctl -O -L https://downloads.tigera.io/ee/binaries/v3.14.1/calicoctl
 
     chmod +x calicoctl
     
@@ -213,7 +217,7 @@ echo export CLIENTSECRET=$CLIENTSECRET >> ~/.bashrc
 
     ```bash
     # download and configure calicoctl
-    curl -o calicoctl -O -L https://downloads.tigera.io/ee/binaries/v3.12.0/calicoctl
+    curl -o calicoctl -O -L https://downloads.tigera.io/ee/binaries/v3.14.1/calicoctl
     chmod +x calicoctl
     
     # verify calicoctl is running 
@@ -225,7 +229,7 @@ echo export CLIENTSECRET=$CLIENTSECRET >> ~/.bashrc
 
     ```bash
     # download and configure calicoctl
-    curl -o calicoctl -O -L  https://downloads.tigera.io/ee/binaries/v3.12.0/calicoctl-darwin-amd64
+    curl -o calicoctl -O -L  https://downloads.tigera.io/ee/binaries/v3.14.1/calicoctl-darwin-amd64
 
     chmod +x calicoctl
     
@@ -240,15 +244,13 @@ echo export CLIENTSECRET=$CLIENTSECRET >> ~/.bashrc
     >Tip: Consider runing powershell as administraor and navigating to a location that’s in your PATH. For example, C:\Windows.
 
     ```pwsh
-    Invoke-WebRequest -Uri "https://downloads.tigera.io/ee/binaries/v3.12.0/calicoctl-windows-amd64.exe" -OutFile "kubectl-calico.exe"
+    Invoke-WebRequest -Uri "https://downloads.tigera.io/ee/binaries/v3.14.1/calicoctl-windows-amd64.exe" -OutFile "kubectl-calico.exe"
     ```
-
 
 ---
 
 ## Next steps
 
 You should now have a Kubernetes cluster running with 3 nodes. You do not see the master servers for the cluster because these are managed by Microsoft. The Control Plane services which manage the Kubernetes cluster such as scheduling, API access, configuration data store and object controllers are all provided as services to the nodes.
-<br>
 
 [Next -> Module 1](../modules/joining-aks-to-calico-cloud.md)

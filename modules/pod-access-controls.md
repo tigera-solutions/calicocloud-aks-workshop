@@ -13,7 +13,7 @@
     kubectl -n dev exec -t centos -- sh -c 'curl -m3 -sI http://nginx-svc 2>/dev/null | grep -i http'
 
     # test connectivity within default namespace
-    kubectl exec -it $(kubectl get po -l app=loadgenerator -ojsonpath='{.items[0].metadata.name}') -- sh -c 'curl -m3 -sI frontend 2>/dev/null | grep -i http'
+    kubectl exec -it $(kubectl get po -l app=loadgenerator -ojsonpath='{.items[0].metadata.name}') -c main -- sh -c 'curl -m3 -sI frontend 2>/dev/null | grep -i http'
 
     kubectl exec -it $(kubectl get po -l app=frontend -ojsonpath='{.items[0].metadata.name}') -c server -- sh -c 'nc -zv productcatalogservice 3550'
     ```
@@ -25,7 +25,7 @@
     kubectl -n dev exec -t centos -- sh -c 'curl -m3 -sI http://frontend.default 2>/dev/null | grep -i http'
 
     # test connectivity from default namespace to dev namespace
-    kubectl exec -it $(kubectl get po -l app=loadgenerator -ojsonpath='{.items[0].metadata.name}') -- sh -c 'curl -m3 -sI http://nginx-svc.dev 2>/dev/null | grep -i http'
+    kubectl exec -it $(kubectl get po -l app=loadgenerator -ojsonpath='{.items[0].metadata.name}') -c main -- sh -c 'curl -m3 -sI http://nginx-svc.dev 2>/dev/null | grep -i http'
     ```
 
     c. Test connectivity from each namespace to the Internet.
@@ -35,7 +35,7 @@
     kubectl -n dev exec -t centos -- sh -c 'curl -m3 -sI http://www.bing.com 2>/dev/null | grep -i http'
 
     # test connectivity from default namespace to the Internet
-    kubectl exec -it $(kubectl get po -l app=loadgenerator -ojsonpath='{.items[0].metadata.name}') -- sh -c 'curl -m3 -sI www.bing.com 2>/dev/null | grep -i http'
+    kubectl exec -it $(kubectl get po -l app=loadgenerator -ojsonpath='{.items[0].metadata.name}') -c main -- sh -c 'curl -m3 -sI www.bing.com 2>/dev/null | grep -i http'
     ```
 
     All of these tests should succeed if there are no policies in place to govern the traffic for `dev` and `default` namespaces.
@@ -49,11 +49,11 @@
     ```
 
     Review the network policy created by clicking `Policies` on the left menu. A staged default deny policy has been created in the `default` tier. You can view or edit the policy by double clicking the policy.
-    
+
     <img src="../img/staged-default-deny.png" alt="staged-default-deny.png" width="100%"/>
 
     You can view the potential affect of the staged `default-deny` policy if you navigate to the `Dashboard` view in your Calico Cloud Manager UI and look at the `Packets by Policy` histogram.
-    
+
     <img src="../img/dashboard-default-deny.png" alt="dashboard-default-deny.png" width="100%"/>
 
     To view more traffic in the `Packets by Policy` histogram we can generate traffic from the `centos` pod to the `frontend` service.
@@ -74,15 +74,16 @@
     # deploy boutiqueshop policies
     kubectl apply -f demo/boutiqueshop/policies.yaml
     ```
-    
+
     Now as we have proper policies in place, we can enforce `default-deny` policy moving closer to zero-trust security approach. You can either enforced the already deployed staged `default-deny` policy using the `Policies Board` view in your Calico Cloud Manager UI, or you can apply an enforcing `default-deny` policy manifest.
 
     ```bash
     # apply enforcing default-deny policy manifest
     kubectl apply -f demo/10-security-controls/default-deny.yaml
     ```
+
     If the above yaml definition is deployed the policy `Staged default-deny` can be deleted through the Web UI. Within the policy board click the edit icon from the `Staged default deny` policy in the `default` tier. Then click `Delete`
-    
+
     <img src="../img/edit-policy.png" alt="edit-policy" width="100%"/>
 
     <img src="../img/delete-policy.png" alt="edit-policy" width="100%"/>
@@ -96,7 +97,7 @@
     kubectl -n dev exec -t centos -- sh -c 'curl -m3 -sI http://nginx-svc 2>/dev/null | grep -i http'
 
     # test connectivity within default namespace
-    kubectl exec -it $(kubectl get po -l app=loadgenerator -ojsonpath='{.items[0].metadata.name}') -- sh -c 'curl -m3 -sI frontend 2>/dev/null | grep -i http'
+    kubectl exec -it $(kubectl get po -l app=loadgenerator -ojsonpath='{.items[0].metadata.name}') -c main -- sh -c 'curl -m3 -sI frontend 2>/dev/null | grep -i http'
     ```
 
     b. The connections across `dev` and `default` namespaces should be blocked by the global `default-deny` policy.
@@ -106,7 +107,7 @@
     kubectl -n dev exec -t centos -- sh -c 'curl -m3 -sI http://frontend.default 2>/dev/null | grep -i http'
 
     # test connectivity from default namespace to dev namespace
-    kubectl exec -it $(kubectl get po -l app=loadgenerator -ojsonpath='{.items[0].metadata.name}') -- sh -c 'curl -m3 -sI http://nginx-svc.dev 2>/dev/null | grep -i http'
+    kubectl exec -it $(kubectl get po -l app=loadgenerator -ojsonpath='{.items[0].metadata.name}') -c main -- sh -c 'curl -m3 -sI http://nginx-svc.dev 2>/dev/null | grep -i http'
     ```
 
     c. The connections to the Internet should be blocked by the configured `default-deny` policies.
@@ -116,9 +117,8 @@
     kubectl -n dev exec -t centos -- sh -c 'curl -m3 -sI http://www.bing.com 2>/dev/null | grep -i http'
 
     # test connectivity from default namespace to the Internet
-    kubectl exec -it $(kubectl get po -l app=loadgenerator -ojsonpath='{.items[0].metadata.name}') -- sh -c 'curl -m3 -sI www.bing.com 2>/dev/null | grep -i http'
+    kubectl exec -it $(kubectl get po -l app=loadgenerator -ojsonpath='{.items[0].metadata.name}') -c main -- sh -c 'curl -m3 -sI www.bing.com 2>/dev/null | grep -i http'
     ```
-
 
 5. Implement egress policy to allow egress access from a workload in one namespace, e.g. `dev/centos`, to a service in another namespace, e.g. `default/frontend`. After the deployment, you can view the policy details under `platform` tier in `Policies Board`
 
@@ -136,6 +136,4 @@
 
     The access should be allowed once the egress policy is in place.
 
-
-    
 [Next -> Module 4](../modules/dns-egress-access-controls.md)

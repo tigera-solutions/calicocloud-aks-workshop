@@ -4,12 +4,11 @@
 
 ## AKS Calico Cloud Workshop
 
-The intent of this workshop is to introduce [Calico Cloud](https://www.calicocloud.io/?utm_campaign=calicocloud&utm_medium=digital&utm_source=microsoft) to manage AKS clusters and leverage Calico features to implement the various use cases. While there are many capabilities that the Calico product provides, this workshop focuses on a subset of those that are used most often by enterprises to derive value from the Calico Product. 
-
+The intent of this workshop is to introduce [Calico Cloud](https://www.calicocloud.io/?utm_campaign=calicocloud&utm_medium=digital&utm_source=microsoft) to manage AKS clusters and leverage Calico features to implement the various use cases. While there are many capabilities that the Calico product provides, this workshop focuses on a subset of those that are used most often by enterprises to derive value from the Calico Product.
 
 ## Learning Objectives
 
-In this workshop we are going to focus on these main use cases (with links to Calico docs for further info). Note that features for policy and visibility as outlined in this workshop are identical between Calico Cloud and Calico Enterprise. Consult the [Calico Enterprise docs](https://docs.tigera.io/v3.9/about/about-calico-enterprise/) for further reading:
+In this workshop we are going to focus on these main use cases (with links to Calico docs for further info). Note that features for policy and visibility as outlined in this workshop are identical between Calico Cloud and Calico Enterprise. Consult the [Calico Enterprise docs](https://docs.tigera.io/about/about-calico-enterprise/) for further reading:
 
 - **Integration:** [Integrating Calico Cloud into the AKS clusters.](https://docs.calicocloud.io/install/system-requirements)
 - **East-West security:** [leveraging zero-trust security approach.](https://docs.tigera.io/security/adopt-zero-trust)
@@ -22,11 +21,11 @@ In this workshop we are going to focus on these main use cases (with links to Ca
 [Calico User Group Slack](https://slack.projectcalico.org/) is a great resource to ask any questions about Calico. If you are not a part of this Slack group yet, we highly recommend [joining it](https://slack.projectcalico.org/) to participate in discussions or ask questions. For example, you can ask questions specific to EKS and other managed Kubernetes services in the `#eks-aks-gke-iks` channel.
 
 ## Who should take this workshop?
+
 - Developers
 - DevOps Engineers
 - Solutions Architects
 - Anyone that is interested in Security, Observability and Network policy for Kubernetes.
-
 
 ## Workshop prerequisites
 
@@ -35,7 +34,6 @@ In this workshop we are going to focus on these main use cases (with links to Ca
 - [Azure Kubernetes Service](https://github.com/Azure/kubernetes-hackfest/blob/master/labs/networking/network-policy/)
 - [Calico Cloud trial account](https://www.calicocloud.io/?utm_campaign=calicocloud&utm_medium=digital&utm_source=microsoft)
 - Terminal or Command Line console to work with Azure resources and AKS cluster
- 
 - `Git`
 - `netcat`
 
@@ -52,25 +50,23 @@ In this workshop we are going to focus on these main use cases (with links to Ca
 - [Module 8: Using compliance reports](modules/using-compliance-reports.md)
 - [Module 9: Using alerts](modules/using-alerts.md)
 - [Module 10: Anomaly Detection](modules/anomaly-detection.md)
-- [Module 11: Honeypod Threat Detection](modules/honeypod-threat-detection.md) 
-- [Module 12: Deep Packet Inspection](modules/deep-packet-inspection.md) 
-
-
+- [Module 11: Honeypod Threat Detection](modules/honeypod-threat-detection.md)
+- [Module 12: Deep Packet Inspection](modules/deep-packet-inspection.md)
 
 ## Cleanup
 
-1. Disconnect your cluster from calicocloud by following the instruction [here](https://docs.calicocloud.io/operations/disconnect)
+1. Disconnect your cluster from CalicoCloud by following the instruction [here](https://docs.calicocloud.io/operations/disconnect)
 
    > Whether you’ve finished with your Calico Cloud Trial or decided to disconnect your cluster from Calico Cloud, we know you want your cluster to remain functional. We highly recommend running a simple script to migrate your cluster to open-source Project Calico.
 
    ```bash
-   curl -O https://installer.calicocloud.io/manifests/v3.11.1-1/downgrade.sh
+   curl -O https://installer.calicocloud.io/manifests/v3.14.1-1/downgrade.sh
    ```
 
    ```bash
    chmod +x downgrade.sh
    ```
-   
+
    ```bash
    ./downgrade.sh --remove-all-calico-policy --remove-prometheus
    ```
@@ -80,7 +76,7 @@ In this workshop we are going to focus on these main use cases (with links to Ca
     ```bash
     kubectl delete -f demo/dev/app.manifests.yaml
     kubectl delete -f demo/boutiqueshop/boutique-app.manifests.yaml
-    ```    
+    ```
 
 3. Delete AKS cluster.
 
@@ -88,11 +84,8 @@ In this workshop we are going to focus on these main use cases (with links to Ca
     az aks delete --name $CLUSTERNAME --resource-group $RGNAME
     ```
 
-4. Delete the azure resource group. 
+4. Delete the azure resource group.
 
     ```bash
     az group delete --resource-group $RGNAME
     ```
-
-
-
