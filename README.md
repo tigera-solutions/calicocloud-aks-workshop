@@ -1,6 +1,6 @@
 # Calico cloud workshop on AKS
 
-<img src="img/calico-on-aks.png" alt="Calicocloud on AKS" width="30%"/>
+![Calicocloud on AKS](img/calico-on-aks.png)
 
 ## AKS Calico Cloud Workshop
 
@@ -57,19 +57,19 @@ In this workshop we are going to focus on these main use cases (with links to Ca
 
 1. Disconnect your cluster from CalicoCloud by following the instruction [here](https://docs.calicocloud.io/operations/disconnect)
 
-   > Whether you’ve finished with your Calico Cloud Trial or decided to disconnect your cluster from Calico Cloud, we know you want your cluster to remain functional. We highly recommend running a simple script to migrate your cluster to open-source Project Calico.
+    >Whether you’ve finished with your Calico Cloud Trial or decided to disconnect your cluster from Calico Cloud, we know you want your cluster to remain functional. We highly recommend running a simple script to migrate your cluster to open-source Project Calico.
 
-   ```bash
-   curl -O https://installer.calicocloud.io/manifests/v3.14.1-1/downgrade.sh
-   ```
+    ```bash
+    curl -O https://installer.calicocloud.io/manifests/v3.14.1-1/downgrade.sh
+    ```
 
-   ```bash
-   chmod +x downgrade.sh
-   ```
+    ```bash
+    chmod +x downgrade.sh
+    ```
 
-   ```bash
-   ./downgrade.sh --remove-all-calico-policy --remove-prometheus
-   ```
+    ```bash
+    ./downgrade.sh --remove-all-calico-policy --remove-prometheus
+    ```
 
 2. Delete application stack to clean up any `loadbalancer` services.
 

@@ -8,7 +8,7 @@ Packet captures are Kubernetes Custom Resources and thus native Kubernetes RBAC 
 
 1. Choose an endpoint you want to capture from from manager UI, we will use `Redis` as example.
 
-   > Note: You can see the endpoint details from UI, and we choose the service port `6379` for capture the traffic.
+   >Note: You can see the endpoint details from UI, and we choose the service port `6379` for capture the traffic.
 
    ![select endpoint](../img/select-ep.png)
 
@@ -28,6 +28,6 @@ Packet captures are Kubernetes Custom Resources and thus native Kubernetes RBAC 
 
 5. Open the pcap file with wireshark or tcpdump, you will see the ingress and egress traffic associate with `redis` pods i.e `10.240.0.71`
 
-    ![redis packet capture](../img/redis-pcap.png)
+   ![redis packet capture](../img/redis-pcap.png)
 
 [Next -> Module 8](../modules/using-compliance-reports.md)

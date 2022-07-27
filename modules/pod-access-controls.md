@@ -50,11 +50,11 @@
 
     Review the network policy created by clicking `Policies` on the left menu. A staged default deny policy has been created in the `default` tier. You can view or edit the policy by double clicking the policy.
 
-    <img src="../img/staged-default-deny.png" alt="staged-default-deny.png" width="100%"/>
+    ![Staged default-deny](../img/staged-default-deny.png)
 
     You can view the potential affect of the staged `default-deny` policy if you navigate to the `Dashboard` view in your Calico Cloud Manager UI and look at the `Packets by Policy` histogram.
 
-    <img src="../img/dashboard-default-deny.png" alt="dashboard-default-deny.png" width="100%"/>
+    ![Dashboard default-deny](../img/dashboard-default-deny.png)
 
     To view more traffic in the `Packets by Policy` histogram we can generate traffic from the `centos` pod to the `frontend` service.
 
@@ -84,9 +84,9 @@
 
     If the above yaml definition is deployed the policy `Staged default-deny` can be deleted through the Web UI. Within the policy board click the edit icon from the `Staged default deny` policy in the `default` tier. Then click `Delete`
 
-    <img src="../img/edit-policy.png" alt="edit-policy" width="100%"/>
+    ![Edit policy](../img/edit-policy.png)
 
-    <img src="../img/delete-policy.png" alt="edit-policy" width="100%"/>
+    ![Delete policy](../img/delete-policy.png)
 
 4. Test connectivity with policies in place.
 

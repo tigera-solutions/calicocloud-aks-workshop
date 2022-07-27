@@ -22,14 +22,14 @@ IMPORTANT: In order to complete this module, you must have [Calico Cloud trial a
     ![managed-cluster](../img/managed-cluster.png)
 
     Click on "connect cluster"
-     ![connect-cluster](../img/connect-cluster.png)
+    ![connect-cluster](../img/connect-cluster.png)
 
     choose AKS and click next
-      ![choose-aks](../img/choose-aks.png)
+    ![choose-aks](../img/choose-aks.png)
 
     Run installation script in your aks cluster, script should look similar to this
 
-      ![install-script](../img/script.png)
+    ![install-script](../img/script.png)
 
     Output should look similar to:
 
@@ -56,7 +56,7 @@ IMPORTANT: In order to complete this module, you must have [Calico Cloud trial a
     Joining the cluster to Calico Cloud can take a few minutes. Meanwhile the Calico resources can be monitored until they are all reporting `Available` as `True`
 
     ```bash
-    kubectl get tigerastatus -w                                                                                                                   
+    kubectl get tigerastatus -w
 
     NAME                            AVAILABLE   PROGRESSING   DEGRADED   SINCE
     apiserver                       True        False         False      96s

@@ -77,9 +77,9 @@
         ./demo/40-compliance-reports/compliance-reporter-pod.yaml | kubectl apply -f -
     ```
 
-    Once the `run-reporter` job finished, you should be able to see this report in manager UI and download the csv file. 
+    Once the `run-reporter` job finished, you should be able to see this report in manager UI and download the csv file.
 
-3. Reports are generated 30 minutes after the end of the report as [documented](https://docs.tigera.io/compliance/overview#change-the-default-report-generation-time). As the compliance reports deployed in the [manifests](https://github.com/tigera-solutions/calicocloud-aks-workshop/tree/main/demo/40-compliance-reports) are scheduled to run every 10 minutes the generation of reports will take between 30-60 mins depending when the manifests were deloyed.
+3. Reports are generated 30 minutes after the end of the report as [documented](https://docs.tigera.io/compliance/overview#change-the-default-report-generation-time). As the compliance reports deployed in the [manifests](https://github.com/tigera-solutions/calicocloud-aks-workshop/tree/main/demo/40-compliance-reports) are scheduled to run every 10 minutes the generation of reports will take between 30-60 mins depending when the manifests were deployed.
 
 <br>
 

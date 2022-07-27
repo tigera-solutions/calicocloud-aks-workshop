@@ -80,7 +80,7 @@ In [Module 9](../modules/anomaly-detection.md) we introduce Namespace `tigera-in
     Double click on the `default` Namespace as highlighted to bring only resources in the `default` namespace in view along with other resources communicating into or out of the `deafult` Namespace.
     <br>
 
-      ![service-graph-default](../img/service-graph-default.png)
+    ![service-graph-default](../img/service-graph-default.png)
 
     Note that pod/resource limits on your nodes may prevent pods from deploying. Ensure the nodes in the cluster are scaled appropriately
 

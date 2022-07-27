@@ -80,6 +80,6 @@ Calico Cloud can be enabled for Layer 7 application visibility which captures th
 
     The HTTP logs can be reviewed from `Service Graph` and then clicking the `HTTP` tab. Details of each flow can be reviewed by drilling down into the flow record
 
-    <img src="../img/service-graph-l7.png" alt="Service Graph L7" width="100%"/>
+    ![Service Graph L7](../img/service-graph-l7.png)
 
 [Next -> Module 6](../modules/using-observability-tools.md)

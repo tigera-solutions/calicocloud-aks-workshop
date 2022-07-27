@@ -32,15 +32,14 @@
 
 3. Trigger dns alerts from curl demo.
 
-   ```bash
-   
-   #curl example.com couple times to trigger the dns aler
-   kubectl -n dev exec -it netshoot -- sh -c 'curl -m3 -sI www.google.com 2>/dev/null | grep -i http'
-   ```
+    ```bash
+    # curl example.com couple times to trigger the dns aler
+    kubectl -n dev exec -it netshoot -- sh -c 'curl -m3 -sI www.google.com 2>/dev/null | grep -i http'
+    ```
 
 4. Trigger GlobalThreatfeed from known bad actors.
 
-   - Calico Cloud offers [Global threat feed](https://docs.tigera.io/reference/resources/globalthreatfeed) resource to prevent known bad actors from accessing Kubernetes pods.
+    Calico Cloud offers [Global threat feed](https://docs.tigera.io/reference/resources/globalthreatfeed) resource to prevent known bad actors from accessing Kubernetes pods.
 
     ```bash
     kubectl get globalthreatfeeds
@@ -70,7 +69,7 @@
     https://installer.calicocloud.io/feeds/v1/ips
     ```
 
-   - Generate `Suspicious IPs/Domains` alerts by curl those list above. Use `markettrendingcenter.com` and `188.34.185.85` as example:
+    Generate `Suspicious IPs/Domains` alerts by curl those list above. Use `markettrendingcenter.com` and `188.34.185.85` as example:
 
     ```bash
     # generate suspicious DNS alerts
@@ -80,7 +79,7 @@
     kubectl -n dev exec -t netshoot -- sh -c "ping -c3 188.34.185.85"
     ```
 
-   - Open `Alerts` view to see all triggered alerts in the cluster. Review the generated alerts.
+    Open `Alerts` view to see all triggered alerts in the cluster. Review the generated alerts.
 
     ![alerts view all](../img/alerts-view-all.png)
 

@@ -21,7 +21,7 @@
     Access to the `api.twilio.com` endpoint should be allowed by the DNS policy but not to any other external endpoints like `www.bing.com` unless we modify the policy to include that domain name. The connectivity is represented in the diagram below
     <br>
 
-    <img src="../img/connectivity-diagram.png " alt="connectivity-diagram" width="75%"/>
+    ![Connectivity diagram](../img/connectivity-diagram.png)
 
     b. Edit the policy to use a `NetworkSet` instead of inline DNS rule.
 
@@ -32,7 +32,7 @@
     kubectl apply -f demo/20-egress-access-controls/dns-policy.netset.yaml
     ```
 
-    >the update version of `allow-twilio-access` policy is using [destination: type == "external-apis"] instead of [source: app == 'centos'], which will simplify your DNS egress management. Now we re-test access to twilio and bing to demonstrate policy using Network Sets is enforcing as expected:
+    >the update version of `allow-twilio-access` policy is using `[destination: type == "external-apis"]` instead of `[source: app == 'centos']`, which will simplify your DNS egress management. Now we re-test access to twilio and bing to demonstrate policy using Network Sets is enforcing as expected:
 
     ```bash
     # test egress access to api.twilio.com
@@ -52,6 +52,6 @@
     kubectl -n dev exec -t centos -- sh -c 'curl -m3 -skI https://www.azure.com 2>/dev/null | grep -i http'
     ```
 
-    <img src="../img/add-DNS-in-networkset.png " alt="add-DNS-in-networkset" width="50%"/>
+    ![DNS in networkset](../img/add-DNS-in-networkset.png)
 
 [Next -> Module 5](../modules/layer7-logging.md)
