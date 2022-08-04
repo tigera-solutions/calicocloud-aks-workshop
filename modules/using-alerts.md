@@ -69,14 +69,16 @@
     https://installer.calicocloud.io/feeds/v1/ips
     ```
 
-    Generate `Suspicious IPs/Domains` alerts by curl those list above. Use `markettrendingcenter.com` and `188.34.185.85` as example:
+    Generate `Suspicious IPs/Domains` alerts by curl those list above. Use first entry in each threatfeed as example:
 
     ```bash
     # generate suspicious DNS alerts
-    kubectl -n dev exec -t netshoot -- sh -c "ping -c1 markettrendingcenter.com"
+    DOMAIN=$(curl https://installer.calicocloud.io/feeds/v1/domains | awk 'NR==1')
+    kubectl -n dev exec -t netshoot -- sh -c "ping -c1 $DOMAIN"
 
     # generate suspicious IP alerts
-    kubectl -n dev exec -t netshoot -- sh -c "ping -c3 188.34.185.85"
+    IP=$(kubectl get globalnetworksets.crd.projectcalico.org threatfeed.alienvault.ipthreatfeeds -o jsonpath='{.spec.nets[0]}' | sed 's/...$//')
+    kubectl -n dev exec -t netshoot -- sh -c "ping -c3 $IP"
     ```
 
     Open `Alerts` view to see all triggered alerts in the cluster. Review the generated alerts.
