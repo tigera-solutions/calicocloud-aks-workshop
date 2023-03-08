@@ -62,27 +62,24 @@ spec:
     - name: ELASTIC_SSL_VERIFY
       value: "true"
     - name: ELASTIC_CA
-      value: /etc/ssl/elastic/ca.pem
+      value: /etc/pki/tls/certs/tigera-ca-bundle.crt
     volumeMounts:
     - mountPath: /var/log/calico
       name: var-log-calico
-    - name: elastic-ca-cert-volume
-      mountPath: /etc/ssl/elastic/
+    - mountPath: /etc/pki/tls/certs/
+      name: tigera-ca-bundle
+      readOnly: true
     livenessProbe:
       httpGet:
         path: /liveness
         port: 9099
         host: localhost
   volumes:
-  - name: var-log-calico 
-    hostPath:
-      path: /var/log/calico
-      type: DirectoryOrCreate
-  - name: elastic-ca-cert-volume
-    secret:
-      optional: true
-      items:
-      - key: tls.crt
-        path: ca.pem
-      secretName: tigera-secure-es-gateway-http-certs-public
-
+    - name: var-log-calico
+      hostPath:
+        path: /var/log/calico
+        type: DirectoryOrCreate
+    - configMap:
+        defaultMode: 420
+        name: tigera-ca-bundle
+      name: tigera-ca-bundle

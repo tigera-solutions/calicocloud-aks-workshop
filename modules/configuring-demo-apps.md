@@ -109,7 +109,7 @@ In [Module 9](../modules/anomaly-detection.md) we introduce Namespace `tigera-in
 
     ```bash
     ##install update package and curl
-    kubectl exec -it $(kubectl get po -l app=loadgenerator -ojsonpath='{.items[0].metadata.name}') -- sh -c 'apt-get update && apt install curl -y'
+    kubectl exec -it $(kubectl get po -l app=loadgenerator -ojsonpath='{.items[0].metadata.name}') -c main -- sh -c 'apt-get update && apt install curl iputils-ping -y'
     ```
 
 [Next -> Module 3](../modules/pod-access-controls.md)
