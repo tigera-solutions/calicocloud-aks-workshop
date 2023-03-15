@@ -4,7 +4,7 @@
 
 ---
 
-Calico Cloud can be enabled for Layer 7 application visibility which captures the HTTP calls applications are making. Application visibility does not require a service mesh but does utilize envoy for capturing logs. Envoy is deployed as part of an L7 Log Collector DaemonSet per Kubernetes node - this requires less resources than a sidecar per pod. For more info please review the [documentation](https://docs.tigera.io/visibility/elastic/l7/configure).
+Calico Cloud can be enabled for Layer 7 application visibility which captures the HTTP calls applications are making. Application visibility does not require a service mesh but does utilize envoy for capturing logs. Envoy is deployed as part of an L7 Log Collector DaemonSet per Kubernetes node - this requires less resources than a sidecar per pod. For more info please review the [documentation](https://docs.tigera.io/calico-cloud/visibility/elastic/l7/configure).
 
 ## Steps
 

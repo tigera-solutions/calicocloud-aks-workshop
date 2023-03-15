@@ -39,7 +39,7 @@
 
 4. Trigger GlobalThreatfeed from known bad actors.
 
-    Calico Cloud offers [Global threat feed](https://docs.tigera.io/reference/resources/globalthreatfeed) resource to prevent known bad actors from accessing Kubernetes pods.
+    Calico Cloud offers [Global threat feed](https://docs.tigera.io/calico-cloud/reference/resources/globalthreatfeed) resource to prevent known bad actors from accessing Kubernetes pods.
 
     ```bash
     kubectl get globalthreatfeeds

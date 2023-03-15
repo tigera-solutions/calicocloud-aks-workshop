@@ -118,20 +118,20 @@ Follow the prerequisite steps if you need to verify your Azure subscription and 
 
     ```text
     KubernetesVersion    Upgrades
-    -------------------  ------------------------
-    1.24.0(preview)      None available
-    1.23.8               1.24.0(preview)
-    1.23.5               1.23.8, 1.24.0(preview)
-    1.22.11              1.23.5, 1.23.8
-    1.22.6               1.22.11, 1.23.5, 1.23.8
-    1.21.14              1.22.6, 1.22.11
-    1.21.9               1.21.14, 1.22.6, 1.22.11
+    -------------------  -----------------------
+    1.26.0(preview)      None available
+    1.25.5               1.26.0(preview)
+    1.25.4               1.25.5, 1.26.0(preview)
+    1.24.9               1.25.4, 1.25.5
+    1.24.6               1.24.9, 1.25.4, 1.25.5
+    1.23.15              1.24.6, 1.24.9
+    1.23.12              1.23.15, 1.24.6, 1.24.9
     ```
 
-    For this lab we'll use 1.22.11
+    For this lab we'll use 1.25.5
 
     ```bash
-    K8SVERSION=1.22.11
+    K8SVERSION=1.25.5
     echo export K8SVERSION=$K8SVERSION >> ~/.bashrc
     ```
 
@@ -157,7 +157,7 @@ Follow the prerequisite steps if you need to verify your Azure subscription and 
     ```bash
     Name                 Location    ResourceGroup      KubernetesVersion    ProvisioningState    Fqdn
     -------------------  ----------  -----------------  -------------------  -------------------  ----------------------------------------------------------------
-    aks-calicocloud-repo    eastus      aks-rg-jessie    1.22.11               Succeeded            aks-calico-aks-rg-jessie-03cfb8-b45d6762.hcp.eastus.azmk8s.io
+    aks-calicocloud-repo    eastus      aks-rg-jessie    1.25.5              Succeeded            aks-calico-aks-rg-jessie-03cfb8-b45d6762.hcp.eastus.azmk8s.io
     ```
 
 5. Get the Kubernetes config files for your new AKS cluster
@@ -176,9 +176,9 @@ Follow the prerequisite steps if you need to verify your Azure subscription and 
 
     ```bash
     NAME                                STATUS   ROLES   AGE   VERSION
-    aks-nodepool1-36555681-vmss000000   Ready    agent   47m   v1.22.11
-    aks-nodepool1-36555681-vmss000001   Ready    agent   47m   v1.22.11
-    aks-nodepool1-36555681-vmss000002   Ready    agent   47m   v1.22.11
+    aks-nodepool1-36555681-vmss000000   Ready    agent   47m   v1.25.5
+    aks-nodepool1-36555681-vmss000001   Ready    agent   47m   v1.25.5
+    aks-nodepool1-36555681-vmss000002   Ready    agent   47m   v1.25.5
 
     ```
 

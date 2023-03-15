@@ -22,7 +22,7 @@
 
     >If you don't see any reports, you can manually kick off report generation task. Follow the steps below if you need to do so.
 
-    Calico provides `GlobalReport` resource to offer [Compliance reports](https://docs.tigera.io/compliance/overview) capability. There are several types of reports that you can configure:
+    Calico provides `GlobalReport` resource to offer [Compliance reports](https://docs.tigera.io/calico-cloud/compliance/overview) capability. There are several types of reports that you can configure:
 
     - CIS benchmarks
     - Inventory
@@ -43,7 +43,7 @@
 
    a. Review and apply the yaml file for the managed cluster.
 
-    Instructions below for a Managed cluster only. Follow [configuration documentation](https://docs.tigera.io/compliance/overview#run-reports) to configure compliance jobs for management and standalone clusters. We will need change the START/END time accordingly.
+    Instructions below for a Managed cluster only. Follow [configuration documentation](https://docs.tigera.io/calico-cloud/compliance/overview#run-reports) to configure compliance jobs for management and standalone clusters. We will need change the START/END time accordingly.
 
     ```bash
     vi demo/40-compliance-reports/compliance-reporter-pod.yaml
@@ -79,7 +79,7 @@
 
     Once the `run-reporter` job finished, you should be able to see this report in manager UI and download the csv file.
 
-3. Reports are generated 30 minutes after the end of the report as [documented](https://docs.tigera.io/compliance/overview#change-the-default-report-generation-time). As the compliance reports deployed in the [manifests](https://github.com/tigera-solutions/calicocloud-aks-workshop/tree/main/demo/40-compliance-reports) are scheduled to run every 10 minutes the generation of reports will take between 30-60 mins depending when the manifests were deployed.
+3. Reports are generated 30 minutes after the end of the report as [documented](https://docs.tigera.io/calico-cloud/compliance/overview#change-the-default-report-generation-time). As the compliance reports deployed in the [manifests](https://github.com/tigera-solutions/calicocloud-aks-workshop/tree/main/demo/40-compliance-reports) are scheduled to run every 10 minutes the generation of reports will take between 30-60 mins depending when the manifests were deployed.
 
 <br>
 

@@ -4,7 +4,7 @@
 
 ---
 
-Calico offers [Anomaly Detection](https://docs.tigera.io/threat/security-anomalies) (AD) as a part of its [threat defense](https://docs.tigera.io/threat/) capabilities. Calico's Machine Learning algorithms can baseline "normal" traffic patterns and subsequently detect abnormal or suspicious behavior. This may resemble an Indicator of Compromise and will generate a security alert to take further action on the incident.
+Calico offers [Anomaly Detection](https://docs.tigera.io/calico-cloud/threat/security-anomalies) (AD) as a part of its [threat defense](https://docs.tigera.io/calico-cloud/threat/) capabilities. Calico's Machine Learning algorithms can baseline "normal" traffic patterns and subsequently detect abnormal or suspicious behavior. This may resemble an Indicator of Compromise and will generate a security alert to take further action on the incident.
 
 ## Steps
 
