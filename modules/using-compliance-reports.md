@@ -83,6 +83,6 @@
 
 <br>
 
-[Module 7 :arrow_left:](../modules/packet-capture.md) &nbsp;&nbsp;&nbsp;&nbsp;[Next -> Module 9](../modules/using-alerts.md)
+[Module 7 :arrow_left:](../modules/packet-capture.md) &nbsp;&nbsp;&nbsp;&nbsp;[:arrow_right: Module 9](../modules/using-alerts.md)
 
 [:leftwards_arrow_with_hook: Back to Main](/README.md)

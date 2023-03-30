@@ -31,7 +31,7 @@ Calico offers [Honeypod](https://docs.calicocloud.io/threat/honeypod/) capabilit
     kubectl apply -f https://downloads.tigera.io/ee/${CALICOVERSION}/manifests/threatdef/honeypod/expose-svc.yaml
 
     # expose MySQL service
-    kubectl apply -f https://downloads.tigera.io/ee/${CALICOVERSION}/manifests/threatdef/honeypod/expose-svc.yaml
+    kubectl apply -f https://downloads.tigera.io/ee/${CALICOVERSION}/manifests/threatdef/honeypod/vuln-svc.yaml
     ```
 
 3. Verify newly deployed pods are running
@@ -125,6 +125,6 @@ Calico offers [Honeypod](https://docs.calicocloud.io/threat/honeypod/) capabilit
 
     ![Honeypod threat alert](../img/honeypod-threat-alert.png)
 
-[Module 10 :arrow_left:](../modules/anomaly-detection.md) &nbsp;&nbsp;&nbsp;&nbsp;[Next -> Module 12](../modules/deep-packet-inspection.md)
+[Module 10 :arrow_left:](../modules/anomaly-detection.md) &nbsp;&nbsp;&nbsp;&nbsp;[:arrow_right: Module 12](../modules/deep-packet-inspection.md)
 
 [:leftwards_arrow_with_hook: Back to Main](/README.md)

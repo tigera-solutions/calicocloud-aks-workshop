@@ -81,6 +81,6 @@ Calico Cloud can be enabled for Layer 7 application visibility which captures th
 
     ![Service Graph L7](../img/service-graph-l7.png)
 
-[Module 4 :arrow_left:](../modules/dns-egress-access-controls.md) &nbsp;&nbsp;&nbsp;&nbsp;[Next -> Module 6](../modules/using-observability-tools.md)
+[Module 4 :arrow_left:](../modules/dns-egress-access-controls.md) &nbsp;&nbsp;&nbsp;&nbsp;[:arrow_right: Module 6](../modules/using-observability-tools.md)
 
 [:leftwards_arrow_with_hook: Back to Main](/README.md)

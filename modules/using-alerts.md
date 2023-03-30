@@ -85,6 +85,6 @@
 
     ![alerts view all](../img/alerts-view-all.png)
 
-[Module 8 :arrow_left:](../modules/using-compliance-reports.md) &nbsp;&nbsp;&nbsp;&nbsp;[Next -> Module 10](../modules/anomaly-detection.md)
+[Module 8 :arrow_left:](../modules/using-compliance-reports.md) &nbsp;&nbsp;&nbsp;&nbsp;[:arrow_right: Module 10](../modules/anomaly-detection.md)
 
 [:leftwards_arrow_with_hook: Back to Main](/README.md)

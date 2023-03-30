@@ -24,7 +24,7 @@ In [Module 9](../modules/anomaly-detection.md) we introduce Namespace `tigera-in
     kubectl apply -f demo/tiers/tiers.yaml
     ```
 
-    This will add tiers `security` and `platform` to the aks cluster.
+    This will add tiers `security`, `platform` and `application` to the aks cluster.
 
 3. Deploy base policy.
 
@@ -113,6 +113,6 @@ In [Module 9](../modules/anomaly-detection.md) we introduce Namespace `tigera-in
     kubectl exec -it $(kubectl get po -l app=loadgenerator -ojsonpath='{.items[0].metadata.name}') -c main -- sh -c 'apt-get update && apt install curl iputils-ping -y'
     ```
 
-[Module 1 :arrow_left:](../modules/joining-aks-to-calico-cloud.md) &nbsp;&nbsp;&nbsp;&nbsp;[Next -> Module 3](../modules/pod-access-controls.md)
+[Module 1 :arrow_left:](../modules/joining-aks-to-calico-cloud.md) &nbsp;&nbsp;&nbsp;&nbsp;[:arrow_right: Module 3](../modules/pod-access-controls.md)
 
 [:leftwards_arrow_with_hook: Back to Main](/README.md)

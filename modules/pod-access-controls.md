@@ -136,6 +136,6 @@
 
     The access should be allowed once the egress policy is in place.
 
-[Module 2 :arrow_left:](../modules/configuring-demo-apps.md) &nbsp;&nbsp;&nbsp;&nbsp;[Next -> Module 4](../modules/dns-egress-access-controls.md)
+[Module 2 :arrow_left:](../modules/configuring-demo-apps.md) &nbsp;&nbsp;&nbsp;&nbsp;[:arrow_right: Module 4](../modules/dns-egress-access-controls.md)
 
 [:leftwards_arrow_with_hook: Back to Main](/README.md)

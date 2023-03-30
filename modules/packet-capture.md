@@ -30,6 +30,6 @@ Packet captures are Kubernetes Custom Resources and thus native Kubernetes RBAC 
 
    ![redis packet capture](../img/redis-pcap.png)
 
-[Module 6 :arrow_left:](../modules/using-observability-tools.md) &nbsp;&nbsp;&nbsp;&nbsp;[Next -> Module 8](../modules/using-compliance-reports.md)
+[Module 6 :arrow_left:](../modules/using-observability-tools.md) &nbsp;&nbsp;&nbsp;&nbsp;[:arrow_right: Module 8](../modules/using-compliance-reports.md)
 
 [:leftwards_arrow_with_hook: Back to Main](/README.md)
