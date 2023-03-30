@@ -59,4 +59,6 @@ Calico offers [Anomaly Detection](https://docs.tigera.io/calico-cloud/threat/sec
 
     ![Anomaly Detection alert](../img/anomaly-detection-alert.png)
 
-[Next -> Module 11](../modules/honeypod-threat-detection.md)
+[Module 9 :arrow_left:](../modules/using-alerts.md) &nbsp;&nbsp;&nbsp;&nbsp;[Next -> Module 11](../modules/honeypod-threat-detection.md)
+
+[:leftwards_arrow_with_hook: Back to Main](/README.md)

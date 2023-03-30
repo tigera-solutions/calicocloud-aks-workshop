@@ -88,4 +88,6 @@ IMPORTANT: In order to complete this module, you must have [Calico Cloud trial a
     kubectl patch felixconfiguration default -p '{"spec":{"flowLogsCollectTcpStats":true}}'
     ```
 
-[Next -> Module 2](../modules/configuring-demo-apps.md)
+[Module 0 :arrow_left:](../modules/creating-aks-cluster.md) &nbsp;&nbsp;&nbsp;&nbsp;[:arrow_right: Module 2](../modules/configuring-demo-apps.md)
+
+[:leftwards_arrow_with_hook: Back to Main](/README.md)

@@ -11,8 +11,9 @@ Calico offers [Honeypod](https://docs.calicocloud.io/threat/honeypod/) capabilit
 1. Configure honeypod namespace and Alerts for SSH detection
 
     ```bash
+    CALICOVERSION=$(kubectl get clusterinformations default -ojsonpath='{.spec.cnxVersion}')
     # create dedicated namespace and RBAC for honeypods
-    kubectl apply -f https://docs.calicocloud.io/manifests/threatdef/honeypod/common.yaml
+    kubectl apply -f https://downloads.tigera.io/ee/${CALICOVERSION}/manifests/threatdef/honeypod/common.yaml
     
     # add tigera pull secret to the namespace. We clone the existing secret from the calico-system NameSpace
     kubectl get secret tigera-pull-secret --namespace=calico-system -o yaml | \
@@ -24,13 +25,13 @@ Calico offers [Honeypod](https://docs.calicocloud.io/threat/honeypod/) capabilit
 
     ```bash
     # expose pod IP to test IP enumeration use case
-    kubectl apply -f https://docs.calicocloud.io/manifests/threatdef/honeypod/ip-enum.yaml
+    kubectl apply -f https://downloads.tigera.io/ee/${CALICOVERSION}/manifests/threatdef/honeypod/ip-enum.yaml
 
     # expose nginx service that can be reached via ClusterIP or DNS
-    kubectl apply -f https://docs.calicocloud.io/manifests/threatdef/honeypod/expose-svc.yaml
+    kubectl apply -f https://downloads.tigera.io/ee/${CALICOVERSION}/manifests/threatdef/honeypod/expose-svc.yaml
 
     # expose MySQL service
-    kubectl apply -f https://docs.calicocloud.io/manifests/threatdef/honeypod/vuln-svc.yaml
+    kubectl apply -f https://downloads.tigera.io/ee/${CALICOVERSION}/manifests/threatdef/honeypod/expose-svc.yaml
     ```
 
 3. Verify newly deployed pods are running
@@ -124,4 +125,6 @@ Calico offers [Honeypod](https://docs.calicocloud.io/threat/honeypod/) capabilit
 
     ![Honeypod threat alert](../img/honeypod-threat-alert.png)
 
-[Next -> Module 12](../modules/deep-packet-inspection.md)
+[Module 10 :arrow_left:](../modules/anomaly-detection.md) &nbsp;&nbsp;&nbsp;&nbsp;[Next -> Module 12](../modules/deep-packet-inspection.md)
+
+[:leftwards_arrow_with_hook: Back to Main](/README.md)

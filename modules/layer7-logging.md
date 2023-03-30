@@ -62,7 +62,6 @@ Calico Cloud can be enabled for Layer 7 application visibility which captures th
     kubectl annotate svc -n default checkoutservice projectcalico.org/l7-logging=true
     kubectl annotate svc -n default currencyservice projectcalico.org/l7-logging=true
     kubectl annotate svc -n default emailservice projectcalico.org/l7-logging=true
-    kubectl annotate svc -n default frontend projectcalico.org/l7-logging=true
     kubectl annotate svc -n default paymentservice projectcalico.org/l7-logging=true
     kubectl annotate svc -n default productcatalogservice projectcalico.org/l7-logging=true
     kubectl annotate svc -n default recommendationservice projectcalico.org/l7-logging=true
@@ -82,4 +81,6 @@ Calico Cloud can be enabled for Layer 7 application visibility which captures th
 
     ![Service Graph L7](../img/service-graph-l7.png)
 
-[Next -> Module 6](../modules/using-observability-tools.md)
+[Module 4 :arrow_left:](../modules/dns-egress-access-controls.md) &nbsp;&nbsp;&nbsp;&nbsp;[Next -> Module 6](../modules/using-observability-tools.md)
+
+[:leftwards_arrow_with_hook: Back to Main](/README.md)

@@ -1,0 +1,53 @@
+# security tier pass policy
+---
+apiVersion: projectcalico.org/v3
+kind: GlobalNetworkPolicy
+metadata:
+  name: security.pass-to-next-tier
+spec:
+  tier: security
+  order: 2000
+  selector: all()
+  ingress:
+    - action: Pass
+  egress:
+    - action: Pass
+  types:
+    - Ingress
+    - Egress
+
+# platform tier pass policy
+---
+apiVersion: projectcalico.org/v3
+kind: GlobalNetworkPolicy
+metadata:
+  name: platform.pass-to-next-tier
+spec:
+  tier: platform
+  order: 2000
+  selector: all()
+  ingress:
+    - action: Pass
+  egress:
+    - action: Pass
+  types:
+    - Ingress
+    - Egress
+
+# application tier pass policy
+---
+apiVersion: projectcalico.org/v3
+kind: GlobalNetworkPolicy
+metadata:
+  name: application.pass-to-next-tier
+spec:
+  tier: application
+  order: 2000
+  selector: all()
+  ingress:
+    - action: Pass
+  egress:
+    - action: Pass
+  types:
+    - Ingress
+    - Egress

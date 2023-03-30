@@ -13,9 +13,9 @@
     kubectl apply -f demo/20-egress-access-controls/dns-policy.yaml
 
     # test egress access to api.twilio.com
-    kubectl -n dev exec -t centos -- sh -c 'curl -m3 -skI https://api.twilio.com 2>/dev/null | grep -i http'
+    kubectl -n dev exec -t centos -- sh -c 'curl -m2 -skI https://api.twilio.com 2>/dev/null | grep -i http'
     # test egress access to www.bing.com
-    kubectl -n dev exec -t centos -- sh -c 'curl -m3 -skI https://www.bing.com 2>/dev/null | grep -i http'
+    kubectl -n dev exec -t centos -- sh -c 'curl -m2 -skI https://www.bing.com 2>/dev/null | grep -i http'
     ```
 
     Access to the `api.twilio.com` endpoint should be allowed by the DNS policy but not to any other external endpoints like `www.bing.com` unless we modify the policy to include that domain name. The connectivity is represented in the diagram below
@@ -36,22 +36,24 @@
 
     ```bash
     # test egress access to api.twilio.com
-    kubectl -n dev exec -t centos -- sh -c 'curl -m3 -skI https://api.twilio.com 2>/dev/null | grep -i http'
+    kubectl -n dev exec -t centos -- sh -c 'curl -m2 -skI https://api.twilio.com 2>/dev/null | grep -i http'
     # test egress access to www.bing.com
-    kubectl -n dev exec -t centos -- sh -c 'curl -m3 -skI https://www.bing.com 2>/dev/null | grep -i http'
+    kubectl -n dev exec -t centos -- sh -c 'curl -m2 -skI https://www.bing.com 2>/dev/null | grep -i http'
     ```
 
     As access to Twilio is permitted and access to bing is denied we are able to whitelist domains as described next
 
     c. As a bonus example, you can modify the `external-apis` network set in calico cloud management UI to include `*.azure.com` domain name or `*.microsoft.com` which would allow access to azure/microsoft subdomains.
 
+    >One common use case is to provide access to Azure storage resources. For example, Blob storage: `*.blob.core.windows.net`.
+
     ```bash
     # test egress access to www.azure.com and www.microsoft.com after you whitelist from UI.
-    kubectl -n dev exec -t centos -- sh -c 'curl -m3 -skI https://www.microsoft.com 2>/dev/null | grep -i http'
+    kubectl -n dev exec -t centos -- sh -c 'curl -m2 -skI https://www.microsoft.com 2>/dev/null | grep -i http'
     # test egress access to www.azure.com
-    kubectl -n dev exec -t centos -- sh -c 'curl -m3 -skI https://www.azure.com 2>/dev/null | grep -i http'
+    kubectl -n dev exec -t centos -- sh -c 'curl -m2 -skI https://www.azure.com 2>/dev/null | grep -i http'
     ```
 
     ![DNS in networkset](../img/add-DNS-in-networkset.png)
 
-[Next -> Module 5](../modules/layer7-logging.md)
+[Module 3 :arrow_left:](../modules/creating-aks-cluster.md) &nbsp;&nbsp;&nbsp;&nbsp;[Next -> Module 5](../modules/layer7-logging.md)

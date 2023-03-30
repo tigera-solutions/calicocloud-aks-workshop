@@ -86,7 +86,7 @@ Follow the prerequisite steps if you need to verify your Azure subscription and 
 
     ```bash
     # Set Resource Group Name using the unique suffix
-    RGNAME=aks-rg-$UNIQUE_SUFFIX
+    RGNAME=tigera-workshop-$UNIQUE_SUFFIX
     # Persist for Later Sessions in Case of Timeout
     echo export RGNAME=$RGNAME >> ~/.bashrc
     # Set Region (Location)
@@ -200,7 +200,7 @@ Follow the prerequisite steps if you need to verify your Azure subscription and 
 
 8. *[Optional]*  Install `calicoctl` CLI to use in later labs
 
-    a) CloudShell
+    a. CloudShell
 
     ```bash
     CALICOVERSION=$(kubectl get clusterinformations default -ojsonpath='{.spec.cnxVersion}')
@@ -213,7 +213,7 @@ Follow the prerequisite steps if you need to verify your Azure subscription and 
     ./calicoctl version
     ```
 
-    b) Linux
+    b. Linux
     >Tip: Consider navigating to a location that’s in your PATH. For example, /usr/local/bin/
 
     ```bash
@@ -226,7 +226,7 @@ Follow the prerequisite steps if you need to verify your Azure subscription and 
     calicoctl version
     ```
 
-    c) MacOS
+    c. MacOS
     >Tip: Consider navigating to a location that’s in your PATH. For example, /usr/local/bin/
 
     ```bash
@@ -243,7 +243,7 @@ Follow the prerequisite steps if you need to verify your Azure subscription and 
     Note: If you are faced with `cannot be opened because the developer cannot be verified` error when using `calicoctl` for the first time. go to `Applicaitons` \> `System Prefences` \> `Security & Privacy` in the `General` tab at the bottom of the window click `Allow anyway`.  
     Note: If the location of calicoctl is not already in your PATH, move the file to one that is or add its location to your PATH. This will allow you to invoke it without having to prepend its location.
 
-    d) Windows - using powershell command to download the calicoctl binary  
+    d. Windows - using powershell command to download the calicoctl binary  
     >Tip: Consider runing powershell as administraor and navigating to a location that’s in your PATH. For example, C:\Windows.
 
     ```pwsh
@@ -257,4 +257,6 @@ Follow the prerequisite steps if you need to verify your Azure subscription and 
 
 You should now have a Kubernetes cluster running with 3 nodes. You do not see the master servers for the cluster because these are managed by Microsoft. The Control Plane services which manage the Kubernetes cluster such as scheduling, API access, configuration data store and object controllers are all provided as services to the nodes.
 
-[Next -> Module 1](../modules/joining-aks-to-calico-cloud.md)
+[:arrow_right: Module 1](../modules/joining-aks-to-calico-cloud.md)
+
+[:leftwards_arrow_with_hook: Back to Main](/README.md)

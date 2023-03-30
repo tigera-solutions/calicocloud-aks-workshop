@@ -13,3 +13,11 @@ metadata:
   name: platform
 spec:
   order: 500
+
+---
+apiVersion: projectcalico.org/v3
+kind: Tier
+metadata:
+  name: application
+spec:
+  order: 600

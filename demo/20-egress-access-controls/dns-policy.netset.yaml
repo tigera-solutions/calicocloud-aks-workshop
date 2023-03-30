@@ -11,14 +11,5 @@ spec:
     - Egress
   egress:
   - action: Allow
-    protocol: UDP
-    source: {}
-    destination:
-      ports:
-      - '53'
-  - action: Allow
     destination:
       selector: type == "external-apis"
-  - action: Pass
-    source: {}
-    destination: {}

@@ -31,6 +31,7 @@ In [Module 9](../modules/anomaly-detection.md) we introduce Namespace `tigera-in
     In order to explicitly allow workloads to connect to the Kubernetes DNS component, we are going to implement a policy that controls such traffic.
 
     ```bash
+    kubectl apply -f demo/10-security-controls/base-policies.yaml
     kubectl apply -f demo/10-security-controls/allow-kube-dns.yaml
     ```
 
@@ -112,4 +113,6 @@ In [Module 9](../modules/anomaly-detection.md) we introduce Namespace `tigera-in
     kubectl exec -it $(kubectl get po -l app=loadgenerator -ojsonpath='{.items[0].metadata.name}') -c main -- sh -c 'apt-get update && apt install curl iputils-ping -y'
     ```
 
-[Next -> Module 3](../modules/pod-access-controls.md)
+[Module 1 :arrow_left:](../modules/joining-aks-to-calico-cloud.md) &nbsp;&nbsp;&nbsp;&nbsp;[Next -> Module 3](../modules/pod-access-controls.md)
+
+[:leftwards_arrow_with_hook: Back to Main](/README.md)

@@ -65,4 +65,6 @@
 
     Some of the default dashboards you get access to are DNS Logs, Flow Logs, Audit Logs, Kubernetes API calls, L7 HTTP metrics, and others.
 
-[Next -> Module 7](../modules/packet-capture.md)
+[Module 5 :arrow_left:](../modules/layer7-logging.md) &nbsp;&nbsp;&nbsp;&nbsp;[Next -> Module 7](../modules/packet-capture.md)
+
+[:leftwards_arrow_with_hook: Back to Main](/README.md)
