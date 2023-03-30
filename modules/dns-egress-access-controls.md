@@ -56,6 +56,6 @@
 
     ![DNS in networkset](../img/add-DNS-in-networkset.png)
 
-[Module 3 :arrow_left:](../modules/creating-aks-cluster.md) &nbsp;&nbsp;&nbsp;&nbsp;[:arrow_right: Module 5](../modules/layer7-logging.md)
+[Module 3 :arrow_left:](../modules/pod-access-controls.md) &nbsp;&nbsp;&nbsp;&nbsp;[:arrow_right: Module 5](../modules/layer7-logging.md)
 
 [:leftwards_arrow_with_hook: Back to Main](/README.md)
