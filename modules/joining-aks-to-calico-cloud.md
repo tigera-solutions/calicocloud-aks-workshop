@@ -35,22 +35,42 @@ IMPORTANT: In order to complete this module, you must have [Calico Cloud trial a
 
     ```text
     namespace/calico-cloud created
+    namespace/calico-system created
+    namespace/tigera-access created
+    namespace/tigera-image-assurance created
+    namespace/tigera-license created
+    namespace/tigera-operator created
+    namespace/tigera-operator-cloud created
+    namespace/tigera-prometheus created
+    namespace/tigera-risk-system created
     customresourcedefinition.apiextensions.k8s.io/installers.operator.calicocloud.io created
     serviceaccount/calico-cloud-controller-manager created
-    role.rbac.authorization.k8s.io/calico-cloud-leader-election-role created
-    clusterrole.rbac.authorization.k8s.io/calico-cloud-metrics-reader created
-    clusterrole.rbac.authorization.k8s.io/calico-cloud-proxy-role created
-    rolebinding.rbac.authorization.k8s.io/calico-cloud-leader-election-rolebinding created
-    clusterrolebinding.rbac.authorization.k8s.io/calico-cloud-installer-rbac created
-    clusterrolebinding.rbac.authorization.k8s.io/calico-cloud-proxy-rolebinding created
-    configmap/calico-cloud-manager-config created
-    service/calico-cloud-controller-manager-metrics-service created
+    role.rbac.authorization.k8s.io/calico-cloud-installer-ns-role created
+    role.rbac.authorization.k8s.io/calico-cloud-installer-calico-system-role created
+    role.rbac.authorization.k8s.io/calico-cloud-installer-kube-system-role created
+    role.rbac.authorization.k8s.io/calico-cloud-installer-tigera-image-assurance-role created
+    role.rbac.authorization.k8s.io/calico-cloud-installer-tigera-prometheus-role created
+    role.rbac.authorization.k8s.io/calico-cloud-installer-tigera-risk-system-role created
+    clusterrole.rbac.authorization.k8s.io/calico-cloud-installer-role created
+    clusterrole.rbac.authorization.k8s.io/calico-cloud-installer-sa-creator-role created
+    clusterrole.rbac.authorization.k8s.io/calico-cloud-installer-tigera-operator-role created
+    rolebinding.rbac.authorization.k8s.io/calico-cloud-installer-ns-rbac created
+    rolebinding.rbac.authorization.k8s.io/calico-cloud-installer-calico-system-rbac created
+    rolebinding.rbac.authorization.k8s.io/calico-cloud-installer-kube-system-rbac created
+    rolebinding.rbac.authorization.k8s.io/calico-cloud-installer-tigera-access-rbac created
+    rolebinding.rbac.authorization.k8s.io/calico-cloud-installer-tigera-image-assurance-rbac created
+    rolebinding.rbac.authorization.k8s.io/calico-cloud-installer-tigera-license-rbac created
+    rolebinding.rbac.authorization.k8s.io/calico-cloud-installer-tigera-operator-rbac created
+    rolebinding.rbac.authorization.k8s.io/calico-cloud-installer-tigera-operator-rbac created
+    rolebinding.rbac.authorization.k8s.io/calico-cloud-installer-tigera-prometheus-rbac created
+    rolebinding.rbac.authorization.k8s.io/calico-cloud-installer-tigera-risk-system-rbac created
+    clusterrolebinding.rbac.authorization.k8s.io/calico-cloud-installer-crb created
     deployment.apps/calico-cloud-controller-manager created
-      % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-    100   365  100   365    0     0   1312      0 --:--:-- --:--:-- --:--:--  1312
+    % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                    Dload  Upload   Total   Spent    Left  Speed
+    100   462  100   462    0     0   1263      0 --:--:-- --:--:-- --:--:--  1265
     secret/api-key created
-    installer.operator.calicocloud.io/aks-calicocloud-repo created
+    installer.operator.calicocloud.io/default created
     ```
 
     Joining the cluster to Calico Cloud can take a few minutes. Meanwhile the Calico resources can be monitored until they are all reporting `Available` as `True`
@@ -59,18 +79,21 @@ IMPORTANT: In order to complete this module, you must have [Calico Cloud trial a
     kubectl get tigerastatus -w
 
     NAME                            AVAILABLE   PROGRESSING   DEGRADED   SINCE
-    apiserver                       True        False         False      96s
-    calico                          True        False         False      16s
-    compliance                      True        False         False      21s
-    intrusion-detection             True        False         False      41s
-    log-collector                   True        False         False      21s
-    management-cluster-connection   True        False         False      51s
-    monitor                         True        False         False      2m1s
+    apiserver                       True        False         False      2m39s
+    calico                          True        False         False      4s
+    cloud-core                      True        False         False      2m6s
+    compliance                      True        False         False      64s
+    image-assurance                 True        False         False      52s
+    intrusion-detection             True        False         False      54s
+    log-collector                   True        False         False      39s
+    management-cluster-connection   True        False         False      104s
+    monitor                         True        False         False      3m14s
+    policy-recommendation           True        False         False      109s
     ```
 
 4. Navigating the Calico Cloud UI
 
-    Once the cluster has successfully connected to Calico Cloud you can review the cluster status in the UI. Click on `Managed Clusters` from the left side menu and look for the `connected` status of your cluster. You will also see a `Tigera-labs` cluster for demo purposes. Ensure you are in the correct cluster context by clicking the `Cluster` dropdown in the top right corner. This will list the connected clusters. Click on your cluster to switch context otherwise the current cluster context is in *bold* font.
+    Once the cluster has successfully connected to Calico Cloud you can review the cluster status in the UI. Click on `Managed Clusters` from the left side menu and look for the `connected` status of your cluster. You will also see a `tigera-labs` cluster for demo purposes. Ensure you are in the correct cluster context by clicking the `Cluster` dropdown in the top right corner. This will list the connected clusters. Click on your cluster to switch context otherwise the current cluster context is in *bold* font.
 
     ![cluster-selection](../img/cluster-selection.png)
 
@@ -80,6 +103,8 @@ IMPORTANT: In order to complete this module, you must have [Calico Cloud trial a
     kubectl patch felixconfiguration.p default -p '{"spec":{"flowLogsFlushInterval":"10s"}}'
     kubectl patch felixconfiguration.p default -p '{"spec":{"dnsLogsFlushInterval":"10s"}}'
     kubectl patch felixconfiguration.p default -p '{"spec":{"flowLogsFileAggregationKindForAllowed":1}}'
+    kubectl patch felixconfiguration.p default -p '{"spec":{"flowLogsFileAggregationKindForDenied":0}}'
+    kubectl patch felixconfiguration.p default -p '{"spec":{"dnsLogsFileAggregationKind":0}}'
     ```
 
 6. Configure Felix to collect TCP stats - this uses eBPF TC program and requires minimum Kernel version of v5.3.0. Further [documentation](https://docs.tigera.io/visibility/elastic/flow/tcpstats)
