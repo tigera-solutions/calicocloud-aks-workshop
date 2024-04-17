@@ -12,6 +12,8 @@ If you already have an AKS cluster, make sure the network plugin is "azure", the
 
 ## Prerequisite Tasks
 
+You can use either your shell of choice or the [Azure Cloud Shell](https://portal.azure.com/#cloudshell/) that has all necessary tools installed. When using the Azure Cloud Shell, you'll have to sign into your Azure account in the browser and then open the shell.
+
 Follow the prerequisite steps if you need to verify your Azure subscription and Service Principal otherwise proceed to step 1.
 
 1. Ensure you are using the correct Azure subscription you want to deploy AKS to.
@@ -86,7 +88,7 @@ Follow the prerequisite steps if you need to verify your Azure subscription and 
 
     ```bash
     # Set Resource Group Name using the unique suffix
-    RGNAME=tigera-workshop-$UNIQUE_SUFFIX
+    RGNAME=calicocloud-workshop-$UNIQUE_SUFFIX
     # Persist for Later Sessions in Case of Timeout
     echo export RGNAME=$RGNAME >> ~/.bashrc
     # Set Region (Location)
@@ -117,21 +119,22 @@ Follow the prerequisite steps if you need to verify your Azure subscription and 
     ```
 
     ```text
-    KubernetesVersion    Upgrades
-    -------------------  -----------------------
-    1.26.0(preview)      None available
-    1.25.5               1.26.0(preview)
-    1.25.4               1.25.5, 1.26.0(preview)
-    1.24.9               1.25.4, 1.25.5
-    1.24.6               1.24.9, 1.25.4, 1.25.5
-    1.23.15              1.24.6, 1.24.9
-    1.23.12              1.23.15, 1.24.6, 1.24.9
+    KubernetesVersion    Upgrades                 SupportPlan
+    -------------------  -----------------------  --------------------------------------
+    1.29.2               None available           KubernetesOfficial
+    1.29.0               1.29.2                   KubernetesOfficial
+    1.28.5               1.29.0, 1.29.2           KubernetesOfficial
+    1.28.3               1.28.5, 1.29.0, 1.29.2   KubernetesOfficial
+    1.27.9               1.28.3, 1.28.5           KubernetesOfficial, AKSLongTermSupport
+    1.27.7               1.27.9, 1.28.3, 1.28.5   KubernetesOfficial, AKSLongTermSupport
+    1.26.12              1.27.7, 1.27.9           KubernetesOfficial
+    1.26.10              1.26.12, 1.27.7, 1.27.9  KubernetesOfficial
     ```
 
-    For this lab we'll use 1.25.5
+    For this lab we'll use 1.29
 
     ```bash
-    K8SVERSION=1.25.5
+    K8SVERSION=1.29
     echo export K8SVERSION=$K8SVERSION >> ~/.bashrc
     ```
 
@@ -155,9 +158,9 @@ Follow the prerequisite steps if you need to verify your Azure subscription and 
     ```
 
     ```bash
-    Name                 Location    ResourceGroup      KubernetesVersion    ProvisioningState    Fqdn
-    -------------------  ----------  -----------------  -------------------  -------------------  ----------------------------------------------------------------
-    aks-calicocloud-repo    eastus      aks-rg-jessie    1.25.5              Succeeded            aks-calico-aks-rg-jessie-03cfb8-b45d6762.hcp.eastus.azmk8s.io
+    Name          Location    ResourceGroup                   KubernetesVersion    CurrentKubernetesVersion    ProvisioningState    Fqdn
+    ------------  ----------  ------------------------------  -------------------  --------------------------  -------------------  ----------------------------------------------------------------
+    aksivan25988  westus      calicocloud-workshop-ivan25988  1.29                 1.29.2                      Succeeded            aksivan259-calicocloud-work-03cfb8-zmf4e587.hcp.westus.azmk8s.io
     ```
 
 5. Get the Kubernetes config files for your new AKS cluster
@@ -203,7 +206,8 @@ Follow the prerequisite steps if you need to verify your Azure subscription and 
     a. CloudShell
 
     ```bash
-    CALICOVERSION=$(kubectl get clusterinformations default -ojsonpath='{.spec.cnxVersion}')
+    # adjust version as needed
+    CALICOVERSION=v3.19.0-1.0
     # download and configure calicoctl
     curl -o calicoctl -O -L https://downloads.tigera.io/ee/binaries/$CALICOVERSION/calicoctl
 
@@ -217,7 +221,8 @@ Follow the prerequisite steps if you need to verify your Azure subscription and 
     >Tip: Consider navigating to a location that’s in your PATH. For example, /usr/local/bin/
 
     ```bash
-    CALICOVERSION=$(kubectl get clusterinformations default -ojsonpath='{.spec.cnxVersion}')
+    # adjust version as needed
+    CALICOVERSION=v3.19.0-1.0
     # download and configure calicoctl
     curl -o calicoctl -O -L https://downloads.tigera.io/ee/binaries/$CALICOVERSION/calicoctl
     chmod +x calicoctl
@@ -230,7 +235,8 @@ Follow the prerequisite steps if you need to verify your Azure subscription and 
     >Tip: Consider navigating to a location that’s in your PATH. For example, /usr/local/bin/
 
     ```bash
-    CALICOVERSION=$(kubectl get clusterinformations default -ojsonpath='{.spec.cnxVersion}')
+    # adjust version as needed
+    CALICOVERSION=v3.19.0-1.0
     # download and configure calicoctl
     curl -o calicoctl -O -L  https://downloads.tigera.io/ee/binaries/$CALICOVERSION/calicoctl-darwin-amd64
 
