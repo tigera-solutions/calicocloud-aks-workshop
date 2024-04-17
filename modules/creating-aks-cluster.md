@@ -134,7 +134,7 @@ Follow the prerequisite steps if you need to verify your Azure subscription and 
     For this lab we'll use 1.28
 
     ```bash
-    K8SVERSION=1.29
+    K8SVERSION=1.28
     echo export K8SVERSION=$K8SVERSION >> ~/.bashrc
     ```
 
