@@ -55,12 +55,12 @@ In this workshop we are going to focus on these main use cases (with links to Ca
 
 ## Cleanup
 
-1. Disconnect your cluster from CalicoCloud by following the instruction [here](https://docs.calicocloud.io/operations/disconnect)
+1. Disconnect your cluster from CalicoCloud by following the instruction [here](https://docs.tigera.io/calico-cloud/operations/disconnect)
 
     >Whether you’ve finished with your Calico Cloud Trial or decided to disconnect your cluster from Calico Cloud, we know you want your cluster to remain functional. We highly recommend running a simple script to migrate your cluster to open-source Project Calico.
 
     ```bash
-    curl -O https://installer.calicocloud.io/manifests/v3.15.1-8/downgrade.sh
+    curl -O https://installer.calicocloud.io/manifests/v3.19.0-1.0-7/downgrade.sh
     ```
 
     ```bash

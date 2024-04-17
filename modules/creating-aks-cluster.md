@@ -131,7 +131,7 @@ Follow the prerequisite steps if you need to verify your Azure subscription and 
     1.26.10              1.26.12, 1.27.7, 1.27.9  KubernetesOfficial
     ```
 
-    For this lab we'll use 1.29
+    For this lab we'll use 1.28
 
     ```bash
     K8SVERSION=1.29
@@ -160,7 +160,7 @@ Follow the prerequisite steps if you need to verify your Azure subscription and 
     ```bash
     Name          Location    ResourceGroup                   KubernetesVersion    CurrentKubernetesVersion    ProvisioningState    Fqdn
     ------------  ----------  ------------------------------  -------------------  --------------------------  -------------------  ----------------------------------------------------------------
-    aksivan25988  westus      calicocloud-workshop-ivan25988  1.29                 1.29.2                      Succeeded            aksivan259-calicocloud-work-03cfb8-zmf4e587.hcp.westus.azmk8s.io
+    aksivan25988  westus      calicocloud-workshop-ivan25988  1.28                 1.28.5                      Succeeded            aksivan259-calicocloud-work-03cfb8-zmf4e587.hcp.westus.azmk8s.io
     ```
 
 5. Get the Kubernetes config files for your new AKS cluster
@@ -179,9 +179,9 @@ Follow the prerequisite steps if you need to verify your Azure subscription and 
 
     ```bash
     NAME                                STATUS   ROLES   AGE   VERSION
-    aks-nodepool1-36555681-vmss000000   Ready    agent   47m   v1.25.5
-    aks-nodepool1-36555681-vmss000001   Ready    agent   47m   v1.25.5
-    aks-nodepool1-36555681-vmss000002   Ready    agent   47m   v1.25.5
+    aks-nodepool1-36555681-vmss000000   Ready    agent   47m   v1.28.5
+    aks-nodepool1-36555681-vmss000001   Ready    agent   47m   v1.28.5
+    aks-nodepool1-36555681-vmss000002   Ready    agent   47m   v1.28.5
 
     ```
 
