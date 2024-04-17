@@ -73,6 +73,10 @@
 
     # deploy boutiqueshop policies
     kubectl apply -f demo/boutiqueshop/policies.yaml
+
+    # deploy policies for pods to access metadata API
+    kubectl apply -f demo/20-egress-access-controls/netset.metadata-api.yaml
+    kubectl apply -f demo/20-egress-access-controls/metadata-policy.yaml
     ```
 
     Now as we have proper policies in place, we can enforce `default-deny` policy moving closer to zero-trust security approach. You can either enforced the already deployed staged `default-deny` policy using the `Policies Board` view in your Calico Cloud Manager UI, or you can apply an enforcing `default-deny` policy manifest.

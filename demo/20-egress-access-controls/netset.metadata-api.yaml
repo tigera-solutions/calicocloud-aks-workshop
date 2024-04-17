@@ -1,0 +1,10 @@
+kind: GlobalNetworkSet
+apiVersion: projectcalico.org/v3
+metadata:
+  name: metadata-api
+  labels: 
+    type: metadata-api
+spec:
+  nets:
+  # metadata service endpoint
+  - 169.254.169.254

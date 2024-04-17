@@ -57,23 +57,12 @@ Calico Cloud can be enabled for Layer 7 application visibility which captures th
 4. Annotate the Boutiqueshop Services
 
     ```bash
-    kubectl annotate svc -n default adservice projectcalico.org/l7-logging=true
-    kubectl annotate svc -n default cartservice projectcalico.org/l7-logging=true
-    kubectl annotate svc -n default checkoutservice projectcalico.org/l7-logging=true
-    kubectl annotate svc -n default currencyservice projectcalico.org/l7-logging=true
-    kubectl annotate svc -n default emailservice projectcalico.org/l7-logging=true
-    kubectl annotate svc -n default paymentservice projectcalico.org/l7-logging=true
-    kubectl annotate svc -n default productcatalogservice projectcalico.org/l7-logging=true
-    kubectl annotate svc -n default recommendationservice projectcalico.org/l7-logging=true
-    kubectl annotate svc -n default redis-cart projectcalico.org/l7-logging=true
-    kubectl annotate svc -n default shippingservice projectcalico.org/l7-logging=true
+    kubectl annotate svc -n default frontend projectcalico.org/l7-logging=true
     ```
 
-    >L7 flow logs will require a few minutes to generate, you can also restart pods which will enable L7 logs more quickly.
+    >L7 flow logs will require a few minutes to generate, you can also restart pods which will enable L7 logs quicker.
 
-    ```bash
-    kubectl delete pods --all
-    ```
+    Once frontend service is annotated, naviate to the `frontend-external` service IP and perform a few actions on the website. After a few moments, you should be able to see those actions in the Service Graph under the HTTP tab.
 
 5. Review L7 logs
 

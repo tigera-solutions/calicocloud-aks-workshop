@@ -1,0 +1,19 @@
+apiVersion: projectcalico.org/v3
+kind: GlobalNetworkPolicy
+metadata:
+  name: security.metadata-api-access
+spec:
+  # requires security tier
+  tier: security
+  selector: all()
+  order: 100
+  types:
+    - Egress
+  egress:
+  - action: Allow
+    protocol: TCP
+    source: {}
+    destination:
+      selector: type == "metadata-api"
+      ports:
+      - '80'

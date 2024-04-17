@@ -44,7 +44,7 @@ In [Module 9](../modules/anomaly-detection.md) we introduce Namespace `tigera-in
     kubectl apply -f demo/dev/app.manifests.yaml
 
     # deploy boutiqueshop app stack
-    kubectl apply -f https://raw.githubusercontent.com/googlecloudplatform/microservices-demo/v0.3.8/release/kubernetes-manifests.yaml
+    kubectl apply -f demo/boutiqueshop/app.manifests.yaml
     ```
 
     ```bash

@@ -17,6 +17,13 @@ spec:
       selector: "k8s-app == 'kube-dns'"
       ports:
       - '53'
+  - action: Allow
+    protocol: TCP
+    source: {}
+    destination:
+      selector: "k8s-app == 'kube-dns'"
+      ports:
+      - '53'
   - action: Pass
     source: {}
     destination: {}
