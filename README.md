@@ -74,7 +74,7 @@ In this workshop we are going to focus on these main use cases (with links to Ca
 
     ```bash
     kubectl delete -f demo/dev/app.manifests.yaml
-    kubectl delete -f https://raw.githubusercontent.com/googlecloudplatform/microservices-demo/v0.3.8/release/kubernetes-manifests.yaml
+    kubectl delete -f demo/boutiqueshop/app.manifests.yaml
     ```
 
 3. Delete AKS cluster.
