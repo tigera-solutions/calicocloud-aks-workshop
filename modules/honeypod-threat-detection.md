@@ -1,4 +1,4 @@
-# Module 11: Honeypod Threat Detection
+# Module 10: Honeypod Threat Detection
 
 **Goal:** Deploy honeypod resources and generate alerts when suspicious traffic is detected
 
@@ -125,6 +125,6 @@ Calico offers [Honeypod](https://docs.calicocloud.io/threat/honeypod/) capabilit
 
     ![Honeypod threat alert](../img/honeypod-threat-alert.png)
 
-[Module 10 :arrow_left:](../modules/anomaly-detection.md) &nbsp;&nbsp;&nbsp;&nbsp;[:arrow_right: Module 12](../modules/deep-packet-inspection.md)
+[Module 9 :arrow_left:](../modules/using-alerts.md) &nbsp;&nbsp;&nbsp;&nbsp;[:arrow_right: Module 11](../modules/deep-packet-inspection.md)
 
 [:leftwards_arrow_with_hook: Back to Main](/README.md)

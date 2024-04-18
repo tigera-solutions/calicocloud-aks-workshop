@@ -1,4 +1,4 @@
-# Module 12: Deep packet inspection
+# Module 11: Deep packet inspection
 
 **Goal:** Use DPI on select workloads to efficiently make use of cluster resources and minimize the impact of false positives.
 
@@ -65,6 +65,6 @@
 
 >Follow the cleanup instructions on the [main page](../README.md) if needed.
 
-[Module 11 :arrow_left:](../modules/honeypod-threat-detection.md)
+[Module 10 :arrow_left:](../modules/honeypod-threat-detection.md)
 
 [:leftwards_arrow_with_hook: Back to Main](/README.md)
