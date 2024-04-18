@@ -74,11 +74,11 @@
     ```bash
     # generate suspicious DNS alerts
     DOMAIN=$(curl https://installer.calicocloud.io/feeds/v1/domains | awk 'NR==1')
-    kubectl -n dev exec -t netshoot -- sh -c "ping -c1 $DOMAIN"
+    kubectl -n dev exec -t netshoot -- sh -c "ping -W2 -c1 $DOMAIN"
 
     # generate suspicious IP alerts
     IP=$(kubectl get globalnetworksets.crd.projectcalico.org threatfeed.alienvault.ipthreatfeeds -o jsonpath='{.spec.nets[0]}' | sed 's/...$//')
-    kubectl -n dev exec -t netshoot -- sh -c "ping -c3 $IP"
+    kubectl -n dev exec -t netshoot -- sh -c "ping -W2 -c3 $IP"
     ```
 
     Open `Alerts` view to see all triggered alerts in the cluster. Review the generated alerts.
